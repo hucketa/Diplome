@@ -1,0 +1,326 @@
+[gd_scene load_steps=12 format=3 uid="uid://jgspg6iolilq"]
+
+[ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://bg.tscn" id="1_31unh"]
+[ext_resource type="Script" path="res://settings.gd" id="1_h6581"]
+[ext_resource type="Texture2D" uid="uid://cagl8oeedrwiq" path="res://icon.svg" id="2_fe65c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3ua0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32vxy"]
+bg_color = Color(0.976471, 0.360784, 0.392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bguvd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fg1c"]
+bg_color = Color(0.180392, 0.690196, 0.596078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l80a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1usk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e07wn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tbiy"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 3.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h6581")
+
+[node name="bg" parent="." instance=ExtResource("1_31unh")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings_word" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.42
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings_word"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Налаштування"
+
+[node name="UpperContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.58
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/UpperContainer"]
+layout_mode = 2
+
+[node name="Bars_Container" type="VBoxContainer" parent="VBoxContainer/UpperContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SoundProgressBar" type="HBoxContainer" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Гучність"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Decrease2" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_32vxy")
+text = "-"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Loudness_bar" type="ProgressBar" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 6.8
+theme_override_styles/background = SubResource("StyleBoxFlat_bguvd")
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Increase" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_6fg1c")
+text = "+"
+
+[node name="BrightnessProgressBar" type="HBoxContainer" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Яскравість"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Decrease" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_32vxy")
+text = "-"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Brightness_bar" type="ProgressBar" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 6.8
+theme_override_styles/background = SubResource("StyleBoxFlat_bguvd")
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
+
+[node name="Increase2" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_6fg1c")
+text = "+"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1l80a")
+
+[node name="Languages_bar" type="PanelContainer" parent="VBoxContainer/UpperContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar"]
+layout_mode = 2
+
+[node name="RuButton" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Російська"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p1usk")
+
+[node name="EnButton" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+button_mask = 0
+text = "Англійська"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e07wn")
+
+[node name="UaButton" type="Button" parent="VBoxContainer/UpperContainer/HBoxContainer/Languages_bar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Українська"
+
+[node name="DownContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.29
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/DownContainer"]
+layout_mode = 2
+
+[node name="Addition_settings_border_box" type="PanelContainer" parent="VBoxContainer/DownContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1tbiy")
+
+[node name="Additional_Settings" type="VBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings"]
+layout_mode = 2
+text = "Додатково
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hard_mode" type="HBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/Hard_mode"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.08
+text = "Режим \"Одна спроба\""
+
+[node name="mode_1hp_button" type="CheckButton" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/Hard_mode"]
+layout_mode = 2
+
+[node name="HPBarView" type="HBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/HPBarView"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Шкала здоров`я"
+
+[node name="view_bar_button" type="CheckButton" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/HPBarView"]
+layout_mode = 2
+
+[node name="Experience_scale" type="HBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/Experience_scale"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Зменшений досвід"
+
+[node name="low_exp_scale_button" type="CheckButton" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/Experience_scale"]
+layout_mode = 2
+
+[node name="BackMainButton" type="Button" parent="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.9
+text = "Повернутися назад"
+
+[node name="SoundCheckbox" type="HBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SoundIcon" type="TextureRect" parent="VBoxContainer/DownContainer/HBoxContainer2/SoundCheckbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.3
+texture = ExtResource("2_fe65c")
+
+[node name="SoundCheck" type="CheckButton" parent="VBoxContainer/DownContainer/HBoxContainer2/SoundCheckbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.57
+
+[node name="MusicCheckbox" type="HBoxContainer" parent="VBoxContainer/DownContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicIcon" type="TextureRect" parent="VBoxContainer/DownContainer/HBoxContainer2/MusicCheckbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_fe65c")
+
+[node name="MusicCheck" type="CheckButton" parent="VBoxContainer/DownContainer/HBoxContainer2/MusicCheckbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar/Decrease2" to="." method="_on_decrease_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/SoundProgressBar/Increase" to="." method="_on_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar/Decrease" to="." method="_on_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpperContainer/HBoxContainer/Bars_Container/BrightnessProgressBar/Increase2" to="." method="_on_increase_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownContainer/HBoxContainer2/Addition_settings_border_box/Additional_Settings/BackMainButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownContainer/HBoxContainer2/SoundCheckbox/SoundCheck" to="." method="_on_sound_check_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownContainer/HBoxContainer2/MusicCheckbox/MusicCheck" to="." method="_on_music_check_pressed"]
