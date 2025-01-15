@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=18 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://dpyk86fdvwk11" path="res://src/Tiles/79bb3aa9-fe6e-4705-8756-dd00de5edeec.webp" id="1_v6qin"]
 [ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://skeleton_enemy.tscn" id="2_e2f7o"]
 [ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://zhec.tscn" id="3_ga3ek"]
 [ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://nightborne.tscn" id="4_cqujh"]
+[ext_resource type="PackedScene" uid="uid://grv7rard1urg" path="res://Exp_scene.tscn" id="6_ifshe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujni0"]
 texture = ExtResource("1_v6qin")
@@ -5713,10 +5714,18 @@ bg_color = Color(0.158792, 0.456933, 0.517282, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3e0b"]
 bg_color = Color(0.349799, 0.652667, 0.712999, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuxp3"]
+bg_color = Color(0.923669, 0.395774, 0.543845, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj5e2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn0qt"]
-bg_color = Color(0.877156, 0.486247, 1.92523e-07, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0otw3"]
+bg_color = Color(0.407208, 0.653738, 0.627706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcoy3"]
+bg_color = Color(6.35326e-06, 0.657741, 0.856271, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5pq8"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(3, -13)
@@ -5759,10 +5768,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -247.0
-offset_top = -168.0
-offset_right = 279.0
-offset_bottom = 212.0
+offset_left = -237.0
+offset_top = -124.0
+offset_right = 289.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -5774,64 +5783,109 @@ layout_mode = 2
 [node name="Resume" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xtm0s")
-text = "Продолжить"
+text = "Повернутися"
 
 [node name="Main_Menu" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d0ig1")
-text = "Гланвое меню"
+text = "Налаштування
+"
 
 [node name="Exit" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u3e0b")
-text = "Выход
-"
+text = "Головне меню"
 
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 31.0
 grow_horizontal = 2
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 11
 
-[node name="Pause_ui" type="Button" parent="UI/HBoxContainer"]
+[node name="Pause_ui" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Pause"
+theme_override_styles/normal = SubResource("StyleBoxFlat_iuxp3")
+text = "Пауза"
 
-[node name="VSeparator" type="VSeparator" parent="UI/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.15
 theme_override_constants/separation = 34
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
-[node name="Panel" type="Panel" parent="UI/HBoxContainer"]
+[node name="Health_bar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_pn0qt")
+size_flags_stretch_ratio = 6.38
+theme_override_styles/background = SubResource("StyleBoxFlat_0otw3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vcoy3")
+value = 24.0
 
-[node name="Panel2" type="Panel" parent="UI/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_pn0qt")
-
-[node name="Panel3" type="Panel" parent="UI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_pn0qt")
-
-[node name="VSeparator2" type="VSeparator" parent="UI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.7
+size_flags_stretch_ratio = 1.65
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
+
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c5pq8")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 11
+
+[node name="VSeparator" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.94
+theme_override_constants/separation = -478
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
+
+[node name="Exp_bar" type="ProgressBar" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.38
+theme_override_styles/background = SubResource("StyleBoxFlat_0otw3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vcoy3")
+value = 24.0
+
+[node name="VSeparator2" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.51
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
+
+[node name="Node2D" parent="." instance=ExtResource("6_ifshe")]
+position = Vector2(232, 234)
+
+[node name="Node2D2" parent="." instance=ExtResource("6_ifshe")]
+position = Vector2(245, 219)
+
+[node name="Node2D3" parent="." instance=ExtResource("6_ifshe")]
+position = Vector2(255, 243)
+
+[node name="Node2D4" parent="." instance=ExtResource("6_ifshe")]
+position = Vector2(238, 260)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]

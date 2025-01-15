@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# PLAY
+msgid "PLAY"
+msgstr "Играть"
+
+# SETTINGS
+msgid "SETTINGS"
+msgstr "Настройки"
+
+# EXIT
+msgid "EXIT"
+msgstr "Выйти"
+
+# SOUND
+msgid "SOUND"
+msgstr "Звук"
+
+# MUSIC
+msgid "MUSIC"
+msgstr "Музыка"
+
+# BRIGHTNESS
+msgid "BRIGHTNESS"
+msgstr "Яркость"
+
+# ADDITIONAL
+msgid "ADDITIONAL"
+msgstr "Дополнительные настройки"
+
+# ONE_TRY
+msgid "ONE_TRY"
+msgstr "Режим \"Одна попытка\""
+
+# HEALTH_BAR_SHOW
+msgid "HEALTH_BAR_SHOW"
+msgstr "Показывать шкалу здоровья"
+
+# LOWER_EXP
+msgid "LOWER_EXP"
+msgstr "Получение меньшего опыта"
+
+# SOUND_MUTE
+msgid "SOUND_MUTE"
+msgstr "Выключить звук"
+
+# MUSIC_MUTE
+msgid "MUSIC_MUTE"
+msgstr "Выключить музыку"
+
+# PAUSE
+msgid "PAUSE"
+msgstr "Пауза"
+
+# BACK
+msgid "BACK"
+msgstr "Вернуться"
+
+# MAIN_MENU
+msgid "MAIN_MENU"
+msgstr "Главное меню"

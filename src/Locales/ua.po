@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Language: uk\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%10<=4 || n%10>=7) && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+
+# PLAY
+msgid "PLAY"
+msgstr "Грати"
+
+# SETTINGS
+msgid "SETTINGS"
+msgstr "Налаштування"
+
+# EXIT
+msgid "EXIT"
+msgstr "Вийти"
+
+# SOUND
+msgid "SOUND"
+msgstr "Звук"
+
+# MUSIC
+msgid "MUSIC"
+msgstr "Музика"
+
+# BRIGHTNESS
+msgid "BRIGHTNESS"
+msgstr "Яскравість"
+
+# ADDITIONAL
+msgid "ADDITIONAL"
+msgstr "Додаткові налаштування"
+
+# ONE_TRY
+msgid "ONE_TRY"
+msgstr "Режим \"Одна спроба\""
+
+# HEALTH_BAR_SHOW
+msgid "HEALTH_BAR_SHOW"
+msgstr "Показувати шкалу здоров'я"
+
+# LOWER_EXP
+msgid "LOWER_EXP"
+msgstr "Отримання меншого досвіду"
+
+# SOUND_MUTE
+msgid "SOUND_MUTE"
+msgstr "Вимкнути звук"
+
+# MUSIC_MUTE
+msgid "MUSIC_MUTE"
+msgstr "Вимкнути музику"
+
+# PAUSE
+msgid "PAUSE"
+msgstr "Пауза"
+
+# BACK
+msgid "BACK"
+msgstr "Повернутися"
+
+# MAIN_MENU
+msgid "MAIN_MENU"
+msgstr "Головне меню"

@@ -27,6 +27,12 @@ window/vsync/vsync_mode=0
 
 theme/default_font_multichannel_signed_distance_field=true
 
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://src/Locales/en.po", "res://src/Locales/ru.po", "res://src/Locales/ua.po")
+locale/include_text_server_data=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

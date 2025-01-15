@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# PLAY
+msgid "PLAY"
+msgstr "Play"
+
+# SETTINGS
+msgid "SETTINGS"
+msgstr "Settings"
+
+# EXIT
+msgid "EXIT"
+msgstr "Exit"
+
+# SOUND
+msgid "SOUND"
+msgstr "Sound"
+
+# MUSIC
+msgid "MUSIC"
+msgstr "Music"
+
+# BRIGHTNESS
+msgid "BRIGHTNESS"
+msgstr "Brightness"
+
+# ADDITIONAL
+msgid "ADDITIONAL"
+msgstr "Additional settings"
+
+# ONE_TRY
+msgid "ONE_TRY"
+msgstr "\"One-try\" mode"
+
+# HEALTH_BAR_SHOW
+msgid "HEALTH_BAR_SHOW"
+msgstr "Show health bar"
+
+# LOWER_EXP
+msgid "LOWER_EXP"
+msgstr "Take less experience"
+
+# SOUND_MUTE
+msgid "SOUND_MUTE"
+msgstr "Take off sound"
+
+# MUSIC_MUTE
+msgid "MUSIC_MUTE"
+msgstr "Take off music"
+
+# PAUSE
+msgid "PAUSE"
+msgstr "Pause"
+
+# BACK
+msgid "BACK"
+msgstr "Back"
+
+# MAIN_MENU
+msgid "MAIN_MENU"
+msgstr "Main menu"

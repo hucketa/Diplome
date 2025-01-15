@@ -18,12 +18,24 @@ script/source = "extends Control
 func _on_exit_bt_pressed():
 	get_tree().quit()
 
+@onready var start_button: Button = $VBoxContainer/Start_bt
+@onready var settings_button: Button = $VBoxContainer/Settings_Bt
+@onready var exit_button: Button = $VBoxContainer/Exit_bt
+
+func _ready():
+	update_button_texts()
+
+func update_button_texts():
+	start_button.text = tr(\"PLAY\")
+	settings_button.text = tr(\"SETTINGS\")
+	exit_button.text = tr(\"EXIT\")
+
+func _on_translation_changed():
+	update_button_texts()
 
 func _on_settings_bt_pressed():
 	get_tree().change_scene_to_file(\"res://settings.tscn\")
 	
-
-
 func _on_start_bt_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://Level_test.tscn\")
 "
@@ -49,8 +61,6 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("2_a4nft")
-texture_margin_bottom = 6.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uf7yn"]
 texture = ExtResource("6_mmxli")
@@ -59,10 +69,6 @@ texture = ExtResource("6_mmxli")
 texture = ExtResource("7_vnjs7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dold"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
 texture = ExtResource("5_qowcb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fbu0"]
@@ -80,10 +86,6 @@ content_margin_bottom = 0.0
 texture = ExtResource("10_vw30g")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o33tu"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
 texture = ExtResource("8_ebslg")
 
 [node name="Control" type="Control"]
