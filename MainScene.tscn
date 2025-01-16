@@ -30,6 +30,13 @@ func _ready():
 		var localisation = config.get_value(\"Settings\", \"locale\", \"en\")
 		TranslationServer.set_locale(localisation)
 	update_button_texts()
+	var canvas_modulate = $CanvasModulate
+	if canvas_modulate:
+		var brightness = config.get_value(\"Settings\", \"brightness\", 0)
+		var brightness_value = brightness
+		canvas_modulate.color = Color(brightness_value, brightness_value, brightness_value)
+
+
 
 func update_button_texts():
 	start_button.text = tr(\"PLAY\")
@@ -155,6 +162,8 @@ text = "
 Вийти"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("11_0xtfl")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [connection signal="pressed" from="VBoxContainer/Start_bt" to="." method="_on_start_bt_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings_Bt" to="." method="_on_settings_bt_pressed"]

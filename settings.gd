@@ -93,6 +93,7 @@ func update_ui():
 	low_exp_scale_button.set_pressed(reduced_experience)
 	%Sound_val_bar.value = sound_volume
 	%Brightness_bar.value = brightness
+	apply_brightness()
 	%mus_val_bar.value = music_volume
 	var current_locale = TranslationServer.get_locale()
 	match current_locale:
@@ -144,24 +145,24 @@ func _on_mus_val_increase_pressed():
 		save_settings()
 
 func _on_bright_val_increase_pressed():
-	if brightness < 8:
-		brightness += 0.5
-		%Brightness_bar.value = (brightness/8)*100
+	if brightness < 1.3:
+		brightness += 0.1
+		%Brightness_bar.value = brightness
 		apply_brightness()
 		save_settings()
 
 func _on_bright_val_decrease_pressed():
-	if brightness > 0:
-		brightness -= 0.5
-		%Brightness_bar.value = (brightness/8)*100
+	if brightness > 0.5:
+		brightness -= 0.1
+		%Brightness_bar.value = brightness
 		apply_brightness()
 		save_settings()
 
 func apply_brightness():
-	var env: Environment = $k.get_environment()
-	if env:
-		env.adjustment_brightness = brightness
-
+	var canvas_modulate = $CanvasModulate
+	if canvas_modulate:
+		var brightness_value = brightness
+		canvas_modulate.color = Color(brightness_value, brightness_value, brightness_value)
 
 func _on_music_mute_off_pressed():
 	if music_volume == 0:
