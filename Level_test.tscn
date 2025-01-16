@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=19 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://dpyk86fdvwk11" path="res://src/Tiles/79bb3aa9-fe6e-4705-8756-dd00de5edeec.webp" id="1_v6qin"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://zhec.tscn" id="3_ga3ek"]
 [ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://nightborne.tscn" id="4_cqujh"]
 [ext_resource type="PackedScene" uid="uid://grv7rard1urg" path="res://Exp_scene.tscn" id="6_ifshe"]
+[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="7_cf2ul"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujni0"]
 texture = ExtResource("1_v6qin")
@@ -5731,6 +5732,8 @@ bg_color = Color(6.35326e-06, 0.657741, 0.856271, 1)
 position = Vector2(3, -13)
 script = ExtResource("1_iuvy1")
 
+[node name="CanvasModulate" parent="." instance=ExtResource("7_cf2ul")]
+
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 3
 visibility_layer = 3
@@ -5873,17 +5876,8 @@ size_flags_stretch_ratio = 2.51
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
-[node name="Node2D" parent="." instance=ExtResource("6_ifshe")]
+[node name="ExpItem" parent="." instance=ExtResource("6_ifshe")]
 position = Vector2(232, 234)
-
-[node name="Node2D2" parent="." instance=ExtResource("6_ifshe")]
-position = Vector2(245, 219)
-
-[node name="Node2D3" parent="." instance=ExtResource("6_ifshe")]
-position = Vector2(255, 243)
-
-[node name="Node2D4" parent="." instance=ExtResource("6_ifshe")]
-position = Vector2(238, 260)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

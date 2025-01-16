@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://jgspg6iolilq"]
+[gd_scene load_steps=14 format=3 uid="uid://jgspg6iolilq"]
 
 [ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://bg.tscn" id="1_31unh"]
 [ext_resource type="Script" path="res://settings.gd" id="1_h6581"]
+[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="3_pbcs7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3ua0"]
 
@@ -388,7 +389,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_qthny")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" parent="." instance=ExtResource("3_pbcs7")]
 unique_name_in_owner = true
 
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/Button" to="." method="_on_button_pressed"]

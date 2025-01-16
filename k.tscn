@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnrng0ss7uha7"]
-
-[sub_resource type="Environment" id="Environment_k1qep"]
-tonemap_exposure = 0.0
-adjustment_enabled = true
-adjustment_brightness = 0.01
-
-[node name="k" type="WorldEnvironment"]
-environment = SubResource("Environment_k1qep")

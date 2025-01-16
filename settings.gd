@@ -7,7 +7,7 @@ var reduced_experience = false
 var sound_volume = 0  
 var brightness = 1 
 var music_volume = 0
-var localisation = "uk"  
+var localisation = "uk"
 
 @onready var sound_val_decrease: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_decrease"
 @onready var sound_val_increase: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_increase"
@@ -51,6 +51,7 @@ func _ready():
 	bright_val_decrease.connect("pressed", Callable(self, "_on_bright_val_decrease_pressed"))
 	music_mute_off.connect("pressed", Callable(self, "_on_music_mute_off_pressed"))
 	sound_mute_off.connect("pressed", Callable(self, "_on_sound_mute_off_pressed"))
+	
 
 func change_language_ui():
 	label.text = tr("SETTINGS")
@@ -73,7 +74,7 @@ func load_settings():
 		sound_volume = config.get_value("Settings", "s_volume", 0)
 		music_volume = config.get_value("Settings", "m_volume", 0)
 		brightness = config.get_value("Settings", "brightness", 0)
-		localisation = config.get_value("Settings", "locale", "en")  # Значение по умолчанию "en"
+		localisation = config.get_value("Settings", "locale", "en")
 		TranslationServer.set_locale(localisation)
 
 func save_settings():
@@ -84,7 +85,7 @@ func save_settings():
 	config.set_value("Settings", "m_volume", music_volume)
 	config.set_value("Settings", "s_volume", sound_volume)
 	config.set_value("Settings", "brightness", brightness)
-	config.set_value("Settings", "locale", localisation)  # Сохраняем текущую локализацию
+	config.set_value("Settings", "locale", localisation)
 	config.save(CONFIG_PATH)
 	
 func update_ui():
@@ -93,7 +94,6 @@ func update_ui():
 	low_exp_scale_button.set_pressed(reduced_experience)
 	%Sound_val_bar.value = sound_volume
 	%Brightness_bar.value = brightness
-	apply_brightness()
 	%mus_val_bar.value = music_volume
 	var current_locale = TranslationServer.get_locale()
 	match current_locale:
@@ -148,21 +148,19 @@ func _on_bright_val_increase_pressed():
 	if brightness < 1.3:
 		brightness += 0.1
 		%Brightness_bar.value = brightness
-		apply_brightness()
 		save_settings()
+		var canvas_modulate: CanvasModulate = $CanvasModulate
+		canvas_modulate.color = Color(brightness, brightness, brightness)
 
 func _on_bright_val_decrease_pressed():
 	if brightness > 0.5:
 		brightness -= 0.1
 		%Brightness_bar.value = brightness
-		apply_brightness()
 		save_settings()
+		var canvas_modulate: CanvasModulate = $CanvasModulate
+		canvas_modulate.color = Color(brightness, brightness, brightness)
 
-func apply_brightness():
-	var canvas_modulate = $CanvasModulate
-	if canvas_modulate:
-		var brightness_value = brightness
-		canvas_modulate.color = Color(brightness_value, brightness_value, brightness_value)
+
 
 func _on_music_mute_off_pressed():
 	if music_volume == 0:
