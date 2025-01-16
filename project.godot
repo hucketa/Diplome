@@ -30,7 +30,7 @@ theme/default_font_multichannel_signed_distance_field=true
 [internationalization]
 
 locale/translation_remaps={}
-locale/translations=PackedStringArray("res://src/Locales/en.po", "res://src/Locales/ru.po", "res://src/Locales/ua.po")
+locale/translations=PackedStringArray("res://src/Locales/ru.po", "res://src/Locales/en.po", "res://src/Locales/ua.po")
 locale/include_text_server_data=true
 
 [rendering]

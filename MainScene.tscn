@@ -15,6 +15,8 @@
 [sub_resource type="GDScript" id="GDScript_ov1hb"]
 script/source = "extends Control
 
+const CONFIG_PATH = \"user://settings.cfg\"
+
 func _on_exit_bt_pressed():
 	get_tree().quit()
 
@@ -23,6 +25,10 @@ func _on_exit_bt_pressed():
 @onready var exit_button: Button = $VBoxContainer/Exit_bt
 
 func _ready():
+	var config = ConfigFile.new()
+	if config.load(CONFIG_PATH) == OK:
+		var localisation = config.get_value(\"Settings\", \"locale\", \"en\")
+		TranslationServer.set_locale(localisation)
 	update_button_texts()
 
 func update_button_texts():
@@ -42,50 +48,53 @@ func _on_start_bt_pressed() -> void:
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0504l"]
 content_margin_left = 0.0
-content_margin_top = 0.0
+content_margin_top = 35.0
 content_margin_right = 0.0
-content_margin_bottom = 5.0
 texture = ExtResource("3_eba8r")
 texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5rxe"]
 content_margin_left = 0.0
-content_margin_top = 0.0
+content_margin_top = 35.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("4_n22w0")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hp6tm"]
 content_margin_left = 0.0
-content_margin_top = 0.0
+content_margin_top = 35.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("2_a4nft")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uf7yn"]
+content_margin_top = 35.0
 texture = ExtResource("6_mmxli")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ihrac"]
+content_margin_top = 35.0
 texture = ExtResource("7_vnjs7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dold"]
+content_margin_top = 35.0
 texture = ExtResource("5_qowcb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fbu0"]
 content_margin_left = 0.0
-content_margin_top = 0.0
+content_margin_top = 35.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("9_iufvn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qpx7"]
 content_margin_left = 0.0
-content_margin_top = 0.0
+content_margin_top = 35.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("10_vw30g")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o33tu"]
+content_margin_top = 35.0
 texture = ExtResource("8_ebslg")
 
 [node name="Control" type="Control"]
@@ -111,7 +120,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_sh0rh")
-theme_override_font_sizes/font_size = 46
+theme_override_font_sizes/font_size = 43
 theme_override_styles/hover = SubResource("StyleBoxTexture_0504l")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u5rxe")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hp6tm")

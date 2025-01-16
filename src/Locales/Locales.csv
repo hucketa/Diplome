@@ -1,0 +1,16 @@
+﻿key,en,ru,ua
+PLAY,Play,Играть,Грати
+SETTINGS,Settings,Настройки,Налаштування
+EXIT,Exit,Выйти,Вийти
+SOUND,Sound,Звук,Звук
+MUSIC,Music,Музыка,Музика
+BRIGHTNESS,Brightness,Яркость,Яскравість
+ADDITIONAL,"Additional settings","Дополнительные настройки","Додаткові налаштування"
+ONE_TRY,"""One-try"" mode","Режим ""Одна попытка""","Режим ""Одна спроба"""
+HEALTH_BAR_SHOW,"Show health bar","Показывать шкалу здоровья","Показувати шкалу здоров'я"
+LOWER_EXP,"Take less experience","Получение меньшего опыта","Отримання меншого досвіду"
+SOUND_MUTE,"Take off sound","Выключить звук","Вимкнути звук"
+MUSIC_MUTE,"Take off music","Выключить музыку","Вимкнути музику"
+PAUSE,Pause,Пауза,Пауза
+BACK,Back,Вернуться,Повернутися
+MAIN_MENU,"Main menu","Главное меню","Головне меню"

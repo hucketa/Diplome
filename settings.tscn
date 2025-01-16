@@ -82,7 +82,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Caption" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
+[node name="Caption_sound" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 text = "Звук"
@@ -130,7 +130,7 @@ text = "+"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Caption" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
+[node name="Caption_music" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 text = "Музика
@@ -179,7 +179,7 @@ text = "+"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Caption" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
+[node name="Caption_bright" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 text = "Яскравість"
@@ -284,7 +284,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
 
-[node name="Caption" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
+[node name="Caption_odd" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
 layout_mode = 2
 text = "Додатково
 "
@@ -296,7 +296,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode"]
+[node name="Label_hm" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -312,7 +312,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView"]
+[node name="Label_hp" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -326,7 +326,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale"]
+[node name="Label_exp" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -350,7 +350,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_p041e")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox"]
+[node name="Label_mute_s" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox"]
 layout_mode = 2
 text = "Звук"
 horizontal_alignment = 1
@@ -371,7 +371,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_p041e")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox"]
+[node name="Label_mute_m" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox"]
 layout_mode = 2
 text = "Музика
 "

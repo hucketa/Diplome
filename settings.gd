@@ -5,9 +5,9 @@ var one_shot_mode = false
 var health_bar_scale = false
 var reduced_experience = false
 var sound_volume = 0  
-var brightness = 0 
+var brightness = 1 
 var music_volume = 0
-var localisation = "ru"  
+var localisation = "uk"  
 
 @onready var sound_val_decrease: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_decrease"
 @onready var sound_val_increase: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_increase"
@@ -16,7 +16,6 @@ var localisation = "ru"
 @onready var bright_val_decrease: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/bright_val_decrease"
 @onready var bright_val_increase: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/bright_val_increase"
 @onready var ru_button: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/RuButton"
-@onready var en_button: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/EnButton"
 @onready var ua_button: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/UaButton"
 @onready var music_mute_off: Button = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox/music_mute_off"
 @onready var sound_mute_off: Button = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox/sound_mute_off"
@@ -25,6 +24,16 @@ var localisation = "ru"
 @onready var low_exp_scale_button: CheckButton = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale/low_exp_scale_button"
 @onready var back_button: Button = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/BackButton"
 @onready var button: Button = %Button
+@onready var label: Label = $mainContainer/Caption/Label
+@onready var caption_sound: Label = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/Caption_sound"
+@onready var caption_music: Label = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar/Caption_music"
+@onready var caption_bright: Label = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/Caption_bright"
+@onready var caption_odd: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Caption_odd"
+@onready var label_hm: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode/Label_hm"
+@onready var label_hp: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView/Label_hp"
+@onready var label_exp: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale/Label_exp"
+@onready var label_mute_s: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox/Label_mute_s"
+@onready var label_mute_m: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox/Label_mute_m"
 
 
 func _ready():
@@ -42,7 +51,19 @@ func _ready():
 	bright_val_decrease.connect("pressed", Callable(self, "_on_bright_val_decrease_pressed"))
 	music_mute_off.connect("pressed", Callable(self, "_on_music_mute_off_pressed"))
 	sound_mute_off.connect("pressed", Callable(self, "_on_sound_mute_off_pressed"))
-	
+
+func change_language_ui():
+	label.text = tr("SETTINGS")
+	caption_sound.text = tr("SOUND")
+	caption_music.text = tr("MUSIC")
+	caption_bright.text = tr("BRIGHTNESS")
+	caption_odd.text = tr("ADDITIONAL")
+	label_hm.text = tr("ONE_TRY")
+	label_hp.text = tr("HEALTH_BAR_SHOW")
+	label_exp.text = tr("LOWER_EXP")
+	label_mute_s.text = tr("SOUND_MUTE")
+	label_mute_m.text = tr("MUSIC_MUTE")
+
 func load_settings():
 	var config = ConfigFile.new()
 	if config.load(CONFIG_PATH) == OK:
@@ -77,10 +98,11 @@ func update_ui():
 	match current_locale:
 		"ru":
 			ru_button.grab_focus()
-		"ua":
+		"uk":
 			ua_button.grab_focus()
 		_:
 			%Button.grab_focus()
+	change_language_ui()
 
 func _on_one_try_toggled(pressed):
 	one_shot_mode = pressed
@@ -122,16 +144,24 @@ func _on_mus_val_increase_pressed():
 		save_settings()
 
 func _on_bright_val_increase_pressed():
-	if brightness < 100:
-		brightness += 10
-		%Brightness_bar.value = brightness
+	if brightness < 8:
+		brightness += 0.5
+		%Brightness_bar.value = (brightness/8)*100
+		apply_brightness()
 		save_settings()
 
 func _on_bright_val_decrease_pressed():
 	if brightness > 0:
-		brightness -= 10
-		%Brightness_bar.value = brightness
+		brightness -= 0.5
+		%Brightness_bar.value = (brightness/8)*100
+		apply_brightness()
 		save_settings()
+
+func apply_brightness():
+	var env: Environment = $k.get_environment()
+	if env:
+		env.adjustment_brightness = brightness
+
 
 func _on_music_mute_off_pressed():
 	if music_volume == 0:
@@ -153,13 +183,16 @@ func _on_ru_button_pressed():
 	TranslationServer.set_locale("ru")
 	localisation = "ru"
 	save_settings()
+	change_language_ui()
 
 func _on_ua_button_pressed():
-	TranslationServer.set_locale("ua")
-	localisation = "ua"
+	TranslationServer.set_locale("uk")
+	localisation = "uk"
 	save_settings()
+	change_language_ui()
 
 func _on_button_pressed() -> void:
 	localisation = "en"
 	TranslationServer.set_locale("en")
 	save_settings()
+	change_language_ui()
