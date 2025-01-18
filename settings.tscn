@@ -1,8 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://jgspg6iolilq"]
+[gd_scene load_steps=35 format=3 uid="uid://jgspg6iolilq"]
 
 [ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://bg.tscn" id="1_31unh"]
 [ext_resource type="Script" path="res://settings.gd" id="1_h6581"]
+[ext_resource type="FontFile" uid="uid://ci5ebb4lx5b3p" path="res://src/Fonts/American TextC.ttf" id="3_1fo6v"]
+[ext_resource type="Texture2D" uid="uid://bqa565potrhq4" path="res://src/Settings_window/pixil-frame-0.png" id="3_nepnx"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="3_pbcs7"]
+[ext_resource type="Texture2D" uid="uid://bf0snpg6ry0cf" path="res://src/Settings_window/pixil-frame-0(1).png" id="3_qormx"]
+[ext_resource type="PackedScene" uid="uid://b51my5ke2ih82" path="res://BackGroundMusic.tscn" id="4_nidxj"]
+[ext_resource type="Texture2D" uid="uid://bojumx4240ki4" path="res://src/Settings_window/SoundButton2.png" id="5_25cea"]
+[ext_resource type="Texture2D" uid="uid://budi6vvtomb45" path="res://src/Settings_window/SoundButton2(y).png" id="5_uv4p3"]
+[ext_resource type="Texture2D" uid="uid://dgmgfk8g6len6" path="res://src/Settings_window/SoundButton.png" id="6_ovkk0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3ua0"]
 
@@ -13,6 +20,19 @@ bg_color = Color(0.976471, 0.360784, 0.392157, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fg1c"]
 bg_color = Color(0.180392, 0.690196, 0.596078, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yaxio"]
+color = Color(0.262932, 0.262932, 0.262932, 1)
+thickness = 12
+
+[sub_resource type="Gradient" id="Gradient_wbhj4"]
+colors = PackedColorArray(0.945098, 0, 0, 1, 0.596078, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq05n"]
+gradient = SubResource("Gradient_wbhj4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dx2e"]
+texture = SubResource("GradientTexture2D_vq05n")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l80a"]
 
@@ -26,10 +46,35 @@ content_margin_top = 0.0
 content_margin_right = 4.0
 content_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yi7qe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifbab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rt1b4"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p041e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qthny"]
-bg_color = Color(0.835121, 0.434885, 0.736198, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh4jr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h03no"]
+texture = ExtResource("5_uv4p3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7u47"]
+texture = ExtResource("5_25cea")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8ys3"]
+texture = ExtResource("6_ovkk0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5qu3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emm1a"]
+texture = ExtResource("5_uv4p3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_41tke"]
+texture = ExtResource("5_25cea")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p582x"]
+texture = ExtResource("6_ovkk0")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -60,7 +105,8 @@ theme_override_constants/margin_bottom = 10
 [node name="Label" type="Label" parent="mainContainer/Caption"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 40
 text = "Налаштування"
 
 [node name="ProgressBars and language Choice" type="MarginContainer" parent="mainContainer"]
@@ -86,6 +132,8 @@ size_flags_vertical = 3
 [node name="Caption_sound" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 28
 text = "Звук"
 
 [node name="space1" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
@@ -134,6 +182,8 @@ size_flags_vertical = 3
 [node name="Caption_music" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 27
 text = "Музика
 "
 
@@ -142,39 +192,28 @@ layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
 
-[node name="mus_val_decrease" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
+[node name="music_sound_slider" type="HSlider" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_32vxy")
-text = "-"
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("3_nepnx")
+theme_override_icons/grabber_highlight = ExtResource("3_qormx")
+theme_override_icons/grabber_disabled = ExtResource("3_qormx")
+theme_override_icons/tick = ExtResource("3_qormx")
+theme_override_styles/slider = SubResource("StyleBoxLine_yaxio")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_6dx2e")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6dx2e")
+max_value = 1.0
+step = 0.1
 
-[node name="space2" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="mus_val_bar" type="ProgressBar" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
+[node name="Caption_music2" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 6.8
-theme_override_styles/background = SubResource("StyleBoxFlat_bguvd")
-
-[node name="space3" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="mus_val_increase" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_6fg1c")
-text = "+"
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BrightnessProgressBar" type="HBoxContainer" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars"]
 layout_mode = 2
@@ -183,6 +222,8 @@ size_flags_vertical = 3
 [node name="Caption_bright" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 22
 text = "Яскравість"
 
 [node name="space" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
@@ -190,43 +231,27 @@ layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
 
-[node name="bright_val_decrease" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
+[node name="brightness_slider" type="HSlider" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_32vxy")
-text = "-"
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("3_nepnx")
+theme_override_icons/grabber_highlight = ExtResource("3_qormx")
+theme_override_icons/grabber_disabled = ExtResource("3_qormx")
+theme_override_styles/slider = SubResource("StyleBoxLine_yaxio")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_6dx2e")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6dx2e")
+max_value = 1.0
+step = 0.01
+value = 0.4
 
-[node name="space2" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
+[node name="Caption_bright2" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="Brightness_bar" type="ProgressBar" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 6.8
-theme_override_styles/background = SubResource("StyleBoxFlat_bguvd")
-min_value = 0.5
-max_value = 1.3
-step = 0.1
-value = 0.5
-
-[node name="space3" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="bright_val_increase" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_6fg1c")
-text = "+"
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="space_between" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice"]
 layout_mode = 2
@@ -244,6 +269,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 32
 text = "English"
 
 [node name="space" type="HSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
@@ -254,6 +281,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_p1usk")
 [node name="RuButton" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 32
 text = "Русский
 "
 
@@ -265,6 +294,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_e07wn")
 [node name="UaButton" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 28
 text = "Українська"
 
 [node name="Additional and mute buttons" type="MarginContainer" parent="mainContainer"]
@@ -291,6 +322,8 @@ theme_override_constants/separation = 5
 
 [node name="Caption_odd" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 34
 text = "Додатково
 "
 horizontal_alignment = 1
@@ -306,10 +339,13 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.08
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 26
 text = "Режим \"Одна спроба\""
 
 [node name="one_try" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yi7qe")
 
 [node name="HPBarView" type="HBoxContainer" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
 custom_minimum_size = Vector2(300, 0)
@@ -321,10 +357,13 @@ theme_override_constants/separation = 30
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 28
 text = "Шкала здоров`я"
 
 [node name="view_bar_button" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ifbab")
 
 [node name="Experience_scale" type="HBoxContainer" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
 layout_mode = 2
@@ -335,15 +374,20 @@ theme_override_constants/separation = 30
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 24
 text = "Зменшений досвід"
 
 [node name="low_exp_scale_button" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rt1b4")
 
 [node name="BackButton" type="Button" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.9
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 27
 text = "Повернутися назад"
 
 [node name="space_between" type="VSeparator" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container"]
@@ -357,6 +401,8 @@ size_flags_horizontal = 3
 
 [node name="Label_mute_s" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 33
 text = "Звук"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -365,7 +411,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_qthny")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh4jr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h03no")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l7u47")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h8ys3")
 
 [node name="VSeparator" type="VSeparator" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container"]
 layout_mode = 2
@@ -378,6 +427,8 @@ size_flags_horizontal = 3
 
 [node name="Label_mute_m" type="Label" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1fo6v")
+theme_override_font_sizes/font_size = 30
 text = "Музика
 "
 horizontal_alignment = 1
@@ -387,11 +438,19 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_qthny")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a5qu3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_emm1a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_41tke")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p582x")
 
 [node name="CanvasModulate" parent="." instance=ExtResource("3_pbcs7")]
 unique_name_in_owner = true
 
+[node name="bg_music" parent="." instance=ExtResource("4_nidxj")]
+
+[connection signal="drag_ended" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar/music_sound_slider" to="." method="_on_music_sound_slider_drag_ended"]
+[connection signal="drag_ended" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/brightness_slider" to="." method="_on_brightness_slider_drag_ended"]
+[connection signal="value_changed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/brightness_slider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/RuButton" to="." method="_on_ru_button_pressed"]
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/UaButton" to="." method="_on_ua_button_pressed"]

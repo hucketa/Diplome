@@ -5799,6 +5799,8 @@ layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u3e0b")
 text = "Головне меню"
 
+[node name="CanvasModulate" parent="Pause_Screen" instance=ExtResource("7_cf2ul")]
+
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -5875,6 +5877,8 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.51
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
+
+[node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 
 [node name="ExpItem" parent="." instance=ExtResource("6_ifshe")]
 position = Vector2(232, 234)
