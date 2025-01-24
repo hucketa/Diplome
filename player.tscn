@@ -307,18 +307,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ipiy"]
-radius = 53.4135
+radius = 44.0114
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_sddph")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(64, 62)
+position = Vector2(87, 85)
+scale = Vector2(1.35938, 1.35938)
 sprite_frames = SubResource("SpriteFrames_dl7bm")
 animation = &"attack3"
 frame_progress = 0.451403
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(63, 74)
+light_mask = 0
+visibility_layer = 0
+position = Vector2(65, 82)
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_6ipiy")
