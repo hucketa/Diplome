@@ -11,8 +11,6 @@ var localisation = "uk"
 
 @onready var brightness_slider: HSlider = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/brightness_slider"
 @onready var music_player: AudioStreamPlayer2D = $bg_music
-@onready var sound_val_decrease: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_decrease"
-@onready var sound_val_increase: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/sound_val_increase"
 @onready var ru_button: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/RuButton"
 @onready var ua_button: Button = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/UaButton"
 @onready var music_mute_off: Button = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox/music_mute_off"
@@ -42,8 +40,6 @@ func _ready():
 	view_bar_button.connect("toggled", Callable(self, "_on_view_bar_toggled"))
 	low_exp_scale_button.connect("toggled", Callable(self, "_on_low_exp_toggled"))
 	back_button.connect("pressed", Callable(self, "_on_back_main_pressed"))
-	sound_val_increase.connect("pressed", Callable(self, "_on_sound_val_increase_pressed"))
-	sound_val_decrease.connect("pressed", Callable(self, "_on_sound_val_decrease_pressed"))
 	music_mute_off.connect("pressed", Callable(self, "_on_music_mute_off_pressed"))
 	sound_mute_off.connect("pressed", Callable(self, "_on_sound_mute_off_pressed"))
 	
@@ -87,7 +83,6 @@ func update_ui():
 	one_try.set_pressed(one_shot_mode)
 	view_bar_button.set_pressed(health_bar_scale)
 	low_exp_scale_button.set_pressed(reduced_experience)
-	%Sound_val_bar.value = sound_volume
 	brightness_slider.value = ((brightness - 0.4)/0.6)
 	caption_bright_2.text = str((brightness_slider.value)*100) + "%"
 	music_sound_slider.value = 1 - (music_volume/-(10))
@@ -117,18 +112,6 @@ func _on_low_exp_toggled(pressed):
 func _on_back_main_pressed():
 	get_tree().change_scene_to_file("res://MainScene.tscn")
 
-func _on_sound_val_increase_pressed():
-	if sound_volume <= 0 || sound_volume < 100:
-		sound_volume+= 5
-		%Sound_val_bar.value = sound_volume
-		save_settings()
-
-func _on_sound_val_decrease_pressed():
-	if sound_volume > -80:  
-		sound_volume -= 5
-		%Sound_val_bar.value = sound_volume
-		save_settings()
-
 func _on_music_mute_off_pressed():
 	if music_volume == -80:
 		music_volume = 0
@@ -140,12 +123,7 @@ func _on_music_mute_off_pressed():
 	music_player.set_music_volume(music_volume)
 
 func _on_sound_mute_off_pressed():
-	if sound_volume == 0:
-		sound_volume = 100
-	else:
-		sound_volume = 0
-	%Sound_val_bar.value = sound_volume
-	save_settings()
+	pass
 
 func _on_ru_button_pressed():
 	TranslationServer.set_locale("ru")

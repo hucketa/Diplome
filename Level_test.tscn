@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=20 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://dpyk86fdvwk11" path="res://src/Tiles/79bb3aa9-fe6e-4705-8756-dd00de5edeec.webp" id="1_v6qin"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://nightborne.tscn" id="4_cqujh"]
 [ext_resource type="PackedScene" uid="uid://grv7rard1urg" path="res://Exp_scene.tscn" id="6_ifshe"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="7_cf2ul"]
+[ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://player.tscn" id="8_p15to"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujni0"]
 texture = ExtResource("1_v6qin")
@@ -5882,6 +5883,9 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
 [node name="ExpItem" parent="." instance=ExtResource("6_ifshe")]
 position = Vector2(232, 234)
+
+[node name="Player" parent="." instance=ExtResource("8_p15to")]
+position = Vector2(545, 54)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

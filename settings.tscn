@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://jgspg6iolilq"]
+[gd_scene load_steps=36 format=3 uid="uid://jgspg6iolilq"]
 
 [ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://bg.tscn" id="1_31unh"]
 [ext_resource type="Script" path="res://settings.gd" id="1_h6581"]
@@ -7,19 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="3_pbcs7"]
 [ext_resource type="Texture2D" uid="uid://bf0snpg6ry0cf" path="res://src/Settings_window/pixil-frame-0(1).png" id="3_qormx"]
 [ext_resource type="PackedScene" uid="uid://b51my5ke2ih82" path="res://BackGroundMusic.tscn" id="4_nidxj"]
-[ext_resource type="Texture2D" uid="uid://bojumx4240ki4" path="res://src/Settings_window/SoundButton2.png" id="5_25cea"]
-[ext_resource type="Texture2D" uid="uid://budi6vvtomb45" path="res://src/Settings_window/SoundButton2(y).png" id="5_uv4p3"]
-[ext_resource type="Texture2D" uid="uid://dgmgfk8g6len6" path="res://src/Settings_window/SoundButton.png" id="6_ovkk0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3ua0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32vxy"]
-bg_color = Color(0.976471, 0.360784, 0.392157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bguvd"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fg1c"]
-bg_color = Color(0.180392, 0.690196, 0.596078, 1)
+[ext_resource type="Texture2D" uid="uid://dptvlpmvvnatp" path="res://src/Settings_window/Buttons.png" id="6_4yk4r"]
+[ext_resource type="Texture2D" uid="uid://bn88hwmmadoo7" path="res://src/Settings_window/mute_button.png" id="6_n4lbg"]
+[ext_resource type="Texture2D" uid="uid://dc64u3fwn4ifi" path="res://src/Settings_window/mute_button_presed.png" id="7_ff4ex"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_yaxio"]
 color = Color(0.262932, 0.262932, 0.262932, 1)
@@ -34,11 +24,29 @@ gradient = SubResource("Gradient_wbhj4")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dx2e"]
 texture = SubResource("GradientTexture2D_vq05n")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3ua0"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l80a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t34sd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pttv7"]
+texture = ExtResource("6_4yk4r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwlkh"]
+texture = ExtResource("6_4yk4r")
+modulate_color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dy1wu"]
+texture = ExtResource("6_4yk4r")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1usk"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skxc2"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e07wn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_du3h3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tbiy"]
 content_margin_left = 4.0
@@ -52,29 +60,22 @@ content_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rt1b4"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ph1id"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p041e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh4jr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h03no"]
-texture = ExtResource("5_uv4p3")
+texture = ExtResource("6_n4lbg")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7u47"]
-texture = ExtResource("5_25cea")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8ys3"]
-texture = ExtResource("6_ovkk0")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eoaj4"]
+texture = ExtResource("7_ff4ex")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5qu3"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emm1a"]
-texture = ExtResource("5_uv4p3")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_41tke"]
-texture = ExtResource("5_25cea")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p582x"]
-texture = ExtResource("6_ovkk0")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyx58"]
+texture = ExtResource("7_ff4ex")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -130,50 +131,37 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Caption_sound" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 28
 text = "Звук"
 
-[node name="space1" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="sound_val_decrease" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
+[node name="volumme_slider" type="HSlider" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_32vxy")
-text = "-"
-
-[node name="space2" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
-layout_mode = 2
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
-[node name="Sound_val_bar" type="ProgressBar" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 6.8
-theme_override_styles/background = SubResource("StyleBoxFlat_bguvd")
+size_flags_vertical = 4
+size_flags_stretch_ratio = 4.01
+theme_override_icons/grabber = ExtResource("3_nepnx")
+theme_override_icons/grabber_highlight = ExtResource("3_qormx")
+theme_override_icons/grabber_disabled = ExtResource("3_qormx")
+theme_override_icons/tick = ExtResource("3_qormx")
+theme_override_styles/slider = SubResource("StyleBoxLine_yaxio")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_6dx2e")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6dx2e")
 
 [node name="space5" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
 
-[node name="sound_val_increase" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
+[node name="Caption_sound2" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_6fg1c")
-text = "+"
+theme_override_fonts/font = ExtResource("3_1fo6v")
+text = "Проценты"
 
 [node name="MusicProgressBar" type="HBoxContainer" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars"]
 layout_mode = 2
@@ -196,6 +184,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+size_flags_stretch_ratio = 0.14
 theme_override_icons/grabber = ExtResource("3_nepnx")
 theme_override_icons/grabber_highlight = ExtResource("3_qormx")
 theme_override_icons/grabber_disabled = ExtResource("3_qormx")
@@ -235,6 +224,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+size_flags_stretch_ratio = 13.69
 theme_override_icons/grabber = ExtResource("3_nepnx")
 theme_override_icons/grabber_highlight = ExtResource("3_qormx")
 theme_override_icons/grabber_disabled = ExtResource("3_qormx")
@@ -246,8 +236,9 @@ step = 0.01
 value = 0.4
 
 [node name="Caption_bright2" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
@@ -271,6 +262,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t34sd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pttv7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kwlkh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dy1wu")
 text = "English"
 
 [node name="space" type="HSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
@@ -283,6 +278,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_skxc2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pttv7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kwlkh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pttv7")
 text = "Русский
 "
 
@@ -296,6 +295,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_du3h3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pttv7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kwlkh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pttv7")
 text = "Українська"
 
 [node name="Additional and mute buttons" type="MarginContainer" parent="mainContainer"]
@@ -388,6 +391,10 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.9
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 27
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ph1id")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pttv7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kwlkh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pttv7")
 text = "Повернутися назад"
 
 [node name="space_between" type="VSeparator" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container"]
@@ -413,8 +420,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xh4jr")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h03no")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_l7u47")
-theme_override_styles/normal = SubResource("StyleBoxTexture_h8ys3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eoaj4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h03no")
 
 [node name="VSeparator" type="VSeparator" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container"]
 layout_mode = 2
@@ -439,9 +446,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a5qu3")
-theme_override_styles/hover = SubResource("StyleBoxTexture_emm1a")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_41tke")
-theme_override_styles/normal = SubResource("StyleBoxTexture_p582x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h03no")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lyx58")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h03no")
 
 [node name="CanvasModulate" parent="." instance=ExtResource("3_pbcs7")]
 unique_name_in_owner = true

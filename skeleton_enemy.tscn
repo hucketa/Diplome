@@ -1,8 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=51 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://skeleton_enemy.gd" id="1_lmrf4"]
 [ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Sceleton/Skeleton enemy.png" id="2_tpix2"]
-[ext_resource type="Script" path="res://Skeleton_animations.gd" id="3_rp7d6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5riv3"]
 atlas = ExtResource("2_tpix2")
@@ -364,8 +363,6 @@ position = Vector2(115, 74)
 scale = Vector2(2.99598, 2.64471)
 sprite_frames = SubResource("SpriteFrames_28r57")
 animation = &"idle"
-autoplay = "idle"
-script = ExtResource("3_rp7d6")
 
 [node name="CollisionAttack" type="CollisionShape2D" parent="."]
 position = Vector2(115, 75)
@@ -377,6 +374,3 @@ debug_color = Color(0.996078, 0, 0.196078, 0.419608)
 position = Vector2(89, 82)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true

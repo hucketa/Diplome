@@ -1,7 +1,16 @@
 extends CharacterBody2D
 
-func _ready():
-	%Skelton.play_attack_animation()
+func play_idle_animation():
+	%Skelton.play("idle")
 
-func _process(delta):
-	%Skelton.play_attack_animation()
+func play_attack_animation():
+	%Skelton.play("attack")
+
+func play_die_animation():
+	%Skelton.play("die")
+	
+func play_walk_animation():
+	%Skelton.play("walk")
+	
+func play_take_damage_animation():
+	%Skelton.play("take_damage")

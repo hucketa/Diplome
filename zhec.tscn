@@ -1,8 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://dovqnco6hwina"]
+[gd_scene load_steps=44 format=3 uid="uid://dovqnco6hwina"]
 
 [ext_resource type="Texture2D" uid="uid://yp3up82awiuw" path="res://src/Bringer_of_Deadth/Bringer-of-Death-SpritSheet.png" id="1_7f15j"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_12ixa"]
-[ext_resource type="Script" path="res://znec_animations.gd" id="2_irfak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6rou"]
 atlas = ExtResource("1_7f15j")
@@ -265,7 +264,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7ssjp")
 }],
 "loop": false,
-"name": &"take_damge",
+"name": &"take_damage",
 "speed": 8.0
 }, {
 "frames": [{
@@ -311,12 +310,12 @@ height = 98.0
 script = ExtResource("1_12ixa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
 position = Vector2(75, 45)
 rotation = 0.00523599
 scale = Vector2(1.55599, 1.55599)
 sprite_frames = SubResource("SpriteFrames_okag4")
-animation = &"idle"
-script = ExtResource("2_irfak")
+animation = &"take_damage"
 
 [node name="Attack_colision" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(84, 68)
@@ -328,6 +327,3 @@ debug_color = Color(0.956863, 0.172549, 0.294118, 0.419608)
 position = Vector2(129, 75)
 shape = SubResource("CapsuleShape2D_yrhfx")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
