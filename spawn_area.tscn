@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://qfwmqwulu2vi"]
+
+[ext_resource type="Script" path="res://spawn_area.gd" id="1_pib6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aal5"]
+size = Vector2(1632.75, 951)
+
+[node name="SpawnArea" type="Area2D" groups=["Player"]]
+position = Vector2(9, 11)
+script = ExtResource("1_pib6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(660.375, 347.5)
+shape = SubResource("RectangleShape2D_6aal5")
+
+[node name="Timer" type="Timer" parent="."]

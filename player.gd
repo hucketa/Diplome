@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var movement_speed: float = 100.0
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	var x_move = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")

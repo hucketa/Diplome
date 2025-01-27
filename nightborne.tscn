@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cpe7gxvlh6fpr"]
+[gd_scene load_steps=60 format=3 uid="uid://cpe7gxvlh6fpr"]
 
 [ext_resource type="Script" path="res://Nightborne.gd" id="1_1fqrk"]
 [ext_resource type="Texture2D" uid="uid://cv4guups2jn5q" path="res://src/Nightborne/NightBorne.png" id="2_71kwx"]
@@ -416,16 +416,13 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7fhjc"]
-radius = 78.0064
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfk4h"]
-radius = 38.7205
-height = 88.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kk1wl"]
+radius = 6.75046
+height = 51.37
 
 [node name="Node2D" type="Node2D"]
 
-[node name="NightBorne_phys" type="CharacterBody2D" parent="."]
+[node name="NightBorne_phys" type="CharacterBody2D" parent="." groups=["Player"]]
 script = ExtResource("1_1fqrk")
 
 [node name="NightBorne" type="AnimatedSprite2D" parent="NightBorne_phys"]
@@ -435,13 +432,8 @@ scale = Vector2(2.0932, 2.0932)
 sprite_frames = SubResource("SpriteFrames_fi7ni")
 animation = &"deadth"
 
-[node name="attack_range" type="CollisionShape2D" parent="NightBorne_phys"]
-position = Vector2(46, 41)
-shape = SubResource("CircleShape2D_7fhjc")
-
 [node name="nightborne" type="CollisionShape2D" parent="NightBorne_phys"]
-visibility_layer = 3
-position = Vector2(38, 48)
-scale = Vector2(1.16218, 1.03824)
-shape = SubResource("CapsuleShape2D_nfk4h")
+position = Vector2(41, 53)
+scale = Vector2(2.07393, 1.24586)
+shape = SubResource("CapsuleShape2D_kk1wl")
 debug_color = Color(0, 0.635294, 0.407843, 0.419608)

@@ -306,8 +306,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ipiy"]
-radius = 44.0114
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aw7g1"]
+radius = 21.0
+height = 70.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_sddph")
@@ -321,8 +322,8 @@ animation = &"attack3"
 frame_progress = 0.451403
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 0
-visibility_layer = 0
-position = Vector2(65, 82)
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_6ipiy")
+position = Vector2(83, 125)
+shape = SubResource("CapsuleShape2D_aw7g1")
+debug_color = Color(0.743545, 0.416871, 0.546863, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
