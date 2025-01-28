@@ -4218,6 +4218,7 @@ position = Vector2(1122, 492)
 
 [node name="Pause_Screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Pause_Screen"]
 anchors_preset = 8

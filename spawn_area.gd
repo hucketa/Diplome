@@ -3,13 +3,13 @@ extends Area2D
 @onready var timer: Timer = $Timer
 @export var spawn_interval: float = 1.0
 
-var monster_scene: PackedScene = preload("res://nightborne.tscn")
+var monster_scene = preload("res://nightborne.tscn")
 @onready var area: CollisionShape2D = $CollisionShape2D  # Ссылка на конкретный дочерний CollisionShape2D
 
 func _ready() -> void:
 	if area and monster_scene:
 		timer.wait_time = spawn_interval
-		timer.one_shot = false  # Убедимся, что таймер повторяется
+		timer.one_shot = false
 		timer.timeout.connect(spawn_monster)
 		timer.start()
 	else:
