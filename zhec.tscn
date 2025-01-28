@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dovqnco6hwina"]
+[gd_scene load_steps=43 format=3 uid="uid://dovqnco6hwina"]
 
 [ext_resource type="Texture2D" uid="uid://yp3up82awiuw" path="res://src/Bringer_of_Deadth/Bringer-of-Death-SpritSheet.png" id="1_7f15j"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_12ixa"]
@@ -297,12 +297,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ntbif"]
-radius = 103.315
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrhfx"]
-radius = 47.0
-height = 98.0
+radius = 13.0
+height = 56.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -312,16 +309,9 @@ script = ExtResource("1_12ixa")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 unique_name_in_owner = true
 position = Vector2(75, 45)
-rotation = 0.00523599
 scale = Vector2(1.55599, 1.55599)
 sprite_frames = SubResource("SpriteFrames_okag4")
 animation = &"take_damage"
-
-[node name="Attack_colision" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(84, 68)
-rotation = 1.41308
-shape = SubResource("CircleShape2D_ntbif")
-debug_color = Color(0.956863, 0.172549, 0.294118, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(129, 75)

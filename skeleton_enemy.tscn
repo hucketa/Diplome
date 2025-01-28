@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=50 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://skeleton_enemy.gd" id="1_lmrf4"]
 [ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Sceleton/Skeleton enemy.png" id="2_tpix2"]
@@ -346,13 +346,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0vvk"]
-radius = 77.5869
-height = 158.341
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xkrho"]
-radius = 65.0
-height = 130.0
+radius = 20.0
+height = 86.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_lmrf4")
@@ -364,13 +360,7 @@ scale = Vector2(2.99598, 2.64471)
 sprite_frames = SubResource("SpriteFrames_28r57")
 animation = &"idle"
 
-[node name="CollisionAttack" type="CollisionShape2D" parent="."]
-position = Vector2(115, 75)
-scale = Vector2(1.2631, 1.2631)
-shape = SubResource("CapsuleShape2D_g0vvk")
-debug_color = Color(0.996078, 0, 0.196078, 0.419608)
-
 [node name="CollisionSkelton" type="CollisionShape2D" parent="."]
-position = Vector2(89, 82)
+position = Vector2(106, 73)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)

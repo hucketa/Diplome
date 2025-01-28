@@ -14,3 +14,5 @@ position = Vector2(660.375, 347.5)
 shape = SubResource("RectangleShape2D_6aal5")
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_ready"]

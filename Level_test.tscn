@@ -1,15 +1,10 @@
-[gd_scene load_steps=22 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=17 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://level_test.gd" id="1_iuvy1"]
-[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://skeleton_enemy.tscn" id="2_e2f7o"]
 [ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://zhec.tscn" id="3_ga3ek"]
-[ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://nightborne.tscn" id="4_cqujh"]
-[ext_resource type="PackedScene" uid="uid://grv7rard1urg" path="res://Exp_scene.tscn" id="6_ifshe"]
+[ext_resource type="PackedScene" uid="uid://qfwmqwulu2vi" path="res://spawn_area.tscn" id="6_fbsu6"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://player.tscn" id="8_p15to"]
-[ext_resource type="Texture2D" uid="uid://3lyuojfiylqw" path="res://src/Tiles/Region.png" id="9_t5kag"]
-[ext_resource type="PackedScene" uid="uid://qfwmqwulu2vi" path="res://spawn_area.tscn" id="10_7o80q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqalt"]
 texture = ExtResource("3_7bqd0")
@@ -4210,12 +4205,6 @@ collision_visibility_mode = 1
 
 [node name="CanvasModulate" parent="." instance=ExtResource("7_cf2ul")]
 
-[node name="Skeleton" parent="." instance=ExtResource("2_e2f7o")]
-position = Vector2(879, 483)
-
-[node name="Znec" parent="." instance=ExtResource("3_ga3ek")]
-position = Vector2(1122, 492)
-
 [node name="Pause_Screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 2
@@ -4333,22 +4322,15 @@ size_flags_stretch_ratio = 2.51
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
-[node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
+[node name="WaweNumber" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="ExpItem" parent="." instance=ExtResource("6_ifshe")]
-position = Vector2(232, 234)
+[node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 position = Vector2(545, 54)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("9_t5kag")
-region_enabled = true
-region_rect = Rect2(-4000, -4000, 4000, 0)
-
-[node name="Node2D" parent="." instance=ExtResource("4_cqujh")]
-
-[node name="SpawnArea" parent="." instance=ExtResource("10_7o80q")]
+[node name="SpawnArea" parent="." instance=ExtResource("6_fbsu6")]
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
