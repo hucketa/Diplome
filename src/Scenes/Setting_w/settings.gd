@@ -110,7 +110,7 @@ func _on_low_exp_toggled(pressed):
 	save_settings()
 
 func _on_back_main_pressed():
-	get_tree().change_scene_to_file("res://MainScene.tscn")
+	get_tree().change_scene_to_file("res://src/Scenes/MainMenu/MainScene.tscn")
 
 func _on_music_mute_off_pressed():
 	if music_volume == -80:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=60 format=3 uid="uid://cpe7gxvlh6fpr"]
 
-[ext_resource type="Script" path="res://Nightborne.gd" id="1_1fqrk"]
-[ext_resource type="Texture2D" uid="uid://cv4guups2jn5q" path="res://src/Nightborne/NightBorne.png" id="2_71kwx"]
+[ext_resource type="Script" path="res://src/Enemies/Nightborne/Nightborne.gd" id="1_1fqrk"]
+[ext_resource type="Texture2D" uid="uid://cv4guups2jn5q" path="res://src/Enemies/Nightborne/NightBorne.png" id="2_71kwx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t5wr"]
 atlas = ExtResource("2_71kwx")
@@ -420,14 +420,14 @@ animations = [{
 radius = 6.75046
 height = 51.37
 
-[node name="Node2D" type="Node2D"]
+[node name="NightBorne" type="Node2D"]
 
-[node name="NightBorne_phys" type="CharacterBody2D" parent="." groups=["Player"]]
+[node name="NightBorne_phys" type="CharacterBody2D" parent="." groups=["enemies"]]
 script = ExtResource("1_1fqrk")
 
 [node name="NightBorne" type="AnimatedSprite2D" parent="NightBorne_phys"]
 unique_name_in_owner = true
-position = Vector2(42, 35)
+position = Vector2(43, 35)
 scale = Vector2(2.0932, 2.0932)
 sprite_frames = SubResource("SpriteFrames_fi7ni")
 animation = &"deadth"

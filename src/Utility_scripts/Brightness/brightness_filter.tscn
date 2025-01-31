@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4msheo4kncdt"]
 
-[ext_resource type="Script" path="res://brightness_filter.gd" id="1_57n6w"]
+[ext_resource type="Script" path="res://src/Utility_scripts/Brightness/brightness_filter.gd" id="1_57n6w"]
 
 [node name="CanvasModulate" type="CanvasModulate"]
 script = ExtResource("1_57n6w")

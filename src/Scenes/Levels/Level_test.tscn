@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=19 format=4 uid="uid://xp5yv6tstakg"]
 
-[ext_resource type="Script" path="res://level_test.gd" id="1_iuvy1"]
-[ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="PackedScene" uid="uid://grv7rard1urg" path="res://Exp_scene.tscn" id="6_ifshe"]
-[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="7_cf2ul"]
-[ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://player.tscn" id="8_p15to"]
-[ext_resource type="PackedScene" uid="uid://qfwmqwulu2vi" path="res://spawn_area.tscn" id="10_7o80q"]
+[ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
+[ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
+[ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://src/Enemies/Nightborne/nightborne.tscn" id="6_y3cm2"]
+[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
+[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://src/Enemies/Sceleton/skeleton_enemy.tscn" id="7_fn6q5"]
+[ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
+[ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://src/Enemies/Zhnec/zhec.tscn" id="8_ukfg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqalt"]
 texture = ExtResource("3_7bqd0")
@@ -4229,17 +4230,20 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_82gem")
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xtm0s")
 text = "Повернутися"
 
 [node name="Main_Menu" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d0ig1")
 text = "Налаштування
 "
 
 [node name="Exit" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u3e0b")
 text = "Головне меню"
@@ -4265,6 +4269,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 11
 
 [node name="Pause_ui" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_iuxp3")
@@ -4325,13 +4330,14 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
 [node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 
-[node name="ExpItem" parent="." instance=ExtResource("6_ifshe")]
-position = Vector2(232, 234)
-
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 position = Vector2(545, 54)
 
-[node name="SpawnArea" parent="." instance=ExtResource("10_7o80q")]
+[node name="skelet" parent="." instance=ExtResource("7_fn6q5")]
+
+[node name="ZNEC" parent="." instance=ExtResource("8_ukfg5")]
+
+[node name="NightBorne" parent="." instance=ExtResource("6_y3cm2")]
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

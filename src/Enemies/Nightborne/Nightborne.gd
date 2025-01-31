@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var movement_speed: float = 60.00
-
+var hp = 5
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
@@ -33,3 +33,10 @@ func play_idle_animation():
 
 func play_attack_animation():
 	$NightBorne.play("attack")
+
+
+func _on_area_2d_hurt(damage: Variant) -> void:
+	hp -= damage
+	print(hp)
+	if hp<= 0:
+		queue_free()

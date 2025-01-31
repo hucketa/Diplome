@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://3a4dwqscn27c"]
 
-[ext_resource type="Script" path="res://bg.gd" id="1_yvwib"]
-[ext_resource type="Texture2D" uid="uid://cq3p37y3bkf3a" path="res://src/MainMenu/Paralax BackGround/background_1.png" id="2_o3gri"]
-[ext_resource type="Texture2D" uid="uid://dkpqqcpyn7kbl" path="res://src/MainMenu/Paralax BackGround/background_2.png" id="3_ai2qd"]
-[ext_resource type="Texture2D" uid="uid://mg6ff4jfpc2b" path="res://src/MainMenu/Paralax BackGround/background_3.png" id="4_e7710"]
-[ext_resource type="Texture2D" uid="uid://bnw24ta8mkfg3" path="res://src/MainMenu/Paralax BackGround/background_4.png" id="5_367sm"]
-[ext_resource type="Texture2D" uid="uid://do45il8e0sqx" path="res://src/MainMenu/Paralax BackGround/background_5.png" id="6_33jy2"]
+[ext_resource type="Script" path="res://src/Utility_scripts/Paralax/bg.gd" id="1_yvwib"]
+[ext_resource type="Texture2D" uid="uid://cq3p37y3bkf3a" path="res://src/Background/Paralax BackGround/background_1.png" id="2_o3gri"]
+[ext_resource type="Texture2D" uid="uid://dkpqqcpyn7kbl" path="res://src/Background/Paralax BackGround/background_2.png" id="3_ai2qd"]
+[ext_resource type="Texture2D" uid="uid://mg6ff4jfpc2b" path="res://src/Background/Paralax BackGround/background_3.png" id="4_e7710"]
+[ext_resource type="Texture2D" uid="uid://bnw24ta8mkfg3" path="res://src/Background/Paralax BackGround/background_4.png" id="5_367sm"]
+[ext_resource type="Texture2D" uid="uid://do45il8e0sqx" path="res://src/Background/Paralax BackGround/background_5.png" id="6_33jy2"]
 
 [node name="bg" type="ParallaxBackground"]
 follow_viewport_enabled = true

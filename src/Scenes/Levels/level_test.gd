@@ -5,6 +5,10 @@ extends Node2D
 func _ready() -> void:
 	$UI.visible = true
 	pause_screen.visible = false
+	%Resume.text = tr("BACK")
+	%Main_Menu.text = tr("SETTINGS")
+	%Exit.text = tr("MAIN_MENU")
+	%Pause_ui.text = tr("PAUSE")
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
@@ -12,13 +16,11 @@ func _on_resume_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
-	#await get_tree().process_frame
-	get_tree().change_scene_to_file("res://settings.tscn")
+	get_tree().change_scene_to_file("res://src/Scenes/Setting_w/settings.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
-	#await get_tree().process_frame
-	get_tree().change_scene_to_file("res://MainScene.tscn")
+	get_tree().change_scene_to_file("res://src/Scenes/MainMenu/MainScene.tscn")
 
 func _on_pause_ui_pressed() -> void:
 	get_tree().paused = true

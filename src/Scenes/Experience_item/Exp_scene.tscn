@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://grv7rard1urg"]
 
-[ext_resource type="Texture2D" uid="uid://ba4x6aq2q8wyy" path="res://src/Exp/pixil-frame-0(1).png" id="1_a8kbb"]
+[ext_resource type="Texture2D" uid="uid://ba4x6aq2q8wyy" path="res://src/Scenes/Experience_item/Exp/pixil-frame-0(1).png" id="1_a8kbb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrlq7"]
 radius = 9.85185

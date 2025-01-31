@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b51my5ke2ih82"]
-
-[ext_resource type="AudioStream" uid="uid://c2kk3bednhbv4" path="res://src/bg_music/Background_music.mp3" id="1_sfqi4"]
-[ext_resource type="Script" path="res://back_ground_music.gd" id="2_rjaff"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_sfqi4")
-volume_db = -75.543
-script = ExtResource("2_rjaff")

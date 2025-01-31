@@ -1,18 +1,18 @@
 [gd_scene load_steps=24 format=3 uid="uid://dlvxywqppvsx7"]
 
 [ext_resource type="FontFile" uid="uid://ci5ebb4lx5b3p" path="res://src/Fonts/American TextC.ttf" id="1_sh0rh"]
-[ext_resource type="Texture2D" uid="uid://cqyupascaxhrs" path="res://src/MainMenu/3.png" id="2_a4nft"]
-[ext_resource type="Texture2D" uid="uid://cbd8ouj3k4ulk" path="res://src/MainMenu/2.png" id="3_eba8r"]
-[ext_resource type="Texture2D" uid="uid://c14t6jd340a51" path="res://src/MainMenu/1.png" id="4_n22w0"]
-[ext_resource type="Texture2D" uid="uid://b8vpjlckvrb2" path="res://src/MainMenu/4.png" id="5_qowcb"]
-[ext_resource type="Texture2D" uid="uid://cx5weuy4ftuxg" path="res://src/MainMenu/5.png" id="6_mmxli"]
-[ext_resource type="Texture2D" uid="uid://dmb638d840wjm" path="res://src/MainMenu/6.png" id="7_vnjs7"]
-[ext_resource type="Texture2D" uid="uid://dm63o2fudyo30" path="res://src/MainMenu/8.png" id="8_ebslg"]
-[ext_resource type="Texture2D" uid="uid://dq7ng3hqdgv7n" path="res://src/MainMenu/7.png" id="9_iufvn"]
-[ext_resource type="Texture2D" uid="uid://bxutpe27vpi3b" path="res://src/MainMenu/9.png" id="10_vw30g"]
-[ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://bg.tscn" id="11_0xtfl"]
-[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://brightness_filter.tscn" id="12_hl88c"]
-[ext_resource type="PackedScene" uid="uid://b51my5ke2ih82" path="res://BackGroundMusic.tscn" id="12_jqf46"]
+[ext_resource type="Texture2D" uid="uid://cqyupascaxhrs" path="res://src/Scenes/MainMenu/3.png" id="2_a4nft"]
+[ext_resource type="Texture2D" uid="uid://cbd8ouj3k4ulk" path="res://src/Scenes/MainMenu/2.png" id="3_eba8r"]
+[ext_resource type="Texture2D" uid="uid://c14t6jd340a51" path="res://src/Scenes/MainMenu/1.png" id="4_n22w0"]
+[ext_resource type="Texture2D" uid="uid://b8vpjlckvrb2" path="res://src/Scenes/MainMenu/4.png" id="5_qowcb"]
+[ext_resource type="Texture2D" uid="uid://cx5weuy4ftuxg" path="res://src/Scenes/MainMenu/5.png" id="6_mmxli"]
+[ext_resource type="Texture2D" uid="uid://dmb638d840wjm" path="res://src/Scenes/MainMenu/6.png" id="7_vnjs7"]
+[ext_resource type="Texture2D" uid="uid://dm63o2fudyo30" path="res://src/Scenes/MainMenu/8.png" id="8_ebslg"]
+[ext_resource type="Texture2D" uid="uid://dq7ng3hqdgv7n" path="res://src/Scenes/MainMenu/7.png" id="9_iufvn"]
+[ext_resource type="Texture2D" uid="uid://bxutpe27vpi3b" path="res://src/Scenes/MainMenu/9.png" id="10_vw30g"]
+[ext_resource type="PackedScene" uid="uid://3a4dwqscn27c" path="res://src/Utility_scripts/Paralax/bg.tscn" id="11_0xtfl"]
+[ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="12_hl88c"]
+[ext_resource type="PackedScene" uid="uid://b51my5ke2ih82" path="res://src/Utility_scripts/BackGroundMusic/BackGroundMusic.tscn" id="12_jqf46"]
 
 [sub_resource type="GDScript" id="GDScript_ov1hb"]
 script/source = "extends Control
@@ -42,10 +42,10 @@ func _on_translation_changed():
 	update_button_texts()
 
 func _on_settings_bt_pressed():
-	get_tree().change_scene_to_file(\"res://settings.tscn\")
+	get_tree().change_scene_to_file(\"res://src/Scenes/Setting_w/settings.tscn\")
 	
 func _on_start_bt_pressed() -> void:
-	get_tree().change_scene_to_file(\"res://Level_test.tscn\")
+	get_tree().change_scene_to_file(\"res://src/Scenes/Levels/Level_test.tscn\")
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0504l"]

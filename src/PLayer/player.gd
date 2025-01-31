@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var hp = 100
 @export var movement_speed: float = 100.0
 
 func _ready() -> void:

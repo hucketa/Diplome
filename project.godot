@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DarkLifer"
-run/main_scene="res://Level_test.tscn"
+run/main_scene="res://src/Scenes/MainMenu/MainScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -25,6 +25,7 @@ window/vsync/vsync_mode=0
 [global_group]
 
 Player=""
+enemies=""
 
 [gui]
 
@@ -68,8 +69,12 @@ ui_down={
 [internationalization]
 
 locale/translation_remaps={}
-locale/translations=PackedStringArray("res://src/Locales/ru.po", "res://src/Locales/en.po", "res://src/Locales/ua.po")
+locale/translations=PackedStringArray("res://src/Utility_scripts/Locales/en.po", "res://src/Utility_scripts/Locales/ru.po", "res://src/Utility_scripts/Locales/ua.po")
 locale/include_text_server_data=true
+
+[layer_names]
+
+2d_render/layer_1="World"
 
 [rendering]
 
