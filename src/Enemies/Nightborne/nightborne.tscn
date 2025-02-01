@@ -420,19 +420,17 @@ animations = [{
 radius = 6.75046
 height = 51.37
 
-[node name="NightBorne" type="Node2D"]
-
-[node name="NightBorne_phys" type="CharacterBody2D" parent="." groups=["enemies"]]
+[node name="NightBorne_phys" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_1fqrk")
 
-[node name="NightBorne" type="AnimatedSprite2D" parent="NightBorne_phys"]
+[node name="NightBorne" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(43, 35)
 scale = Vector2(2.0932, 2.0932)
 sprite_frames = SubResource("SpriteFrames_fi7ni")
 animation = &"deadth"
 
-[node name="nightborne" type="CollisionShape2D" parent="NightBorne_phys"]
+[node name="nightborne" type="CollisionShape2D" parent="."]
 position = Vector2(41, 53)
 scale = Vector2(2.07393, 1.24586)
 shape = SubResource("CapsuleShape2D_kk1wl")

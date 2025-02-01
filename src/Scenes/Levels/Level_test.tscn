@@ -1,12 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=17 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://src/Enemies/Nightborne/nightborne.tscn" id="6_y3cm2"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
-[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://src/Enemies/Sceleton/skeleton_enemy.tscn" id="7_fn6q5"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
-[ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://src/Enemies/Zhnec/zhec.tscn" id="8_ukfg5"]
+[ext_resource type="PackedScene" uid="uid://iviihxbhhy61" path="res://src/Utility_scripts/Spawner/spawner.tscn" id="8_tlk6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqalt"]
 texture = ExtResource("3_7bqd0")
@@ -4328,18 +4326,24 @@ size_flags_stretch_ratio = 2.51
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
 [node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 position = Vector2(545, 54)
 
-[node name="skelet" parent="." instance=ExtResource("7_fn6q5")]
+[node name="Spawner" parent="." instance=ExtResource("8_tlk6i")]
+position = Vector2(-227, -174)
 
-[node name="ZNEC" parent="." instance=ExtResource("8_ukfg5")]
-
-[node name="NightBorne" parent="." instance=ExtResource("6_y3cm2")]
+[node name="CollisionShape2D" parent="Spawner/Area2D" index="0"]
+position = Vector2(911.5, 563.5)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]
+
+[editable path="Spawner"]

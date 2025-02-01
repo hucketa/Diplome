@@ -347,20 +347,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xkrho"]
-radius = 28.0
-height = 90.0
+radius = 18.0
+height = 76.0
 
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_lmrf4")
 
 [node name="Skelton" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(115, 74)
-scale = Vector2(2.99598, 2.64471)
+position = Vector2(124.436, 85.3154)
+scale = Vector2(2.70111, 2.29111)
 sprite_frames = SubResource("SpriteFrames_28r57")
 animation = &"idle"
 
 [node name="CollisionSkelton" type="CollisionShape2D" parent="." groups=["enemies"]]
-position = Vector2(108, 80)
+position = Vector2(121, 87)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 60.00
-
+@export var movement_speed: float = 30.00
+@export var health: float = 15
+@export var damage: float = 2
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:

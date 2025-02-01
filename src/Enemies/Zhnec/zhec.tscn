@@ -301,20 +301,18 @@ animations = [{
 radius = 13.0
 height = 72.0
 
-[node name="ZNEC" type="Node2D"]
-
-[node name="Znec_phys" type="CharacterBody2D" parent="." groups=["enemies"]]
+[node name="Znec_phys" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_12ixa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Znec_phys"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(75, 45)
+position = Vector2(91.5, 57.5)
 rotation = 0.00523599
-scale = Vector2(1.55599, 1.55599)
+scale = Vector2(1.31934, 1.28903)
 sprite_frames = SubResource("SpriteFrames_okag4")
 animation = &"take_damage"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Znec_phys" groups=["enemies"]]
-position = Vector2(129, 75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(137, 83)
 shape = SubResource("CapsuleShape2D_yrhfx")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
