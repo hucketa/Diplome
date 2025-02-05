@@ -1,36 +1,56 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 10.00
+@export var movement_speed: float = 10.0
 @export var health: float = 3
 @export var damage: float = 0.5
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var skelton: AnimatedSprite2D = %Skelton
+
+var is_dead: bool = false  # Проверка состояния "мертв"
 
 func _physics_process(delta: float) -> void:
-	if player and is_instance_valid(player):
+	if player and is_instance_valid(player) and not is_dead:
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * movement_speed
 		move_and_slide()
-		if is_instance_valid(player):
-			face_player(direction)
+		face_player(direction)
 		play_walk_animation()
+		#play_attack_animation()
 
 func face_player(direction: Vector2) -> void:
-	if direction.x > 0:
-		$Skelton.flip_h = false
-	else:
-		$Skelton.flip_h = true
+	skelton.flip_h = direction.x < 0
 
 func play_idle_animation():
-	%Skelton.play("idle")
+	skelton.play("idle")
 
 func play_attack_animation():
-	%Skelton.play("attack")
+	skelton.play("attack")
 
 func play_die_animation():
-	%Skelton.play("die")
-	
+	skelton.play("die")
+
 func play_walk_animation():
-	%Skelton.play("walk")
-	
+	skelton.play("walk")
+
 func play_take_damage_animation():
-	%Skelton.play("take_damage")
+	skelton.play("take_damage")
+
+func take_damage(amount: float) -> void:
+	if is_dead:
+		return  # Не принимаем урон, если враг уже мертв
+
+	health -= amount
+	health = max(health, 0)  # Ограничение здоровья до 0
+	print("Скелет отримав урон:", amount, "Здоров'я:", health)
+	play_take_damage_animation()
+
+	if health <= 0:
+		die()
+
+func die() -> void:
+	if not is_dead:
+		is_dead = true
+		print("Скелет знищений.")
+		play_die_animation()
+		await get_tree().create_timer(0.5).timeout
+		queue_free()

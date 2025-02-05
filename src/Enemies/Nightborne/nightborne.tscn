@@ -1,7 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://cpe7gxvlh6fpr"]
+[gd_scene load_steps=62 format=3 uid="uid://cpe7gxvlh6fpr"]
 
 [ext_resource type="Script" path="res://src/Enemies/Nightborne/Nightborne.gd" id="1_1fqrk"]
 [ext_resource type="Texture2D" uid="uid://cv4guups2jn5q" path="res://src/Enemies/Nightborne/NightBorne.png" id="2_71kwx"]
+[ext_resource type="PackedScene" uid="uid://b5oy0250dcfrb" path="res://src/Utility_scripts/HitBox/HitBox.tscn" id="3_vphvt"]
+[ext_resource type="PackedScene" uid="uid://mxxvtyqgmal0" path="res://src/Utility_scripts/HurtBox/HurtBox.tscn" id="4_pcp1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t5wr"]
 atlas = ExtResource("2_71kwx")
@@ -435,3 +437,16 @@ position = Vector2(41, 53)
 scale = Vector2(2.07393, 1.24586)
 shape = SubResource("CapsuleShape2D_kk1wl")
 debug_color = Color(0, 0.635294, 0.407843, 0.419608)
+
+[node name="HitBox" parent="." instance=ExtResource("3_vphvt")]
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(54.375, 54)
+
+[node name="HurtBox" parent="." instance=ExtResource("4_pcp1s")]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(46, 52)
+
+[editable path="HitBox"]
+[editable path="HurtBox"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=52 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://src/Enemies/Sceleton/skeleton_enemy.gd" id="1_lmrf4"]
 [ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Enemies/Sceleton/Skeleton enemy.png" id="2_tpix2"]
+[ext_resource type="PackedScene" uid="uid://b5oy0250dcfrb" path="res://src/Utility_scripts/HitBox/HitBox.tscn" id="3_doup2"]
+[ext_resource type="PackedScene" uid="uid://mxxvtyqgmal0" path="res://src/Utility_scripts/HurtBox/HurtBox.tscn" id="4_qrs3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5riv3"]
 atlas = ExtResource("2_tpix2")
@@ -364,3 +366,7 @@ animation = &"idle"
 position = Vector2(121, 87)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
+
+[node name="HitBox" parent="." instance=ExtResource("3_doup2")]
+
+[node name="HurtBox" parent="." instance=ExtResource("4_qrs3e")]

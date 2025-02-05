@@ -1,17 +1,13 @@
 extends Node2D
 
-# Підключення сцен ворогів
 const enemy_nightborne = preload("res://src/Enemies/Nightborne/nightborne.tscn")
 const enemy_skeleton = preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn")
 const enemy_reaper = preload("res://src/Enemies/Zhnec/zhec.tscn")
 @onready var spawn_timer: Timer = $Area2D/SpawnTimer
-
 # Затримка між хвилями
 @export var wave_delay: float = 5.0
 # Інтервал між спавном ворогів
 @export var spawn_interval: float = 1.5
-
-# Посилання на об'єкти сцени
 @onready var spawn_area: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var label: Label = $"../UI/MarginContainer/VBoxContainer/Label"
 
@@ -19,12 +15,10 @@ const enemy_reaper = preload("res://src/Enemies/Zhnec/zhec.tscn")
 var current_wave: int = 0
 var base_enemy_count: int = 5
 var wave_multiplier: float = 1.3
-var enemies_to_spawn: int = 0  # Скільки ворогів залишилося спавнити
-
-# Масив для збереження заспавнених ворогів
+var enemies_to_spawn: int = 0
 var spawned_enemies: Array = []
 
-# Ініціалізація таймера і запуск першої хвилі
+
 func _ready():
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.connect("timeout", Callable(self, "_on_SpawnTimer_timeout"))
@@ -33,16 +27,12 @@ func _ready():
 # Запуск нової хвилі
 func start_wave():
 	current_wave += 1
-	clear_enemies()  # Очищення ворогів попередньої хвилі
+#	clear_enemies()
 	label.text = "Хвиля " + str(current_wave)
 	print("Початок хвилі:", current_wave)
-	
 	enemies_to_spawn = int(base_enemy_count * pow(wave_multiplier, current_wave))
 	print("Кількість ворогів у цій хвилі:", enemies_to_spawn)
-	
-	spawn_timer.start()  # Старт таймера для спавну ворогів
-
-	# Очікування перед запуском наступної хвилі
+	spawn_timer.start()
 	await get_tree().create_timer(wave_delay + (spawn_interval * enemies_to_spawn)).timeout
 	start_wave()
 
@@ -61,12 +51,9 @@ func spawn_enemy():
 	var enemy_type = choose_enemy_type()
 	var enemy_scene = get_enemy_scene(enemy_type)
 	var random_position = get_random_point_in_area()
-
 	var enemy = enemy_scene.instantiate()
 	enemy.position = random_position
-	spawned_enemies.append(enemy)  # Додаємо ворога до списку для очищення
-
-	# Налаштування характеристик ворога залежно від типу
+	spawned_enemies.append(enemy)
 	match enemy_type:
 		"skeleton":
 			enemy.health = 10 + (current_wave * 2)
@@ -80,17 +67,16 @@ func spawn_enemy():
 			enemy.health = 20 + (current_wave * 3)
 			enemy.movement_speed = 80 + randf_range(-5, 5)
 			enemy.damage = 10 + (current_wave * 1.5)
-
 	add_child(enemy)
 	print("Заспавнено:", enemy_type, "у позиції:", random_position)
 
 # Видалення всіх ворогів попередньої хвилі
-func clear_enemies():
-	for enemy in spawned_enemies:
-		if enemy and enemy.is_inside_tree():
-			enemy.queue_free()
-	spawned_enemies.clear()
-	print("Вороги попередньої хвилі очищені.")
+#func clear_enemies():
+#	for enemy in spawned_enemies:
+#		if enemy and enemy.is_inside_tree():
+#			enemy.queue_free()
+#	spawned_enemies.clear()
+#	print("Вороги попередньої хвилі очищені.")
 
 # Вибір типу ворога залежно від номера хвилі
 func choose_enemy_type() -> String:

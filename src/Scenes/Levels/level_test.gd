@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var pause_screen: CanvasLayer = $Pause_Screen
+@onready var player = %Player
 
 func _ready() -> void:
 	$UI.visible = true
@@ -9,6 +10,9 @@ func _ready() -> void:
 	%Main_Menu.text = tr("SETTINGS")
 	%Exit.text = tr("MAIN_MENU")
 	%Pause_ui.text = tr("PAUSE")
+
+func _process(_delta: float) -> void:
+		%Health_bar.value = player.stats.get_health()
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false

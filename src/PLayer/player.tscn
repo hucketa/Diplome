@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dbhw3n1mvdf3q"]
+[gd_scene load_steps=51 format=3 uid="uid://dbhw3n1mvdf3q"]
 
 [ext_resource type="Texture2D" uid="uid://c6hc5lhbins1k" path="res://src/PLayer/Vampire_Girl/Attack_1.png" id="1_ogeth"]
 [ext_resource type="Script" path="res://src/PLayer/player.gd" id="1_sddph"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cyg8u8ae1vcgp" path="res://src/PLayer/Vampire_Girl/Hurt.png" id="4_kyvv0"]
 [ext_resource type="Texture2D" uid="uid://brlrte6ifjpnb" path="res://src/PLayer/Vampire_Girl/Idle.png" id="5_hfnll"]
 [ext_resource type="Texture2D" uid="uid://d25yvyd5oq8h8" path="res://src/PLayer/Vampire_Girl/Walk.png" id="6_fa1i2"]
+[ext_resource type="Script" path="res://src/Utility_scripts/Player_stats/PlayerStats.gd" id="9_8sxit"]
+[ext_resource type="PackedScene" uid="uid://mxxvtyqgmal0" path="res://src/Utility_scripts/HurtBox/HurtBox.tscn" id="10_tu7lc"]
+[ext_resource type="PackedScene" uid="uid://b5oy0250dcfrb" path="res://src/Utility_scripts/HitBox/HitBox.tscn" id="11_kf0lr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06fn1"]
 atlas = ExtResource("1_ogeth")
@@ -248,7 +251,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1elwu")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -319,7 +322,7 @@ position = Vector2(87, 85)
 scale = Vector2(1.35938, 1.35938)
 sprite_frames = SubResource("SpriteFrames_dl7bm")
 animation = &"attack"
-frame_progress = 0.566334
+frame_progress = 0.735727
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(83, 124)
@@ -327,3 +330,14 @@ shape = SubResource("CapsuleShape2D_aw7g1")
 debug_color = Color(0.743545, 0.416871, 0.546863, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.497
+
+[node name="stats" type="Node2D" parent="."]
+script = ExtResource("9_8sxit")
+
+[node name="HurtBox" parent="." instance=ExtResource("10_tu7lc")]
+
+[node name="HitBox" parent="." instance=ExtResource("11_kf0lr")]
+position = Vector2(-57, 30)
