@@ -4338,15 +4338,9 @@ unique_name_in_owner = true
 position = Vector2(545, 54)
 
 [node name="Spawner" parent="." instance=ExtResource("8_tlk6i")]
-visible = false
-position = Vector2(-227, -174)
-
-[node name="CollisionShape2D" parent="Spawner/Area2D" index="0"]
-position = Vector2(911.5, 563.5)
+position = Vector2(-209, -161)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]
-
-[editable path="Spawner"]

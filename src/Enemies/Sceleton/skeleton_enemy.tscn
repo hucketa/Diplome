@@ -1,9 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=54 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://src/Enemies/Sceleton/skeleton_enemy.gd" id="1_lmrf4"]
 [ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Enemies/Sceleton/Skeleton enemy.png" id="2_tpix2"]
-[ext_resource type="PackedScene" uid="uid://b5oy0250dcfrb" path="res://src/Utility_scripts/HitBox/HitBox.tscn" id="3_doup2"]
-[ext_resource type="PackedScene" uid="uid://mxxvtyqgmal0" path="res://src/Utility_scripts/HurtBox/HurtBox.tscn" id="4_qrs3e"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="3_0g34n"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="4_ubonh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5riv3"]
 atlas = ExtResource("2_tpix2")
@@ -352,6 +352,12 @@ animations = [{
 radius = 18.0
 height = 76.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5wes"]
+size = Vector2(14.6875, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xykbq"]
+size = Vector2(33, 65.5)
+
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_lmrf4")
 
@@ -367,6 +373,22 @@ position = Vector2(121, 87)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
 
-[node name="HitBox" parent="." instance=ExtResource("3_doup2")]
+[node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+unique_name_in_owner = true
+script = ExtResource("3_0g34n")
 
-[node name="HurtBox" parent="." instance=ExtResource("4_qrs3e")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+light_mask = 2
+position = Vector2(158.656, 87.5)
+shape = SubResource("RectangleShape2D_a5wes")
+
+[node name="HurtBox" type="Area2D" parent="." groups=["attack"]]
+unique_name_in_owner = true
+script = ExtResource("4_ubonh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visibility_layer = 2
+position = Vector2(119, 86)
+shape = SubResource("RectangleShape2D_xykbq")
+
+[node name="AttackTimer" type="Timer" parent="."]

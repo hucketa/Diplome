@@ -22,13 +22,14 @@ func movement(delta: float) -> void:
 	velocity = move * 100
 	move_and_slide()
 	if x_move != 0:
-		%AnimatedSprite2D.flip_h = x_move < 0
+		var flip = x_move < 0
+		%AnimatedSprite2D.flip_h = flip
 	if move != Vector2.ZERO:
 		%AnimatedSprite2D.play("walk")
 	else:
 		%AnimatedSprite2D.play("idle")
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	stats.take_damage(amount)
 
 func _on_player_died():
@@ -46,8 +47,9 @@ func _on_level_up(new_level: int):
 func perform_attack():
 	if stats.is_dead:
 		return
-	var damage = stats.calculate_damage()
-	print("Гравець атакує з уроном:", damage)
+	var damage_a = stats.calculate_damage()
+	print("Гравець атакує з уроном:", damage_a)
+	%HitBox.damage = damage_a
 	%AnimatedSprite2D.play("attack")
 	hitbox.monitoring = true
 	await get_tree().create_timer(0.1).timeout

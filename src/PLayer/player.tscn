@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dbhw3n1mvdf3q"]
+[gd_scene load_steps=53 format=3 uid="uid://dbhw3n1mvdf3q"]
 
 [ext_resource type="Texture2D" uid="uid://c6hc5lhbins1k" path="res://src/PLayer/Vampire_Girl/Attack_1.png" id="1_ogeth"]
 [ext_resource type="Script" path="res://src/PLayer/player.gd" id="1_sddph"]
@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://brlrte6ifjpnb" path="res://src/PLayer/Vampire_Girl/Idle.png" id="5_hfnll"]
 [ext_resource type="Texture2D" uid="uid://d25yvyd5oq8h8" path="res://src/PLayer/Vampire_Girl/Walk.png" id="6_fa1i2"]
 [ext_resource type="Script" path="res://src/Utility_scripts/Player_stats/PlayerStats.gd" id="9_8sxit"]
-[ext_resource type="PackedScene" uid="uid://mxxvtyqgmal0" path="res://src/Utility_scripts/HurtBox/HurtBox.tscn" id="10_tu7lc"]
-[ext_resource type="PackedScene" uid="uid://b5oy0250dcfrb" path="res://src/Utility_scripts/HitBox/HitBox.tscn" id="11_kf0lr"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="10_52sc8"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="11_pgy40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06fn1"]
 atlas = ExtResource("1_ogeth")
@@ -313,6 +313,12 @@ animations = [{
 radius = 21.0
 height = 70.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xykbq"]
+size = Vector2(33, 65.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5wes"]
+size = Vector2(14.6875, 67)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_sddph")
 
@@ -337,7 +343,20 @@ wait_time = 0.497
 [node name="stats" type="Node2D" parent="."]
 script = ExtResource("9_8sxit")
 
-[node name="HurtBox" parent="." instance=ExtResource("10_tu7lc")]
+[node name="HurtBox" type="Area2D" parent="." groups=["attack"]]
+script = ExtResource("10_52sc8")
 
-[node name="HitBox" parent="." instance=ExtResource("11_kf0lr")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visibility_layer = 2
+position = Vector2(81.5, 127.25)
+shape = SubResource("RectangleShape2D_xykbq")
+
+[node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+unique_name_in_owner = true
 position = Vector2(-57, 30)
+script = ExtResource("11_pgy40")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+light_mask = 2
+position = Vector2(169.313, 93.5)
+shape = SubResource("RectangleShape2D_a5wes")

@@ -4,6 +4,7 @@ extends Node2D
 @onready var player = %Player
 
 func _ready() -> void:
+	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	%Resume.text = tr("BACK")
