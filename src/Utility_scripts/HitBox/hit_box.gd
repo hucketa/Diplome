@@ -13,7 +13,6 @@ func activate():
 	set_deferred("monitoring", false)
 	print("# Вимкнено хитбокс після атаки.")
 
-
 func get_damage() -> float:
 	print("Запит урону:", damage)
 	return damage

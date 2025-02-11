@@ -23,14 +23,25 @@ func _on_area_entered(area):
 	if not area.has_method("get_damage"):
 		print("# ❌ Ігнор об'єкта без get_damage:", area.name)
 		return
-	if area.get_parent() == get_parent():
-		print("# ❌ Хартбокс ігнорує атаку від власного персонажа.")
+# 🧐 Дополнительные проверки
+	print("🛠️ DEBUG: Attacker Owner:", area.owner.name, " Groups:", area.owner.get_groups())
+	print("🛠️ DEBUG: Hurtbox Owner:", owner.name, " Groups:", owner.get_groups())
+	print("🛠️ DEBUG: Attacker Parent:", area.get_parent().name, " Groups:", area.get_parent().get_groups())
+	print("🛠️ DEBUG: Hurtbox Parent:", get_parent().name, " Groups:", get_parent().get_groups())
+	# Проверка, чтобы атакующий не бил сам себя
+	if area.owner == owner:
+		print("# ❌ Хартбокс ігнорує самопошкодження.")
 		return
-	if area.get_parent().is_in_group("Enemy") and get_parent().is_in_group("Enemy"):
-		print("# ❌ Хартбокс ігнорує атаку від іншого скелета.")
+	# Проверка на атаку между врагами
+	if area.get_parent().is_in_group("enemies") and get_parent().is_in_group("enemies"):
+		print("# ❌ Хартбокс ігнорує атаку від іншого ворога.")
 		return  # 🔹 Головне правило!
 	print("# ✅ Виявлено атаку від:", area.name)
 	attacker = area
+ # Проверка, может ли атакующий нанести урон
+	if not attacker.has_method("get_damage"):
+		print("# ❌ У атакуючого немає get_damage()")
+		return
 	_apply_damage()
 	damage_timer.start()
 
