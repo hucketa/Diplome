@@ -21,19 +21,18 @@ func _on_area_entered(area):
 	if not area.is_in_group("attack"):
 		return
 	if not area.has_method("get_damage"):
-		print("# Ігнор об'єкта без get_damage:", area.name)
+		print("# ❌ Ігнор об'єкта без get_damage:", area.name)
 		return
 	if area.get_parent() == get_parent():
-		print("# Хартбокс ігнорує атаку від власного персонажа.")
+		print("# ❌ Хартбокс ігнорує атаку від власного персонажа.")
 		return
 	if area.get_parent().is_in_group("Enemy") and get_parent().is_in_group("Enemy"):
-		print("# Хартбокс ігнорує атаку від іншого скелета.")
-		return
-	print("# Виявлено атаку від:", area.name)
+		print("# ❌ Хартбокс ігнорує атаку від іншого скелета.")
+		return  # 🔹 Головне правило!
+	print("# ✅ Виявлено атаку від:", area.name)
 	attacker = area
 	_apply_damage()
 	damage_timer.start()
-
 
 
 func _on_area_exited(area):

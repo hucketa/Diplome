@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 20.0
+@export var movement_speed: float = 60.0
 @export var health: float = 5
 @export var damage: float = 2
 @export var attack_range: float = 50.0
-
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var skelton: AnimatedSprite2D = %Skelton
 @onready var attack_timer: Timer = $AttackTimer
@@ -29,7 +28,6 @@ func _physics_process(delta: float) -> void:
 			if not attack_timer.is_stopped():
 				return
 			attack_timer.start()
-
 		face_player(direction)
 
 func face_player(direction: Vector2) -> void:
@@ -76,10 +74,10 @@ func attack() -> void:
 	if player and is_instance_valid(player):
 		print("# Скелет атакує гравця. Урон:", damage)
 		if not attack_timer.is_stopped():
-			print("# ❌ Атака скасована: таймер ще працює.")
+			print("# Атака скасована: таймер ще працює.")
 			return
 		if $HitBox.monitoring:
-			print("# ❌ Хітбокс все ще активний, атака скасована.")
+			print("# Хітбокс все ще активний, атака скасована.")
 			return
 		attack_timer.start()
 		$HitBox.activate()
