@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 10.0
-@export var health: float = 3
-@export var damage: float = 1
+@export var movement_speed: float = 20.0
+@export var health: float = 5
+@export var damage: float = 2
 @export var attack_range: float = 50.0
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var skelton: AnimatedSprite2D = %Skelton
 @onready var attack_timer: Timer = $AttackTimer
@@ -18,17 +19,17 @@ func _physics_process(delta: float) -> void:
 	if player and is_instance_valid(player) and not is_dead:
 		var direction = (player.global_position - global_position).normalized()
 		var distance_to_player = global_position.distance_to(player.global_position)
+
 		if distance_to_player > attack_range:
 			velocity = direction * movement_speed
 			move_and_slide()
-			play_walk_animation()
 			attack_timer.stop()
 		else:
 			velocity = Vector2.ZERO
-			play_attack_animation()
 			if not attack_timer.is_stopped():
 				return
 			attack_timer.start()
+
 		face_player(direction)
 
 func face_player(direction: Vector2) -> void:
@@ -39,16 +40,17 @@ func play_idle_animation():
 
 func play_attack_animation():
 	if skelton.animation != "attack":
+		print("# Скелет починає атаку.")
 		skelton.play("attack")
 
 func play_die_animation():
 	skelton.play("die")
 
 func play_walk_animation():
-	if skelton.animation != "walk":
-		skelton.play("walk")
+	skelton.play("walk")
 
 func play_take_damage_animation():
+	print("# Скелет отримав удар.")
 	skelton.play("take_damage")
 
 func take_damage(amount: float) -> void:
@@ -56,7 +58,7 @@ func take_damage(amount: float) -> void:
 		return
 	health -= amount
 	health = max(health, 0)
-	print("Скелет отримав урон:", amount, "Здоров'я:", health)
+	print("# Скелет отримав урон:", amount, "Залишилося здоров'я:", health)
 	play_take_damage_animation()
 	if health <= 0:
 		die()
@@ -64,7 +66,7 @@ func take_damage(amount: float) -> void:
 func die() -> void:
 	if not is_dead:
 		is_dead = true
-		print("Скелет знищений.")
+		print("# Скелет знищений.")
 		play_die_animation()
 		attack_timer.stop()
 		await get_tree().create_timer(0.200).timeout
@@ -72,6 +74,13 @@ func die() -> void:
 
 func attack() -> void:
 	if player and is_instance_valid(player):
-		print("Скелет атакует игрока на", damage, "урона.")
-		if player.has_method("take_damage"):
-			player.take_damage(damage)
+		print("# Скелет атакує гравця. Урон:", damage)
+		if not attack_timer.is_stopped():
+			print("# ❌ Атака скасована: таймер ще працює.")
+			return
+		if $HitBox.monitoring:
+			print("# ❌ Хітбокс все ще активний, атака скасована.")
+			return
+		attack_timer.start()
+		$HitBox.activate()
+		print("# Хітбокс активовано.")

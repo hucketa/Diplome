@@ -30,27 +30,23 @@ func movement(delta: float) -> void:
 		%AnimatedSprite2D.play("idle")
 
 func take_damage(amount: float) -> void:
+	print("# Гравець отримує урон:", amount)
 	stats.take_damage(amount)
 
 func _on_player_died():
 	%AnimatedSprite2D.play("die")
-	print("Гравець загинув.")
+	print("# Гравець загинув.")
 	attack_timer.stop()
 	get_tree().paused = true
-
-func _on_health_changed(current_health: int):
-	print("Поточне здоров'я гравця:", current_health)
-
-func _on_level_up(new_level: int):
-	print("Гравець досягнув рівня:", new_level)
 
 func perform_attack():
 	if stats.is_dead:
 		return
 	var damage_a = stats.calculate_damage()
-	print("Гравець атакує з уроном:", damage_a)
+	print("# Гравець атакує. Урон:", damage_a)
 	%HitBox.damage = damage_a
-	%AnimatedSprite2D.play("attack")
 	hitbox.monitoring = true
+	print("# Хітбокс активовано.")
 	await get_tree().create_timer(0.1).timeout
 	hitbox.monitoring = false
+	print("# Хітбокс деактивовано.")

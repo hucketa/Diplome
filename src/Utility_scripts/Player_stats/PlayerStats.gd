@@ -2,7 +2,7 @@ extends Node
 
 @export var max_health: int = 100
 @export var current_health: int = 100
-@export var damage: int = 20
+@export var damage: int = 0
 @export var armor: int = 0
 @export var crit_chance: float = 0.1
 @export var crit_multiplier: float = 2.0

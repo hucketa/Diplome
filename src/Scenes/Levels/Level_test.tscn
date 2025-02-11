@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
+[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://src/Enemies/Sceleton/skeleton_enemy.tscn" id="2_vvhv5"]
 [ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
-[ext_resource type="PackedScene" uid="uid://iviihxbhhy61" path="res://src/Utility_scripts/Spawner/spawner.tscn" id="8_tlk6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqalt"]
 texture = ExtResource("3_7bqd0")
@@ -4335,10 +4335,12 @@ size_flags_horizontal = 4
 
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 unique_name_in_owner = true
-position = Vector2(545, 54)
 
-[node name="Spawner" parent="." instance=ExtResource("8_tlk6i")]
-position = Vector2(-209, -161)
+[node name="skelet" parent="." instance=ExtResource("2_vvhv5")]
+position = Vector2(157, 89)
+
+[node name="skelet2" parent="." instance=ExtResource("2_vvhv5")]
+position = Vector2(529, 106)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=52 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://src/Enemies/Sceleton/skeleton_enemy.gd" id="1_lmrf4"]
 [ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Enemies/Sceleton/Skeleton enemy.png" id="2_tpix2"]
@@ -21,13 +21,13 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("2_tpix2")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8jd7"]
-atlas = ExtResource("2_tpix2")
-region = Rect2(256, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yvkb"]
 atlas = ExtResource("2_tpix2")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8jd7"]
+atlas = ExtResource("2_tpix2")
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2h03s"]
 atlas = ExtResource("2_tpix2")
@@ -201,10 +201,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_op7qq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k8jd7")
+"texture": SubResource("AtlasTexture_3yvkb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3yvkb")
+"texture": SubResource("AtlasTexture_k8jd7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2h03s")
@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -352,23 +352,18 @@ animations = [{
 radius = 18.0
 height = 76.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5wes"]
-size = Vector2(14.6875, 67)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xykbq"]
-size = Vector2(33, 65.5)
-
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_lmrf4")
 
 [node name="Skelton" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(124.436, 85.3154)
+position = Vector2(123, 84)
 scale = Vector2(2.70111, 2.29111)
 sprite_frames = SubResource("SpriteFrames_28r57")
-animation = &"idle"
+animation = &"attack"
 
-[node name="CollisionSkelton" type="CollisionShape2D" parent="." groups=["enemies"]]
+[node name="CollisionSkelton" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(121, 87)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
@@ -377,18 +372,14 @@ debug_color = Color(0, 0.635294, 0.431373, 0.419608)
 unique_name_in_owner = true
 script = ExtResource("3_0g34n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-light_mask = 2
-position = Vector2(158.656, 87.5)
-shape = SubResource("RectangleShape2D_a5wes")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
+polygon = PackedVector2Array(150, 91, 150, 93, 171, 93, 172, 91, 182, 91, 182, 88, 191, 88, 190, 87, 196, 86, 196, 84, 199, 84, 199, 82, 201, 82, 201, 79, 204, 79, 204, 77, 207, 77, 207, 73, 209, 72, 209, 64, 208, 63, 207, 63, 207, 59, 204, 59, 204, 54, 201, 54, 201, 52, 199, 52, 199, 50, 196, 49, 196, 48, 194, 47, 193, 45, 188, 45, 188, 43, 183, 43, 183, 40, 177, 40, 177, 38, 169, 38, 169, 36, 161, 36, 161, 34, 147, 34, 147, 32, 131, 31, 131, 29, 96, 29, 96, 31, 80, 31, 79, 33, 74, 34, 74, 37, 72, 38, 72, 40, 74, 40, 74, 43, 75, 45, 77, 45, 79, 45, 80, 47, 81, 47, 82, 46, 83, 47, 82, 45, 84, 45, 87, 45, 88, 45, 88, 43, 93, 43, 93, 44, 95, 45, 99, 45, 101, 45, 101, 47, 105, 47, 107, 47, 107, 49, 112, 49, 115, 49, 116, 50, 118, 49, 120, 48, 118, 47, 115, 47, 115, 45, 111, 45, 106, 45, 104, 45, 103, 45, 102, 43, 109, 43, 109, 41, 126, 41, 126, 42, 144, 43, 144, 44, 158, 45, 158, 47, 169, 48, 168, 49, 177, 50, 177, 52, 182, 52, 182, 54, 185, 54, 185, 56, 187, 57, 188, 58, 188, 59, 191, 59, 190, 60, 190, 61, 193, 61, 193, 66, 196, 66, 196, 72, 193, 73, 193, 76, 191, 77, 191, 79, 188, 79, 188, 81, 182, 82, 182, 83, 182, 84, 175, 84, 174, 86, 169, 86, 169, 88, 161, 88, 161, 90)
 
-[node name="HurtBox" type="Area2D" parent="." groups=["attack"]]
+[node name="HurtBox" type="Area2D" parent="." groups=["enemies"]]
 unique_name_in_owner = true
 script = ExtResource("4_ubonh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visibility_layer = 2
-position = Vector2(119, 86)
-shape = SubResource("RectangleShape2D_xykbq")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox" groups=["enemies"]]
+polygon = PackedVector2Array(93, 121, 94, 118, 95, 118, 96, 116, 99, 116, 99, 112, 101, 111, 101, 102, 104, 102, 104, 98, 106, 97, 107, 91, 104, 91, 104, 86, 112, 86, 112, 82, 109, 81, 110, 75, 105, 75, 105, 77, 102, 77, 102, 79, 99, 79, 99, 85, 96, 86, 96, 88, 91, 88, 91, 86, 94, 86, 93, 79, 95, 79, 96, 75, 98, 75, 99, 73, 101, 72, 101, 66, 104, 65, 104, 63, 106, 63, 107, 61, 114, 61, 115, 50, 117, 49, 118, 47, 131, 47, 131, 49, 133, 49, 133, 51, 135, 51, 136, 52, 136, 55, 136, 57, 136, 59, 135, 60, 134, 61, 133, 63, 133, 64, 131, 65, 128, 65, 127, 65, 126, 66, 127, 67, 133, 67, 136, 68, 137, 69, 139, 70, 140, 72, 141, 74, 142, 77, 142, 79, 144, 80, 145, 83, 146, 86, 148, 89, 149, 90, 150, 92, 150, 94, 148, 95, 147, 93, 145, 92, 144, 91, 142, 90, 142, 87, 140, 86, 139, 82, 137, 82, 137, 78, 131, 77, 131, 82, 128, 82, 128, 84, 118, 84, 118, 88, 120, 88, 120, 86, 123, 86, 123, 94, 126, 95, 126, 97, 128, 98, 129, 100, 131, 100, 131, 102, 134, 102, 134, 111, 131, 112, 131, 114, 129, 114, 129, 116, 129, 118, 131, 118, 131, 120, 123, 120, 123, 114, 125, 114, 125, 110, 127, 109, 128, 109, 128, 105, 126, 104, 126, 102, 123, 102, 123, 100, 120, 100, 120, 98, 118, 98, 118, 102, 115, 102, 115, 107, 112, 107, 112, 100, 110, 100, 110, 103, 107, 104, 107, 111, 104, 111, 104, 118, 102, 118, 102, 121)
 
 [node name="AttackTimer" type="Timer" parent="."]
