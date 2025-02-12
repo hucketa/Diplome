@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var movement_speed: float = 60.0
-@export var health: float = 5
+@export var health: float = 40
 @export var damage: float = 2
 @export var attack_range: float = 50.0
 @onready var player = get_tree().get_first_node_in_group("Player")

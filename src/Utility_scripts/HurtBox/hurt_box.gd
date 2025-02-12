@@ -10,7 +10,7 @@ func _ready():
 	connect("area_entered", Callable(self, "_on_area_entered"))
 	connect("area_exited", Callable(self, "_on_area_exited"))
 	
-	damage_timer.wait_time = 1.0
+	damage_timer.wait_time = 0.1
 	damage_timer.one_shot = false
 	damage_timer.connect("timeout", Callable(self, "_apply_damage"))
 	add_child(damage_timer)

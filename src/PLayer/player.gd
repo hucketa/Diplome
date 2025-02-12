@@ -45,8 +45,8 @@ func perform_attack():
 	var damage_a = stats.calculate_damage()
 	print("# Гравець атакує. Урон:", damage_a)
 	%HitBox.damage = damage_a
-	hitbox.monitoring = true
-	print("# Хітбокс активовано.") 
-	await get_tree().create_timer(0.1).timeout
-	hitbox.monitoring = false
-	print("# Хітбокс деактивовано.")
+	#hitbox.monitoring = true
+	#print("# Хітбокс активовано.") 
+	#await get_tree().create_timer(0.1).timeout
+	#hitbox.monitoring = false
+	#print("# Хітбокс деактивовано.")

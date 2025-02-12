@@ -2,9 +2,9 @@ extends Node
 
 @export var max_health: int = 100
 @export var current_health: int = 100
-@export var damage: int = 0
+@export var damage: float = 1
 @export var armor: int = 0
-@export var crit_chance: float = 0.1
+@export var crit_chance: float = 0
 @export var crit_multiplier: float = 2.0
 @export var attack_speed: float = 1.0
 @export var current_experience: int = 0
@@ -58,7 +58,7 @@ func level_uped():
 	emit_signal("level_up", level)
 	print("Вітаємо з новим рівнем:", level)
 
-func calculate_damage() -> int:
+func calculate_damage() -> float:
 	var is_critical = randf() < crit_chance
 	var final_damage = damage * crit_multiplier if is_critical else damage
 	if is_critical:
