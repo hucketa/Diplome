@@ -437,6 +437,7 @@ frame_progress = 0.74562
 position = Vector2(41, 53)
 scale = Vector2(2.07393, 1.24586)
 shape = SubResource("CapsuleShape2D_kk1wl")
+disabled = true
 debug_color = Color(0, 0.635294, 0.407843, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack"]]
