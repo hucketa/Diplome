@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -358,11 +358,11 @@ script = ExtResource("1_lmrf4")
 [node name="Skeleton" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(123, 84)
-scale = Vector2(2.70111, 2.29111)
+scale = Vector2(2.19241, 1.79265)
 sprite_frames = SubResource("SpriteFrames_28r57")
 animation = &"attack"
-frame = 5
-frame_progress = 0.297674
+frame = 12
+frame_progress = 1.0
 
 [node name="CollisionSkelton" type="CollisionShape2D" parent="."]
 position = Vector2(121, 87)
@@ -374,8 +374,7 @@ unique_name_in_owner = true
 script = ExtResource("3_0g34n")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-visibility_layer = 2
-polygon = PackedVector2Array(150, 90, 150, 94, 172, 93, 172, 91, 182, 91, 182, 88, 190, 88, 192, 86, 196, 86, 197, 84, 200, 83, 201, 79, 190, 78, 189, 80, 188, 80, 188, 81, 183, 82, 182, 85, 175, 84, 174, 86, 170, 86, 169, 88, 161, 88, 162, 91)
+polygon = PackedVector2Array(145, 89, 146, 91, 163, 91, 162, 89, 163, 84, 159, 86, 154, 88, 149, 89)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 unique_name_in_owner = true
@@ -383,6 +382,8 @@ script = ExtResource("4_ubonh")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
 visibility_layer = 2
+position = Vector2(19, 9)
+scale = Vector2(0.87045, 0.903351)
 polygon = PackedVector2Array(93, 121, 94, 118, 95, 118, 96, 116, 99, 116, 99, 112, 101, 111, 101, 102, 104, 102, 104, 98, 106, 97, 107, 91, 104, 91, 104, 86, 112, 86, 112, 82, 109, 81, 110, 75, 105, 75, 105, 77, 102, 77, 102, 79, 99, 79, 99, 85, 96, 86, 96, 88, 91, 88, 91, 86, 94, 86, 93, 79, 95, 79, 96, 75, 98, 75, 99, 73, 101, 72, 101, 66, 104, 65, 104, 63, 106, 63, 107, 61, 114, 61, 115, 50, 117, 49, 118, 47, 131, 47, 131, 49, 133, 49, 133, 51, 135, 51, 136, 52, 136, 55, 136, 57, 136, 59, 135, 60, 134, 61, 133, 63, 133, 64, 131, 65, 128, 65, 127, 65, 126, 66, 127, 67, 133, 67, 136, 68, 137, 69, 139, 70, 140, 72, 141, 74, 142, 77, 142, 79, 144, 80, 145, 83, 146, 86, 148, 89, 149, 90, 150, 92, 150, 94, 148, 95, 147, 93, 145, 92, 144, 91, 142, 90, 142, 87, 140, 86, 139, 82, 137, 82, 137, 78, 131, 77, 131, 82, 128, 82, 128, 84, 118, 84, 118, 88, 120, 88, 120, 86, 123, 86, 123, 94, 126, 95, 126, 97, 128, 98, 129, 100, 131, 100, 131, 102, 134, 102, 134, 111, 131, 112, 131, 114, 129, 114, 129, 116, 129, 118, 131, 118, 131, 120, 123, 120, 123, 114, 125, 114, 125, 110, 127, 109, 128, 109, 128, 105, 126, 104, 126, 102, 123, 102, 123, 100, 120, 100, 120, 98, 118, 98, 118, 102, 115, 102, 115, 107, 112, 107, 112, 100, 110, 100, 110, 103, 107, 104, 107, 111, 104, 111, 104, 118, 102, 118, 102, 121)
 
 [node name="AttackTimer" type="Timer" parent="."]

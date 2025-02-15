@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://src/Enemies/Sceleton/skeleton_enemy.tscn" id="5_o0opr"]
+[ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://src/Enemies/Nightborne/nightborne.tscn" id="6_7kg3o"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
 
@@ -4336,8 +4336,8 @@ size_flags_horizontal = 4
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 unique_name_in_owner = true
 
-[node name="skelet" parent="." instance=ExtResource("5_o0opr")]
-position = Vector2(219, 315)
+[node name="NightBorne_phys" parent="." instance=ExtResource("6_7kg3o")]
+position = Vector2(32, 396)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

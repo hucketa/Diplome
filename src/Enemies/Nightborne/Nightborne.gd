@@ -4,119 +4,93 @@ extends CharacterBody2D
 @export var health: float = 40
 @export var damage: float = 1
 @export var armor: int = 0
-@export var attack_range: float = 100.0  # Радіус атаки
-@export var attack_delay: float = 0.450  # Затримка між атаками
+@export var attack_range: float = 100.0
+@export var attack_delay: float = 0.450  # Таймер між атаками
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var attack_timer = Timer.new()
+@onready var hitbox = $HitBox
+@onready var hurtbox = $HurtBox
+@onready var sprite: AnimatedSprite2D = %NightBorne
 
 var is_attacking: bool = false
-var push_strength: float = 200.0
+var is_dead: bool = false
+var last_flip = 1
 
 func _ready() -> void:
-	print("NightBorne ініціалізовано. Додавання таймера атаки.")
 	add_child(attack_timer)
 	attack_timer.wait_time = attack_delay
 	attack_timer.one_shot = true
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timeout"))
-	print("Таймер атаки налаштовано: затримка = ", attack_delay)
-
-func _on_area_entered(area: Area2D) -> void:
-	print("Виявлено зону входу: ", area.name)
-	if area.is_in_group("enemies"):
-		var direction = (area.global_position - global_position).normalized()
-		print("Напрям відштовхування: ", direction)
-		var push_velocity = direction * push_strength
-		print("Застосування імпульсу відштовхування: ", push_velocity)
-		area.velocity = push_velocity
-		print("Об'єкт з групи 'enemies' відштовхнуто.")
 
 func _physics_process(delta: float) -> void:
-	print("Фізичний процес. Перевірка гравця...")
-	if player and is_instance_valid(player):
-		print("Гравець знайдений. Обчислення відстані...")
+	if player and is_instance_valid(player) and not is_dead:
 		var distance_to_player = global_position.distance_to(player.global_position)
-		print("Відстань до гравця: ", distance_to_player)
 		var direction = (player.global_position - global_position).normalized()
-		print("Напрямок до гравця: ", direction)
+
 		if distance_to_player > attack_range:
-			print("Гравець поза зоною атаки. Переміщення...")
 			velocity = direction * movement_speed
 			move_and_slide()
-			print("Персонаж перемістився в напрямку: ", direction)
 			face_player(direction)
-			play_walk_animation()
-		else:
-			print("Гравець у зоні атаки.")
 			if not is_attacking:
-				print("Початок атаки.")
+				play_walk_animation()
+		else:
+			velocity = Vector2.ZERO
+			if not is_attacking and not attack_timer.is_stopped():
 				start_attack()
-				play_attack_animation()
 
 func start_attack() -> void:
-	print("Запуск атаки...")
-	if is_attacking:
-		print("Атака вже виконується. Переривання.")
+	if is_attacking or is_dead:
 		return
 	is_attacking = true
-	attack_timer.start()
-	print("Таймер атаки запущено.")
+	print("🗡 NightBorne атакует!")
+	sprite.play("attack")
+	hitbox.activate()  # Активація хитбоксу
+
+	await sprite.animation_finished  # Очікуємо завершення атаки
+
+	if hitbox.monitoring and player and is_instance_valid(player):
+		var player_hurtbox = player.get_node("HurtBox")
+		player_hurtbox._apply_damage()
+		print("💥 Гравець отримав урон:", damage)
+
+	attack_timer.start()  # Затримка перед наступною атакою
+	is_attacking = false
 
 func _on_attack_timeout() -> void:
-	print("Таймер атаки закінчився. Перевірка можливості атаки...")
-	if player and is_instance_valid(player):
-		var distance_to_player = global_position.distance_to(player.global_position)
-		print("Поточна відстань до гравця: ", distance_to_player)
-
-		if distance_to_player <= attack_range:
-			print("Гравець у зоні атаки! Завдаємо шкоди.")
-			player.take_damage(damage)
-			print("Гравець отримав шкоду: ", damage)
-			is_attacking = false
-		else:
-			print("Гравець вийшов із зони атаки. Атака скасована.")
-			is_attacking = false
+	is_attacking = false
 
 func face_player(direction: Vector2) -> void:
-	print("Поворот персонажа у бік гравця.")
-	$NightBorne.flip_h = direction.x < 0
-	print("flip_h встановлено у: ", $NightBorne.flip_h)
+	var is_facing_left = direction.x < 0
+	if last_flip != (-1 if is_facing_left else 1):
+		sprite.flip_h = is_facing_left
+		update_hitbox_position(is_facing_left)
+		last_flip = -1 if is_facing_left else 1
+
+func update_hitbox_position(is_facing_left: bool):
+	var flip_value = -1 if is_facing_left else 1
+	hitbox.scale.x = abs(hitbox.scale.x) * flip_value
+	hurtbox.scale.x = abs(hurtbox.scale.x) * flip_value
+	hitbox.position.x = sprite.position.x
+	hurtbox.position.x = sprite.position.x
 
 func play_walk_animation():
-	print("Запуск анімації ходьби.")
-	$NightBorne.play("walk")
-
-func play_die_animation():
-	print("Запуск анімації смерті.")
-	$NightBorne.play("die")
-
-func play_take_damage_animation():
-	print("Запуск анімації отримання шкоди.")
-	$NightBorne.play("take_damage")
-
-func play_idle_animation():
-	print("Запуск анімації очікування.")
-	$NightBorne.play("idle")
-
-func play_attack_animation():
-	print("Запуск анімації атаки.")
-	$NightBorne.play("attack")
+	if sprite.animation != "walk":
+		sprite.play("walk")
 
 func take_damage(amount: float) -> void:
-	print("Отримано шкоду: ", amount, "Поточна броня: ", armor)
-	var reduced_damage = max(amount - armor, 1)
-	print("Фактично отримана шкода (з урахуванням броні): ", reduced_damage)
-	play_take_damage_animation()
-	health -= reduced_damage
-	print("Залишилось здоров'я: ", health)
-
+	if is_dead:
+		return
+	health -= max(amount - armor, 1)
 	if health <= 0:
-		print("Здоров'я на нулі. Ворог помирає.")
-		$NightBorne.play("die")
 		die()
+	else:
+		sprite.play("take_damage")
 
 func die() -> void:
-	print("NightBorne знищено.")
-	play_die_animation()
-	await get_tree().create_timer(0.250).timeout
-	print("Видалення об'єкта зі сцени...")
-	queue_free()
+	if not is_dead:
+		is_dead = true
+		sprite.play("die")
+		attack_timer.stop()
+		await get_tree().create_timer(0.200).timeout
+		queue_free()

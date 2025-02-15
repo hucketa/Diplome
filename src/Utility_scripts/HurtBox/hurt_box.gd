@@ -6,10 +6,8 @@ signal hit(damage)
 
 func _ready():
 	print("Хартбокс готовий.")
-	
 	connect("area_entered", Callable(self, "_on_area_entered"))
 	connect("area_exited", Callable(self, "_on_area_exited"))
-	
 	damage_timer.wait_time = 0.1
 	damage_timer.one_shot = false
 	damage_timer.connect("timeout", Callable(self, "_apply_damage"))
@@ -23,22 +21,18 @@ func _on_area_entered(area):
 	if not area.has_method("get_damage"):
 		print("# ❌ Ігнор об'єкта без get_damage:", area.name)
 		return
-# 🧐 Дополнительные проверки
 	print("🛠️ DEBUG: Attacker Owner:", area.owner.name, " Groups:", area.owner.get_groups())
 	print("🛠️ DEBUG: Hurtbox Owner:", owner.name, " Groups:", owner.get_groups())
 	print("🛠️ DEBUG: Attacker Parent:", area.get_parent().name, " Groups:", area.get_parent().get_groups())
 	print("🛠️ DEBUG: Hurtbox Parent:", get_parent().name, " Groups:", get_parent().get_groups())
-	# Проверка, чтобы атакующий не бил сам себя
 	if area.owner == owner:
 		print("# ❌ Хартбокс ігнорує самопошкодження.")
 		return
-	# Проверка на атаку между врагами
 	if area.get_parent().is_in_group("enemies") and get_parent().is_in_group("enemies"):
 		print("# ❌ Хартбокс ігнорує атаку від іншого ворога.")
-		return  # 🔹 Головне правило!
+		return
 	print("# ✅ Виявлено атаку від:", area.name)
 	attacker = area
- # Проверка, может ли атакующий нанести урон
 	if not attacker.has_method("get_damage"):
 		print("# ❌ У атакуючого немає get_damage()")
 		return

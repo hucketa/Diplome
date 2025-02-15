@@ -1,24 +1,28 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = 60.0
-@export var health: float = 40
-@export var damage: float = 2
-@export var attack_range: float = 50.0  # Менший радіус атаки
-@export var attack_delay: float = 0.200  # Швидша атака
+@export var movement_speed: float = 30.0
+@export var health: float = 500
+@export var damage: float = 1
+@export var attack_range: float = 70.0
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var attack_timer = Timer.new()
 @onready var skeleton: AnimatedSprite2D = $Skeleton
 
 var is_attacking: bool = false
 var is_dead: bool = false
+var attack_duration: float = 0.5
 
 func _ready() -> void:
 	print("Скелет ініціалізовано. Додавання таймера атаки.")
 	add_child(attack_timer)
-	attack_timer.wait_time = attack_delay
+	if skeleton and skeleton.get_sprite_frames().has_animation("attack"):
+		attack_duration = skeleton.get_sprite_frames().get_frame_count("attack") / skeleton.get_sprite_frames().get_animation_speed("attack")
+	
+	attack_timer.wait_time = attack_duration
 	attack_timer.one_shot = true
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timeout"))
-	print("Таймер атаки налаштовано: затримка = ", attack_delay)
+	
+	print("Таймер атаки налаштовано: затримка = ", attack_duration)
 
 func _physics_process(delta: float) -> void:
 	if player and is_instance_valid(player) and not is_dead:
@@ -40,7 +44,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			if not is_attacking:
 				start_attack()
-				play_attack_animation()
 
 func start_attack() -> void:
 	print("Запуск атаки...")
@@ -48,6 +51,7 @@ func start_attack() -> void:
 		print("Атака скасована: ворог вже атакує або мертвий.")
 		return
 	is_attacking = true
+	play_attack_animation()
 	attack_timer.start()
 	print("Таймер атаки запущено.")
 
@@ -61,22 +65,24 @@ func _on_attack_timeout() -> void:
 			print("Гравець у зоні атаки! Завдаємо шкоди.")
 			player.take_damage(damage)
 			print("Гравець отримав шкоду: ", damage)
-			is_attacking = false
-		else:
-			print("Гравець вийшов із зони атаки. Атака скасована.")
-			is_attacking = false
+	is_attacking = false
 
 func face_player(direction: Vector2) -> void:
 	print("Поворот скелета у бік гравця.")
-	skeleton.flip_h = direction.x < 0
+	if direction.x < 0:
+		skeleton.flip_h = true
+	else:
+		skeleton.flip_h = false
 	print("flip_h встановлено у: ", skeleton.flip_h)
 
 func play_walk_animation():
 	print("Запуск анімації ходьби скелета.")
-	skeleton.play("walk")
+	if skeleton.animation != "walk":
+		skeleton.play("walk")
 
 func play_attack_animation():
 	print("Запуск анімації атаки скелета.")
+	skeleton.stop()
 	skeleton.play("attack")
 
 func play_die_animation():
