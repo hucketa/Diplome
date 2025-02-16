@@ -4,13 +4,15 @@ extends Node2D
 @onready var player = %Player
 
 func _ready() -> void:
-	#get_tree().debug_collisions_hint = true
+	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	%Resume.text = tr("BACK")
 	%Main_Menu.text = tr("SETTINGS")
 	%Exit.text = tr("MAIN_MENU")
 	%Pause_ui.text = tr("PAUSE")
+
+
 
 func _process(_delta: float) -> void:
 		%Health_bar.value = player.stats.get_health()

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var attack_timer = $AttackTimer
 @onready var stats = $stats
 @onready var hitbox: Area2D = $HitBox
+@onready var hurtbox: Area2D = $HurtBox
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+
+var last_flip: int = 1
 
 func _ready() -> void:
 	attack_timer.connect("timeout", Callable(self, "perform_attack"))
@@ -10,6 +14,9 @@ func _ready() -> void:
 	stats.connect("health_changed", Callable(self, "_on_health_changed"))
 	stats.connect("died", Callable(self, "_on_player_died"))
 	stats.connect("level_up", Callable(self, "_on_level_up"))
+	hitbox.position.x = sprite.position.x
+	hurtbox.position.x = sprite.position.x
+
 
 func _physics_process(delta: float) -> void:
 	if not stats.is_dead:
@@ -21,20 +28,36 @@ func movement(delta: float) -> void:
 	var move = Vector2(x_move, y_move).normalized()
 	velocity = move * 100
 	move_and_slide()
+
 	if x_move != 0:
 		var flip = x_move < 0
-		%AnimatedSprite2D.flip_h = flip
+		sprite.flip_h = flip
+		face_player(flip)
+
 	if move != Vector2.ZERO:
-		%AnimatedSprite2D.play("walk")
+		sprite.play("walk")
 	else:
-		%AnimatedSprite2D.play("idle")
+		sprite.play("idle")
+
+func face_player(is_facing_left: bool) -> void:
+	var new_flip = -1 if is_facing_left else 1
+	if last_flip != new_flip:
+		update_hitbox_position(is_facing_left)
+		last_flip = new_flip
+
+func update_hitbox_position(is_facing_left: bool) -> void:
+	var flip_value = -1 if is_facing_left else 1
+	hitbox.scale.x = abs(hitbox.scale.x) * flip_value
+	hurtbox.scale.x = abs(hurtbox.scale.x) * flip_value
+	hitbox.position.x = sprite.position.x
+	hurtbox.position.x = sprite.position.x
 
 func take_damage(amount: float) -> void:
 	print("# Гравець отримує урон:", amount)
 	stats.take_damage(amount)
 
 func _on_player_died():
-	%AnimatedSprite2D.play("die")
+	sprite.play("die")
 	print("# Гравець загинув.")
 	attack_timer.stop()
 	get_tree().paused = true
@@ -44,9 +67,7 @@ func perform_attack():
 		return
 	var damage_a = stats.calculate_damage()
 	print("# Гравець атакує. Урон:", damage_a)
-	%HitBox.damage = damage_a
+	hitbox.damage = damage_a
 	#hitbox.monitoring = true
-	#print("# Хітбокс активовано.") 
 	#await get_tree().create_timer(0.1).timeout
 	#hitbox.monitoring = false
-	#print("# Хітбокс деактивовано.")
