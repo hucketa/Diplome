@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var health: float = 40
 @export var damage: float = 1
 @export var armor: int = 0
-@export var attack_range: float = 100.0
-@export var attack_delay: float = 0.450  # Таймер між атаками
+@export var attack_delay: float = 0.450
+@export var stun_duration: float = 1
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var attack_timer = Timer.new()
@@ -15,6 +15,7 @@ extends CharacterBody2D
 
 var is_attacking: bool = false
 var is_dead: bool = false
+var is_stunned: bool = false
 var last_flip = 1
 
 func _ready() -> void:
@@ -22,13 +23,26 @@ func _ready() -> void:
 	attack_timer.wait_time = attack_delay
 	attack_timer.one_shot = true
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timeout"))
+	hitbox.monitoring = true
 
 func _physics_process(delta: float) -> void:
-	if player and is_instance_valid(player) and not is_dead:
-		var distance_to_player = global_position.distance_to(player.global_position)
+	if is_dead or is_stunned:
+		return
+	
+	if player and is_instance_valid(player):
 		var direction = (player.global_position - global_position).normalized()
-
-		if distance_to_player > attack_range:
+		
+		if not hitbox.monitoring:
+			hitbox.monitoring = true
+		
+		var player_near = false
+		if hitbox.has_overlapping_areas():
+			for area in hitbox.get_overlapping_areas():
+				if area.is_in_group("Player") and not area.is_in_group("enemies"):
+					player_near = true
+					break
+		
+		if not player_near:
 			velocity = direction * movement_speed
 			move_and_slide()
 			face_player(direction)
@@ -36,26 +50,34 @@ func _physics_process(delta: float) -> void:
 				play_walk_animation()
 		else:
 			velocity = Vector2.ZERO
-			if not is_attacking and not attack_timer.is_stopped():
+			if not is_attacking and attack_timer.is_stopped():
 				start_attack()
 
 func start_attack() -> void:
-	if is_attacking or is_dead:
+	if is_attacking or is_dead or is_stunned:
+		return
+	
+	hitbox.monitoring = true
+	await get_tree().process_frame
+	
+	var can_attack := false
+	if hitbox.has_overlapping_areas():
+		for area in hitbox.get_overlapping_areas():
+			if area.is_in_group("Player") and not area.is_in_group("enemies"):
+				can_attack = true
+				break
+	if not can_attack:
 		return
 	is_attacking = true
-	print("🗡 NightBorne атакует!")
 	sprite.play("attack")
-	hitbox.activate()  # Активація хитбоксу
-
-	await sprite.animation_finished  # Очікуємо завершення атаки
-
-	if hitbox.monitoring and player and is_instance_valid(player):
-		var player_hurtbox = player.get_node("HurtBox")
-		player_hurtbox._apply_damage()
-		print("💥 Гравець отримав урон:", damage)
-
-	attack_timer.start()  # Затримка перед наступною атакою
+	await get_tree().create_timer(attack_delay).timeout
+	if hitbox.monitoring and hitbox.has_overlapping_areas():
+		for area in hitbox.get_overlapping_areas():
+			if area.is_in_group("Player") and not area.is_in_group("enemies"):
+				player.take_damage(damage)
+	attack_timer.start()
 	is_attacking = false
+
 
 func _on_attack_timeout() -> void:
 	is_attacking = false
@@ -67,30 +89,39 @@ func face_player(direction: Vector2) -> void:
 		update_hitbox_position(is_facing_left)
 		last_flip = -1 if is_facing_left else 1
 
-func update_hitbox_position(is_facing_left: bool):
+func update_hitbox_position(is_facing_left: bool) -> void:
 	var flip_value = -1 if is_facing_left else 1
 	hitbox.scale.x = abs(hitbox.scale.x) * flip_value
 	hurtbox.scale.x = abs(hurtbox.scale.x) * flip_value
 	hitbox.position.x = sprite.position.x
 	hurtbox.position.x = sprite.position.x
 
-func play_walk_animation():
+func play_walk_animation() -> void:
 	if sprite.animation != "walk":
 		sprite.play("walk")
 
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
+	
 	health -= max(amount - armor, 1)
 	if health <= 0:
 		die()
 	else:
 		sprite.play("take_damage")
+		apply_stun()
+
+func apply_stun() -> void:
+	is_stunned = true
+	hitbox.monitoring = false
+	await get_tree().create_timer(stun_duration).timeout
+	is_stunned = false
+	hitbox.call_deferred("set_monitoring", true)
 
 func die() -> void:
 	if not is_dead:
 		is_dead = true
 		sprite.play("die")
 		attack_timer.stop()
-		await get_tree().create_timer(0.200).timeout
+		await get_tree().create_timer(0.600).timeout
 		queue_free()

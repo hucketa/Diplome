@@ -4339,6 +4339,9 @@ unique_name_in_owner = true
 [node name="NightBorne_phys" parent="." instance=ExtResource("6_7kg3o")]
 position = Vector2(32, 396)
 
+[node name="NightBorne_phys2" parent="." instance=ExtResource("6_7kg3o")]
+position = Vector2(405, 415)
+
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

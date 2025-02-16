@@ -9,7 +9,7 @@ func _ready() -> void:
 func activate() -> void:
 	print("# Активуємо хитбокс.")
 	set_deferred("monitoring", true)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1).timeout
 	set_deferred("monitoring", false)
 	print("# Вимкнено хитбокс після атаки. monitoring =", monitoring)
 
