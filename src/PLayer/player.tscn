@@ -354,11 +354,14 @@ script = ExtResource("11_pgy40")
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitBox"]
 position = Vector2(-83, -6)
 polygon = PackedVector2Array(167, 98, 168, 98, 168, 96, 170, 96, 170, 87, 169, 87, 168, 95, 166, 95)
+disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
 position = Vector2(-84, -1)
 polygon = PackedVector2Array(174, 73, 174, 74, 175, 74, 175, 76, 177, 77, 177, 81, 178, 81, 178, 94, 177, 95, 177, 98, 175, 98, 175, 99, 174, 100, 174, 101, 175, 101, 176, 100, 177, 99, 178, 98, 178, 95, 179, 94, 179, 81, 178, 80, 178, 77, 177, 76, 177, 74, 175, 73)
+disabled = true
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="HitBox"]
 position = Vector2(-85, 3)
 polygon = PackedVector2Array(190, 94, 191, 94, 191, 85, 190, 82, 190, 80, 189, 77, 187, 73, 186, 71, 185, 69, 183, 67, 182, 66, 181, 65, 178, 65, 178, 66, 180, 66, 182, 67, 183, 69, 184, 70, 184, 72, 185, 72, 186, 74, 187, 77, 188, 79, 189, 83, 190, 86)
+disabled = true
