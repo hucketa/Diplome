@@ -4337,7 +4337,7 @@ size_flags_horizontal = 4
 unique_name_in_owner = true
 
 [node name="Znec_phys" parent="." instance=ExtResource("5_a45jk")]
-position = Vector2(331, 416)
+position = Vector2(112, 43)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

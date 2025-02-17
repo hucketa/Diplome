@@ -18,6 +18,7 @@ var is_stunned: bool = false
 var last_flip = 1
 
 func _ready() -> void:
+	sprite.play("walk")
 	add_child(attack_timer)
 	attack_timer.wait_time = attack_delay
 	attack_timer.one_shot = true
@@ -43,6 +44,8 @@ func _physics_process(delta: float) -> void:
 			velocity = direction * movement_speed
 			move_and_slide()
 			face_player(direction)
+			if not is_attacking:
+				play_walk_animation()
 		else:
 			velocity = Vector2.ZERO
 			if not is_attacking and attack_timer.is_stopped():
@@ -60,9 +63,13 @@ func start_attack() -> void:
 				player.take_damage(damage)
 	attack_timer.start()
 	is_attacking = false
+	if not is_dead and not is_stunned and velocity.length() > 0:
+		play_walk_animation()
 
 func _on_attack_timeout() -> void:
 	is_attacking = false
+	if not is_dead and not is_stunned and velocity.length() > 0:
+		play_walk_animation()
 
 func face_player(direction: Vector2) -> void:
 	var is_facing_left = direction.x > 0
@@ -85,10 +92,8 @@ func play_walk_animation() -> void:
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
-	
 	health -= amount
 	health = max(health, 0)
-
 	if health <= 0:
 		die()
 	else:
@@ -101,6 +106,8 @@ func apply_stun() -> void:
 	await get_tree().create_timer(stun_duration).timeout
 	is_stunned = false
 	hitbox.call_deferred("set_monitoring", true)
+	if not is_dead and velocity.length() > 0:
+		play_walk_animation()
 
 func die() -> void:
 	if not is_dead:
