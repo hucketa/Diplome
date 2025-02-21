@@ -1,6 +1,7 @@
-extends CharacterBody2D
+class_name PlayerCharacterBody extends CharacterBody2D
 
-@onready var attack_timer = $AttackTimer
+@export_range(10.0, 500.0) var movement_speed : float = 100.0
+
 @onready var stats = $stats
 @onready var hitbox: Area2D = $HitBox
 @onready var hurtbox: Area2D = $HurtBox
@@ -8,82 +9,100 @@ extends CharacterBody2D
 
 var last_flip: int = 1
 
+
+var __enemy_in_attack_range : EnemyCharacterBody2D = null
+var __facing_left : bool = false
+var __attacking : bool = false
+
+
 func _ready() -> void:
-	attack_timer.connect("timeout", Callable(self, "perform_attack"))
-	attack_timer.start()
-	stats.connect("health_changed", Callable(self, "_on_health_changed"))
-	stats.connect("died", Callable(self, "_on_player_died"))
-	stats.connect("level_up", Callable(self, "_on_level_up"))
-	hitbox.position.x = sprite.position.x
-	hurtbox.position.x = sprite.position.x
-	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	stats.connect(&"health_changed", Callable(self, &"_on_health_changed"))
+	stats.connect(&"died", Callable(self, &"_on_player_died"))
+	stats.connect(&"level_up", Callable(self, &"_on_level_up"))
+	__update_hitbox_position()
+
 
 func _physics_process(delta: float) -> void:
 	if not stats.is_dead:
-		movement(delta)
+		if not __attacking:
+			if Input.is_action_just_pressed(&"attack"):
+				self.perform_attack()
+			else:
+				movement(delta)
+
 
 func movement(delta: float) -> void:
-	var x_move = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
-	var y_move = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	var move = Vector2(x_move, y_move).normalized()
-	velocity = move * 100
+	var move = Input.get_vector(
+		&"player_move_left",
+		&"player_move_right",
+		&"player_move_up",
+		&"player_move_down"
+	).normalized()
+	if move.x != 0:
+		__facing_left = move.x < 0
+		sprite.flip_h = __facing_left
+		__face_player()
+	if move != Vector2.ZERO:
+		sprite.play(&"walk")
+	else:
+		sprite.play(&"idle")
+	velocity = move * self.movement_speed
 	move_and_slide()
-	if x_move != 0:
-		var flip = x_move < 0
-		sprite.flip_h = flip
-		face_player(flip)
-	if move != Vector2.ZERO and not sprite.animation.begins_with("attack"):
-		sprite.play("walk")
-	elif move == Vector2.ZERO and not sprite.animation.begins_with("attack"):
-		sprite.play("idle")
 
-func face_player(is_facing_left: bool) -> void:
-	var new_flip = -1 if is_facing_left else 1
+
+func __face_player() -> void:
+	var new_flip = -1 if __facing_left else 1
 	if last_flip != new_flip:
-		update_hitbox_position(is_facing_left)
+		__update_hitbox_position()
 		last_flip = new_flip
 
-func update_hitbox_position(is_facing_left: bool) -> void:
-	var flip_value = -1 if is_facing_left else 1
+
+func __update_hitbox_position() -> void:
+	var flip_value = -1 if __facing_left else 1
 	hitbox.scale.x = abs(hitbox.scale.x) * flip_value
 	hurtbox.scale.x = abs(hurtbox.scale.x) * flip_value
 	hitbox.position.x = sprite.position.x
 	hurtbox.position.x = sprite.position.x
 
+
 func take_damage(amount: float) -> void:
 	print("# Гравець отримує урон:", amount)
 	stats.take_damage(amount)
 
+
 func _on_player_died():
-	sprite.play("die")
+	sprite.play(&"die")
 	print("# Гравець загинув.")
-	attack_timer.stop()
 	get_tree().paused = true
+
 
 func perform_attack():
 	if stats.is_dead:
 		return
-	hitbox.monitoring = true  # Включаем хитбокс перед проверкой
-	await get_tree().process_frame  # Ждём один кадр, чтобы обновились столкновения
-	var enemy_nearby = false
-	for area in hitbox.get_overlapping_areas():
-		if area.is_in_group("enemies"):
-			enemy_nearby = true
-			break
-	if not enemy_nearby:
+	if not __enemy_in_attack_range:
 		print("# Немає ворогів у зоні атаки")
-		hitbox.monitoring = false  # Отключаем хитбокс, если врагов нет
-		sprite.play("idle")
+		sprite.play(&"idle")
 		return
-	sprite.play("attack3")
-	await sprite.animation_finished
-	var damage_a = stats.calculate_damage()
-	print("# Гравець атакує. Урон:", damage_a)
-	hitbox.damage = damage_a
-	await get_tree().create_timer(0.1).timeout
-	hitbox.monitoring = false
+	__attacking = true
+	sprite.play(&"attack3")
+	await self.sprite.animation_finished
+	__attacking = false
 
 
 func _on_animation_finished():
-	if sprite.animation.begins_with("attack"):
-		sprite.play("idle")
+	match sprite.animation:
+		&"attack3":
+			if __enemy_in_attack_range:
+				var damage = stats.calculate_damage()
+				print("# Гравець атакує. Урон:", damage)
+				__enemy_in_attack_range.take_damage(damage)
+
+
+func __enemy_entered_attack_range(area: Area2D) -> void:
+	__enemy_in_attack_range = area.get_parent()
+	return
+
+
+func __enemy_exited_attack_range(area: Area2D) -> void:
+	__enemy_in_attack_range = null
+	return

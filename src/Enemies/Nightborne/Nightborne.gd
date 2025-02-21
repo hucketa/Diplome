@@ -1,14 +1,12 @@
-extends CharacterBody2D
+class_name EnemyCharacterBody2D extends CharacterBody2D
 
 @export var movement_speed: float = 60.0
 @export var health: float = 200
 @export var damage: float = 1
 @export var armor: int = 0
-@export var attack_delay: float = 0.450
 @export var stun_duration: float = 2
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var attack_timer := Timer.new()
+@onready var player = get_tree().get_first_node_in_group(&"Player")
 @onready var hitbox: Area2D = $HitBox
 @onready var hurtbox: Area2D = $HurtBox
 @onready var sprite: AnimatedSprite2D = %NightBorne
@@ -18,64 +16,44 @@ var is_dead: bool = false
 var is_stunned: bool = false
 var last_flip := 1
 
-func _ready() -> void:
-	add_child(attack_timer)
-	attack_timer.wait_time = attack_delay
-	attack_timer.one_shot = true
-	attack_timer.connect("timeout", Callable(self, "_on_attack_timeout"))
-	hitbox.monitoring = true
-	hitbox.position.x = sprite.position.x
-	hurtbox.position.x = sprite.position.x
+var __player_in_attack_range : PlayerCharacterBody = null
+
+
+func take_damage(amount: float) -> void:
+	if is_dead:
+		return
+	health -= max(amount - armor, 1)
+	if health <= 0:
+		__die()
+	else:
+		if is_attacking:
+			is_attacking = false
+		sprite.play(&"take_damage")
+		__apply_stun()
+
 
 func _physics_process(delta: float) -> void:
 	if is_dead or is_stunned:
 		return
+	
 	if player and is_instance_valid(player):
 		var direction: Vector2 = (player.global_position - global_position).normalized()
-		if not hitbox.monitoring:
-			hitbox.monitoring = true
-		var player_near := false
-		if hitbox.has_overlapping_areas():
-			for area in hitbox.get_overlapping_areas():
-				if area.is_in_group("Player") and not area.is_in_group("enemies"):
-					player_near = true
-					break
-		if not player_near:
+		if __player_in_attack_range:
+			velocity = Vector2.ZERO
+			if not is_attacking:
+				start_attack()
+		else:
 			velocity = direction * movement_speed
-			move_and_slide()
 			face_player(direction)
 			if not is_attacking:
 				play_walk_animation()
-		else:
-			velocity = Vector2.ZERO
-			if not is_attacking and attack_timer.is_stopped():
-				start_attack()
+		move_and_slide()
+
 
 func start_attack() -> void:
-	if is_attacking or is_dead or is_stunned:
-		return
-	hitbox.monitoring = true
-	await get_tree().process_frame
-	var can_attack := false
-	if hitbox.has_overlapping_areas():
-		for area in hitbox.get_overlapping_areas():
-			if area.is_in_group("Player") and not area.is_in_group("enemies"):
-				can_attack = true
-				break
-	if not can_attack or is_stunned:
-		return
 	is_attacking = true
-	sprite.play("attack")
-	await get_tree().create_timer(attack_delay).timeout
-	if hitbox.monitoring and hitbox.has_overlapping_areas() and not is_stunned:
-		for area in hitbox.get_overlapping_areas():
-			if area.is_in_group("Player") and not area.is_in_group("enemies"):
-				player.take_damage(damage)
-	attack_timer.start()
-	is_attacking = false
+	sprite.play(&"attack")
 
-func _on_attack_timeout() -> void:
-	is_attacking = false
 
 func face_player(direction: Vector2) -> void:
 	var is_facing_left := direction.x < 0
@@ -84,6 +62,7 @@ func face_player(direction: Vector2) -> void:
 		update_hitbox_position(is_facing_left)
 		last_flip = -1 if is_facing_left else 1
 
+
 func update_hitbox_position(is_facing_left: bool) -> void:
 	var flip_value := -1 if is_facing_left else 1
 	hitbox.scale.x = abs(hitbox.scale.x) * flip_value
@@ -91,45 +70,39 @@ func update_hitbox_position(is_facing_left: bool) -> void:
 	hitbox.position.x = sprite.position.x
 	hurtbox.position.x = sprite.position.x
 
+
 func play_walk_animation() -> void:
-	if sprite.animation != "walk":
-		sprite.play("walk")
+	sprite.play(&"walk")
 
-func take_damage(amount: float) -> void:
-	if is_dead:
-		return
-	health -= max(amount - armor, 1)
-	if health <= 0:
-		die()
-	else:
-		if is_attacking:
-			is_attacking = false
-			attack_timer.stop()
-		sprite.play("take_damage")
-		apply_stun()
 
-func apply_stun() -> void:
-	is_stunned = true
-	hitbox.set_deferred("monitoring", false)  # Полностью отключаем проверку
-	hitbox.set_deferred("monitorable", false)  # Запрещаем отправку сигналов
-	hitbox.set_deferred("collision_layer", 0)  # Полностью убираем коллизию
-	hitbox.set_deferred("collision_mask", 0)  # Полностью убираем маску столкновений
-	is_attacking = false
-	attack_timer.stop()
-
-	await get_tree().create_timer(stun_duration).timeout
-
-	if not is_dead:  # Включаем хитбокс только если враг жив
-		is_stunned = false
-		hitbox.set_deferred("monitoring", true)
-		hitbox.set_deferred("monitorable", true)
-		hitbox.set_deferred("collision_layer", 1)  # Восстанавливаем коллизию
-		hitbox.set_deferred("collision_mask", 1)  # Восстанавливаем маску столкновений
-
-func die() -> void:
+func __die() -> void:
 	if not is_dead:
 		is_dead = true
-		sprite.play("die")
-		attack_timer.stop()
-		await get_tree().create_timer(0.600).timeout
-		queue_free()
+		sprite.play(&"die")
+
+
+func __apply_stun() -> void:
+	is_stunned = true
+	await get_tree().create_timer(stun_duration).timeout
+	is_stunned = false
+
+
+func __animation_finished() -> void:
+	match self.sprite.animation:
+		&"attack":
+			if __player_in_attack_range:
+				__player_in_attack_range.take_damage(self.damage)
+			self.is_attacking = false
+		&"die":
+			self.call_deferred(&"queue_free")
+	return
+
+
+func __player_entered(_v : Area2D) -> void:
+	__player_in_attack_range = _v.get_parent()
+	return
+
+
+func __player_exited(area: Area2D) -> void:
+	__player_in_attack_range = null
+	return

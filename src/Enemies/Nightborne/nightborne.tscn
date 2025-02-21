@@ -1,7 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://cpe7gxvlh6fpr"]
+[gd_scene load_steps=64 format=3 uid="uid://cpe7gxvlh6fpr"]
 
 [ext_resource type="Script" path="res://src/Enemies/Nightborne/Nightborne.gd" id="1_1fqrk"]
-[ext_resource type="Texture2D" uid="uid://cv4guups2jn5q" path="res://src/Enemies/Nightborne/NightBorne.png" id="2_71kwx"]
+[ext_resource type="Texture2D" uid="uid://k3x4uj10vy7k" path="res://src/Enemies/Nightborne/NightBorne.png" id="2_71kwx"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="3_q82rn"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="4_vyypx"]
 
@@ -264,7 +264,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_728gu")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 8.0
 }, {
@@ -422,36 +422,52 @@ animations = [{
 radius = 6.75046
 height = 51.37
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3inet"]
+radius = 34.0
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at3g5"]
+radius = 14.0
+height = 62.0
+
 [node name="NightBorne_phys" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_1fqrk")
 
 [node name="NightBorne" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(43, 35)
+position = Vector2(2.728, -18.272)
 scale = Vector2(2.0932, 2.0932)
 sprite_frames = SubResource("SpriteFrames_fi7ni")
-animation = &"attack"
-frame_progress = 0.697008
+animation = &"take_damage"
 
 [node name="nightborne" type="CollisionShape2D" parent="."]
-position = Vector2(41, 53)
+position = Vector2(0.727997, -0.272003)
 scale = Vector2(2.07393, 1.24586)
 shape = SubResource("CapsuleShape2D_kk1wl")
 debug_color = Color(0, 0.635294, 0.407843, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+position = Vector2(-40.272, -53.272)
+collision_layer = 16
+collision_mask = 32
 script = ExtResource("3_q82rn")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-light_mask = 2
-position = Vector2(-34, 0)
-polygon = PackedVector2Array(93, 85, 101, 79, 109, 74, 117, 64, 101, 59, 72, 72, 81, 84, 86, 88)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(52.272, 55.272)
+shape = SubResource("CapsuleShape2D_3inet")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["attack"]]
+position = Vector2(-40.272, -53.272)
+collision_layer = 64
+collision_mask = 8
 script = ExtResource("4_vyypx")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
-visibility_layer = 2
-position = Vector2(-22.252, -48.3582)
-scale = Vector2(0.904166, 1.64663)
-polygon = PackedVector2Array(14, 83, 10, 83, 10, 77, 12, 77, 12, 75, 14, 75, 14, 73, 20, 73, 20, 70, 24, 70, 24, 68, 26, 69, 26, 66, 31, 66, 30, 64, 32, 64, 33, 62, 35, 62, 35, 60, 36, 60, 37, 58, 39, 58, 39, 56, 41, 56, 41, 46, 33, 46, 33, 47, 31, 48, 31, 49, 28, 50, 28, 51, 26, 52, 26, 53, 24, 54, 24, 56, 22, 56, 22, 57, 18, 58, 18, 59, 18, 60, 16, 60, 16, 62, 14, 62, 14, 63, 14, 64, 12, 64, 12, 66, 9, 67, 9, 68, 7, 69, 7, 70, 5, 71, 5, 72, 3, 73, 3, 74, -1, 75, -1, 66, 1, 66, 1, 65, 3, 64, 3, 62, 5, 62, 6, 60, 7, 60, 8, 58, 9, 58, 9, 56, 11, 56, 12, 54, 13, 54, 14, 52, 16, 52, 18, 51, 18, 50, 19, 50, 20, 49, 20, 48, 24, 47, 24, 46, 26, 46, 26, 43, 28, 43, 28, 41, 32, 41, 33, 40, 39, 39, 39, 41, 40, 41, 41, 41, 41, 39, 43, 39, 43, 38, 49, 37, 50, 37, 51, 37, 54, 38, 55, 38, 56, 39, 58, 39, 58, 41, 60, 41, 61, 41, 62, 41, 62, 39, 62, 37, 60, 37, 60, 36, 60, 35, 58, 35, 58, 31, 60, 31, 60, 33, 63, 33, 64, 35, 66, 35, 66, 38, 65, 41, 68, 41, 68, 39, 69, 39, 70, 39, 70, 37, 70, 35, 67, 35, 68, 34, 68, 31, 70, 31, 71, 34, 71, 33, 72, 34, 72, 35, 74, 35, 74, 41, 72, 41, 72, 49, 70, 49, 70, 51, 64, 52, 64, 53, 66, 54, 66, 55, 70, 55, 70, 54, 74, 54, 74, 58, 72, 58, 72, 60, 70, 60, 70, 62, 64, 62, 64, 60, 60, 60, 60, 58, 58, 58, 58, 55, 54, 56, 54, 58, 56, 58, 56, 59, 56, 61, 57, 61, 58, 61, 60, 62, 62, 63, 62, 68, 60, 69, 60, 70, 58, 71, 57, 73, 49, 73, 49, 75, 47, 75, 47, 76, 45, 77, 45, 78, 45, 79, 43, 79, 43, 80, 41, 81, 41, 75, 43, 75, 43, 73, 45, 73, 45, 71, 49, 70, 49, 69, 51, 68, 51, 64, 45, 65, 45, 67, 43, 67, 43, 68, 38, 68, 39, 70, 37, 71, 37, 71, 37, 72, 34, 73, 35, 75, 31, 75, 31, 77, 16, 77, 16, 79, 14, 79)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(40.272, 52.272)
+shape = SubResource("CapsuleShape2D_at3g5")
+
+[connection signal="animation_finished" from="NightBorne" to="." method="__animation_finished"]
+[connection signal="area_entered" from="HitBox" to="." method="__player_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="__player_exited"]

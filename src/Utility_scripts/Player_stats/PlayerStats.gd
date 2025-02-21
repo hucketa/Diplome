@@ -1,4 +1,4 @@
-extends Node
+class_name PlayerStats extends Node
 
 @export var max_health: float = 100
 @export var current_health: float = 100

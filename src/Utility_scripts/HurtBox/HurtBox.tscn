@@ -6,9 +6,13 @@
 size = Vector2(49, 71)
 
 [node name="HurtBox" type="Area2D" groups=["attack"]]
+monitorable = false
 script = ExtResource("1_yvsm3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
 position = Vector2(75, 55)
 shape = SubResource("RectangleShape2D_xykbq")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
