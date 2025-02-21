@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://baxg1pdu6lis7" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="PackedScene" uid="uid://dovqnco6hwina" path="res://src/Enemies/Zhnec/zhec.tscn" id="5_a45jk"]
+[ext_resource type="PackedScene" uid="uid://cpe7gxvlh6fpr" path="res://src/Enemies/Nightborne/nightborne.tscn" id="5_eebki"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
 
@@ -4335,9 +4335,9 @@ size_flags_horizontal = 4
 
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 unique_name_in_owner = true
+position = Vector2(4, 382)
 
-[node name="Znec_phys" parent="." instance=ExtResource("5_a45jk")]
-position = Vector2(112, 43)
+[node name="NightBorne_phys" parent="." instance=ExtResource("5_eebki")]
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

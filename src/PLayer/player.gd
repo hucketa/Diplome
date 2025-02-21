@@ -16,7 +16,7 @@ func _ready() -> void:
 	stats.connect("level_up", Callable(self, "_on_level_up"))
 	hitbox.position.x = sprite.position.x
 	hurtbox.position.x = sprite.position.x
-
+	sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func _physics_process(delta: float) -> void:
 	if not stats.is_dead:
@@ -28,15 +28,13 @@ func movement(delta: float) -> void:
 	var move = Vector2(x_move, y_move).normalized()
 	velocity = move * 100
 	move_and_slide()
-
 	if x_move != 0:
 		var flip = x_move < 0
 		sprite.flip_h = flip
 		face_player(flip)
-
-	if move != Vector2.ZERO:
+	if move != Vector2.ZERO and not sprite.animation.begins_with("attack"):
 		sprite.play("walk")
-	else:
+	elif move == Vector2.ZERO and not sprite.animation.begins_with("attack"):
 		sprite.play("idle")
 
 func face_player(is_facing_left: bool) -> void:
@@ -65,9 +63,27 @@ func _on_player_died():
 func perform_attack():
 	if stats.is_dead:
 		return
+	hitbox.monitoring = true  # Включаем хитбокс перед проверкой
+	await get_tree().process_frame  # Ждём один кадр, чтобы обновились столкновения
+	var enemy_nearby = false
+	for area in hitbox.get_overlapping_areas():
+		if area.is_in_group("enemies"):
+			enemy_nearby = true
+			break
+	if not enemy_nearby:
+		print("# Немає ворогів у зоні атаки")
+		hitbox.monitoring = false  # Отключаем хитбокс, если врагов нет
+		sprite.play("idle")
+		return
+	sprite.play("attack3")
+	await sprite.animation_finished
 	var damage_a = stats.calculate_damage()
 	print("# Гравець атакує. Урон:", damage_a)
 	hitbox.damage = damage_a
-	#hitbox.monitoring = true
-	#await get_tree().create_timer(0.1).timeout
-	#hitbox.monitoring = false
+	await get_tree().create_timer(0.1).timeout
+	hitbox.monitoring = false
+
+
+func _on_animation_finished():
+	if sprite.animation.begins_with("attack"):
+		sprite.play("idle")

@@ -178,7 +178,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i06nd")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -321,7 +321,9 @@ unique_name_in_owner = true
 position = Vector2(87, 85)
 scale = Vector2(1.35938, 1.35938)
 sprite_frames = SubResource("SpriteFrames_dl7bm")
-animation = &"walk"
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 visible = false
@@ -351,17 +353,6 @@ unique_name_in_owner = true
 position = Vector2(-57, 30)
 script = ExtResource("11_pgy40")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(-83, -6)
-polygon = PackedVector2Array(167, 98, 168, 98, 168, 96, 170, 96, 170, 87, 169, 87, 168, 95, 166, 95)
-disabled = true
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(-84, -1)
-polygon = PackedVector2Array(174, 73, 174, 74, 175, 74, 175, 76, 177, 77, 177, 81, 178, 81, 178, 94, 177, 95, 177, 98, 175, 98, 175, 99, 174, 100, 174, 101, 175, 101, 176, 100, 177, 99, 178, 98, 178, 95, 179, 94, 179, 81, 178, 80, 178, 77, 177, 76, 177, 74, 175, 73)
-disabled = true
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(-85, 3)
-polygon = PackedVector2Array(190, 94, 191, 94, 191, 85, 190, 82, 190, 80, 189, 77, 187, 73, 186, 71, 185, 69, 183, 67, 182, 66, 181, 65, 178, 65, 178, 66, 180, 66, 182, 67, 183, 69, 184, 70, 184, 72, 185, 72, 186, 74, 187, 77, 188, 79, 189, 83, 190, 86)
-disabled = true
+position = Vector2(-162, -2)
+polygon = PackedVector2Array(174, 94, 176, 97, 178, 100, 182, 102, 185, 102, 189, 104, 195, 106, 196, 106, 194, 108, 194, 111, 196, 112, 197, 112, 200, 109, 201, 108, 204, 106, 204, 105, 201, 100, 194, 100, 191, 99, 186, 97, 183, 93, 178, 89)

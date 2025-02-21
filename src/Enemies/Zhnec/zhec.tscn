@@ -301,7 +301,7 @@ animations = [{
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tnrs7"]
 a = Vector2(2, -2)
-b = Vector2(2, 68)
+b = Vector2(2, 5)
 
 [node name="Znec_phys" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_12ixa")

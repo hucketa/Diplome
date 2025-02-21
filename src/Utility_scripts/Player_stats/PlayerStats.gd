@@ -1,8 +1,8 @@
 extends Node
 
-@export var max_health: float = 100000
+@export var max_health: float = 100
 @export var current_health: float = 100
-@export var damage: float = 0
+@export var damage: float = 2
 @export var armor: int = 0
 @export var crit_chance: float = 0
 @export var crit_multiplier: float = 0
