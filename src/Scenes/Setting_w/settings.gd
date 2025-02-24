@@ -45,16 +45,17 @@ func _ready():
 	
 
 func change_language_ui():
-	label.text = tr("SETTINGS")
-	caption_sound.text = tr("SOUND")
-	caption_music.text = tr("MUSIC")
-	caption_bright.text = tr("BRIGHTNESS")
-	caption_odd.text = tr("ADDITIONAL")
-	label_hm.text = tr("ONE_TRY")
-	label_hp.text = tr("HEALTH_BAR_SHOW")
-	label_exp.text = tr("LOWER_EXP")
-	label_mute_s.text = tr("SOUND_MUTE")
-	label_mute_m.text = tr("MUSIC_MUTE")
+	label.text = tr(&"SETTINGS")
+	caption_sound.text = tr(&"SOUND")
+	caption_music.text = tr(&"MUSIC")
+	caption_bright.text = tr(&"BRIGHTNESS")
+	caption_odd.text = tr(&"ADDITIONAL")
+	label_hm.text = tr(&"ONE_TRY")
+	label_hp.text = tr(&"HEALTH_BAR_SHOW")
+	label_exp.text = tr(&"LOWER_EXP")
+	label_mute_s.text = tr(&"SOUND_MUTE")
+	label_mute_m.text = tr(&"MUSIC_MUTE")
+	back_button.text = tr(&"BACK")
 
 func load_settings():
 	var config = ConfigFile.new()

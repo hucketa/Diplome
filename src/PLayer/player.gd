@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 		if not __attacking:
 			if  __enemy_in_attack_range!=null:
 				self.perform_attack()
+				pass
 			else:
 				movement(delta)
 

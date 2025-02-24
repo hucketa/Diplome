@@ -380,9 +380,11 @@ debug_color = Color(0, 0.635294, 0.431373, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 unique_name_in_owner = true
-light_mask = 16
-visibility_layer = 32
+light_mask = 0
+visibility_layer = 0
 position = Vector2(-120, -86)
+collision_layer = 16
+collision_mask = 32
 script = ExtResource("3_0g34n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

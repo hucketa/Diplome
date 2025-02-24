@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack3",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -331,7 +331,7 @@ unique_name_in_owner = true
 position = Vector2(4, -38.9997)
 scale = Vector2(1.35938, 1.35938)
 sprite_frames = SubResource("SpriteFrames_dl7bm")
-animation = &"attack1"
+animation = &"attack3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0, 0.000320435)
