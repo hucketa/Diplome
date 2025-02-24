@@ -1,7 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://tw42ufbb62xu"]
+[gd_scene load_steps=54 format=3 uid="uid://tw42ufbb62xu"]
 
 [ext_resource type="Script" path="res://src/Enemies/Sceleton/skeleton_enemy.gd" id="1_lmrf4"]
-[ext_resource type="Texture2D" uid="uid://ihre5i1t70gs" path="res://src/Enemies/Sceleton/Skeleton enemy.png" id="2_tpix2"]
+[ext_resource type="Texture2D" uid="uid://cei8aiwf4u2x4" path="res://src/Enemies/Sceleton/Skeleton enemy.png" id="2_tpix2"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="3_0g34n"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="4_ubonh"]
 
@@ -288,7 +288,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6icv0")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 6.0
 }, {
@@ -302,7 +302,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xfpct")
 }],
-"loop": true,
+"loop": false,
 "name": &"take_damage",
 "speed": 8.0
 }, {
@@ -343,7 +343,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ark4")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 8.0
 }]
@@ -352,40 +352,53 @@ animations = [{
 radius = 18.0
 height = 76.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axhiy"]
+radius = 33.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3b11"]
+radius = 17.0
+height = 62.0
+
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(1, 1)
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_lmrf4")
 
 [node name="Skeleton" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(123, 84)
+position = Vector2(3, -2)
 scale = Vector2(2.19241, 1.79265)
 sprite_frames = SubResource("SpriteFrames_28r57")
 animation = &"attack"
-frame = 12
-frame_progress = 1.0
 
 [node name="CollisionSkelton" type="CollisionShape2D" parent="."]
-position = Vector2(121, 87)
+position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 32
+position = Vector2(-120, -86)
 script = ExtResource("3_0g34n")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(-111, 5)
-polygon = PackedVector2Array(145, 89, 146, 91, 163, 91, 162, 89, 163, 84, 159, 86, 154, 88, 149, 89)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(120, 84)
+shape = SubResource("CapsuleShape2D_axhiy")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 8
 script = ExtResource("4_ubonh")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
-visibility_layer = 2
-position = Vector2(-98, 10)
-scale = Vector2(0.87045, 0.903351)
-polygon = PackedVector2Array(93, 121, 94, 118, 95, 118, 96, 116, 99, 116, 99, 112, 101, 111, 101, 102, 104, 102, 104, 98, 106, 97, 107, 91, 104, 91, 104, 86, 112, 86, 112, 82, 109, 81, 110, 75, 105, 75, 105, 77, 102, 77, 102, 79, 99, 79, 99, 85, 96, 86, 96, 88, 91, 88, 91, 86, 94, 86, 93, 79, 95, 79, 96, 75, 98, 75, 99, 73, 101, 72, 101, 66, 104, 65, 104, 63, 106, 63, 107, 61, 114, 61, 115, 50, 117, 49, 118, 47, 131, 47, 131, 49, 133, 49, 133, 51, 135, 51, 136, 52, 136, 55, 136, 57, 136, 59, 135, 60, 134, 61, 133, 63, 133, 64, 131, 65, 128, 65, 127, 65, 126, 66, 127, 67, 133, 67, 136, 68, 137, 69, 139, 70, 140, 72, 141, 74, 142, 77, 142, 79, 144, 80, 145, 83, 146, 86, 148, 89, 149, 90, 150, 92, 150, 94, 148, 95, 147, 93, 145, 92, 144, 91, 142, 90, 142, 87, 140, 86, 139, 82, 137, 82, 137, 78, 131, 77, 131, 82, 128, 82, 128, 84, 118, 84, 118, 88, 120, 88, 120, 86, 123, 86, 123, 94, 126, 95, 126, 97, 128, 98, 129, 100, 131, 100, 131, 102, 134, 102, 134, 111, 131, 112, 131, 114, 129, 114, 129, 116, 129, 118, 131, 118, 131, 120, 123, 120, 123, 114, 125, 114, 125, 110, 127, 109, 128, 109, 128, 105, 126, 104, 126, 102, 123, 102, 123, 100, 120, 100, 120, 98, 118, 98, 118, 102, 115, 102, 115, 107, 112, 107, 112, 100, 110, 100, 110, 103, 107, 104, 107, 111, 104, 111, 104, 118, 102, 118, 102, 121)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_g3b11")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[connection signal="animation_finished" from="Skeleton" to="." method="__animation_finished"]
+[connection signal="area_entered" from="HitBox" to="." method="__player_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="__player_exited"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://dovqnco6hwina"]
+[gd_scene load_steps=47 format=3 uid="uid://dovqnco6hwina"]
 
-[ext_resource type="Texture2D" uid="uid://yp3up82awiuw" path="res://src/Enemies/Zhnec/Bringer_of_Deadth/Bringer-of-Death-SpritSheet.png" id="1_7f15j"]
+[ext_resource type="Texture2D" uid="uid://bobw0ao72vgk4" path="res://src/Enemies/Zhnec/Bringer_of_Deadth/Bringer-of-Death-SpritSheet.png" id="1_7f15j"]
 [ext_resource type="Script" path="res://src/Enemies/Zhnec/Bringer_of_Deadth/character_body_2d.gd" id="1_12ixa"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="3_n8wdh"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="4_bek32"]
@@ -186,7 +186,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -299,39 +299,54 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_taj2s"]
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6i55g"]
+radius = 37.4833
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tnrs7"]
 a = Vector2(2, -2)
 b = Vector2(2, 5)
 
 [node name="Znec_phys" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(-131, -88)
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_12ixa")
 
 [node name="Reaper" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(92, 58)
+position = Vector2(91, 58)
 rotation = 0.00523599
 scale = Vector2(1.31934, 1.28903)
 sprite_frames = SubResource("SpriteFrames_okag4")
-animation = &"walk"
+animation = &"attack"
 frame = 7
 frame_progress = 1.0
 
 [node name="HurtBox" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 64
+collision_mask = 8
 script = ExtResource("3_n8wdh")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
-visibility_layer = 3
-position = Vector2(-117, 10)
-scale = Vector2(1.275, 0.922794)
-polygon = PackedVector2Array(120, 116, 132, 116, 132, 110, 131, 108, 131, 106, 130, 105, 128, 103, 128, 98, 130, 97, 130, 96, 138, 96, 139, 97, 139, 96, 140, 95, 140, 93, 142, 93, 142, 96, 143, 96, 143, 99, 144, 104, 145, 107, 146, 109, 147, 112, 147, 114, 146, 115, 145, 115, 145, 116, 148, 116, 153, 116, 155, 116, 154, 115, 153, 114, 153, 113, 152, 112, 151, 108, 151, 106, 148, 104, 147, 100, 146, 96, 147, 95, 149, 94, 150, 91, 152, 90, 154, 89, 155, 88, 156, 85, 159, 86, 159, 82, 160, 81, 161, 80, 162, 76, 161, 75, 160, 73, 157, 72, 156, 70, 155, 69, 154, 68, 153, 67, 151, 65, 151, 64, 147, 60, 145, 57, 142, 54, 139, 49, 136, 49, 136, 48, 131, 48, 131, 49, 130, 49, 129, 52, 128, 56, 126, 60, 124, 61, 122, 66, 122, 69, 119, 69, 119, 69, 123, 71, 123, 72, 122, 73, 120, 75, 118, 76, 115, 79, 113, 81, 112, 86, 112, 90, 113, 90, 114, 93, 115, 94, 116, 95, 117, 90, 118, 91, 120, 92, 119, 93, 120, 93, 121, 90, 119, 89, 120, 88, 121, 89, 122, 87, 120, 86, 119, 82, 119, 80, 120, 78, 122, 77, 124, 76, 129, 73, 129, 76, 127, 77, 127, 79, 128, 79, 129, 80, 130, 83, 130, 86, 129, 88, 128, 89, 128, 91, 126, 93, 125, 95, 124, 96, 123, 101, 123, 103, 125, 104, 125, 107, 126, 110, 126, 112, 124, 114, 121, 114, 119, 116)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(15, 77)
+shape = SubResource("CapsuleShape2D_taj2s")
 
 [node name="HitBox" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 16
+collision_mask = 32
 script = ExtResource("4_bek32")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-position = Vector2(-100, -13)
-polygon = PackedVector2Array(60, 110, 61, 110, 63, 108, 66, 105, 71, 101, 74, 100, 78, 100, 79, 104, 78, 105, 78, 107, 81, 107, 84, 111, 87, 112, 90, 112, 90, 107, 88, 99, 86, 95, 81, 94, 78, 92, 76, 90, 74, 88, 67, 93, 66, 96, 63, 100, 59, 105)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(62, 78)
+shape = SubResource("CircleShape2D_6i55g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(89, 50)
+position = Vector2(91, 49)
 shape = SubResource("SegmentShape2D_tnrs7")
+
+[connection signal="animation_finished" from="Reaper" to="." method="__animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="__player_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="__player_exited"]

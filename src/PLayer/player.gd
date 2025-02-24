@@ -8,9 +8,9 @@ class_name PlayerCharacterBody extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 
 var last_flip: int = 1
+#EnemyCharacterBody2D
 
-
-var __enemy_in_attack_range : EnemyCharacterBody2D = null
+var __enemy_in_attack_range = null
 var __facing_left : bool = false
 var __attacking : bool = false
 
@@ -25,7 +25,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not stats.is_dead:
 		if not __attacking:
-			if Input.is_action_just_pressed(&"attack"):
+			if  __enemy_in_attack_range!=null:
 				self.perform_attack()
 			else:
 				movement(delta)
