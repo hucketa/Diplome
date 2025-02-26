@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack3",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -314,21 +314,21 @@ radius = 21.0
 height = 70.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo2d0"]
-radius = 22.0
-height = 76.0
+radius = 29.0
+height = 100.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13uen"]
-radius = 44.0
-height = 108.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_g741v"]
+radius = 28.1603
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(-27, -49)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_sddph")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(4, -38.9997)
+position = Vector2(4, -36)
 scale = Vector2(1.35938, 1.35938)
 sprite_frames = SubResource("SpriteFrames_dl7bm")
 animation = &"attack3"
@@ -350,7 +350,7 @@ collision_mask = 16
 script = ExtResource("10_52sc8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(6, 124)
+position = Vector2(1, 121)
 shape = SubResource("CapsuleShape2D_xo2d0")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Player", "attack"]]
@@ -361,8 +361,8 @@ collision_mask = 64
 script = ExtResource("11_pgy40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(15, 88.9997)
-shape = SubResource("CapsuleShape2D_13uen")
+position = Vector2(6, 93.9997)
+shape = SubResource("CircleShape2D_g741v")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__enemy_entered_attack_range"]

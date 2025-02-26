@@ -2,11 +2,11 @@ class_name PlayerStats extends Node
 
 @export var max_health: float = 100
 @export var current_health: float = 100
-@export var damage: float = 1
+@export var damage: float = 100
 @export var armor: int = 0
 @export var crit_chance: float = 0
 @export var crit_multiplier: float = 0
-@export var attack_speed: float = 1.0
+@export var attack_speed: float = 2.0
 @export var current_experience: int = 0
 @export var experience_to_level_up: int = 100
 @export var level: int = 1

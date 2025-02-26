@@ -352,13 +352,12 @@ animations = [{
 radius = 18.0
 height = 76.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axhiy"]
-radius = 33.0
-height = 66.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3b11"]
 radius = 17.0
 height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0myx"]
+radius = 35.0
 
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(1, 1)
@@ -378,28 +377,25 @@ position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_xkrho")
 debug_color = Color(0, 0.635294, 0.431373, 0.419608)
 
-[node name="HitBox" type="Area2D" parent="." groups=["attack", "enemies"]]
+[node name="HurtBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 unique_name_in_owner = true
-light_mask = 0
-visibility_layer = 0
-position = Vector2(-120, -86)
+collision_layer = 67
+collision_mask = 8
+script = ExtResource("4_ubonh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_g3b11")
+
+[node name="HitBox" type="Area2D" parent="." groups=["attack", "enemies"]]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource("3_0g34n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(120, 84)
-shape = SubResource("CapsuleShape2D_axhiy")
-
-[node name="HurtBox" type="Area2D" parent="." groups=["attack", "enemies"]]
-unique_name_in_owner = true
-collision_layer = 64
-collision_mask = 8
-script = ExtResource("4_ubonh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, 3)
-shape = SubResource("CapsuleShape2D_g3b11")
+light_mask = 2
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_m0myx")
 
 [connection signal="animation_finished" from="Skeleton" to="." method="__animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__player_entered"]

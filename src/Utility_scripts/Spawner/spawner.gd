@@ -4,17 +4,13 @@ const enemy_nightborne = preload("res://src/Enemies/Nightborne/nightborne.tscn")
 const enemy_skeleton = preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn")
 const enemy_reaper = preload("res://src/Enemies/Zhnec/zhec.tscn")
 @onready var spawn_timer: Timer = $Area2D/SpawnTimer
-# Затримка між хвилями
 @export var wave_delay: float = 5.0
-# Інтервал між спавном ворогів
 @export var spawn_interval: float = 1.5
 @onready var spawn_area: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var label: Label = $"../UI/MarginContainer/VBoxContainer/Label"
-
-# Параметри хвиль
 var current_wave: int = 0
-var base_enemy_count: int = 5
-var wave_multiplier: float = 1.3
+var base_enemy_count: int = 4
+var wave_multiplier: float = 1.2
 var enemies_to_spawn: int = 0
 var spawned_enemies: Array = []
 
@@ -24,10 +20,8 @@ func _ready():
 	spawn_timer.connect("timeout", Callable(self, "_on_SpawnTimer_timeout"))
 	start_wave()
 
-# Запуск нової хвилі
 func start_wave():
 	current_wave += 1
-#	clear_enemies()
 	label.text = "Хвиля " + str(current_wave)
 	print("Початок хвилі:", current_wave)
 	enemies_to_spawn = int(base_enemy_count * pow(wave_multiplier, current_wave))
@@ -46,7 +40,6 @@ func _on_SpawnTimer_timeout():
 		spawn_timer.stop()
 		print("Всі вороги для хвилі", current_wave, "заспавнені.")
 
-# Створення ворога
 func spawn_enemy():
 	var enemy_type = choose_enemy_type()
 	var enemy_scene = get_enemy_scene(enemy_type)
@@ -70,15 +63,6 @@ func spawn_enemy():
 	add_child(enemy)
 	print("Заспавнено:", enemy_type, "у позиції:", random_position)
 
-# Видалення всіх ворогів попередньої хвилі
-#func clear_enemies():
-#	for enemy in spawned_enemies:
-#		if enemy and enemy.is_inside_tree():
-#			enemy.queue_free()
-#	spawned_enemies.clear()
-#	print("Вороги попередньої хвилі очищені.")
-
-# Вибір типу ворога залежно від номера хвилі
 func choose_enemy_type() -> String:
 	var roll = randf()
 	if current_wave >= 30:
@@ -90,9 +74,9 @@ func choose_enemy_type() -> String:
 			return "skeleton"
 	elif current_wave >= 15:
 		if roll < 0.4:
-			return "nightborne"
-		else:
 			return "skeleton"
+		else:
+			return "nightborne"
 	else:
 		return "skeleton"
 
