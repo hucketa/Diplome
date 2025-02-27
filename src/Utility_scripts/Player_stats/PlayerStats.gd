@@ -20,6 +20,9 @@ var is_dead: bool = false
 func get_health() -> int:
 	return max(current_health, 0)
 
+func get_exp() -> int:
+	return current_experience
+
 func _ready():
 	current_health = max_health
 

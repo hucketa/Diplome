@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pause_screen: CanvasLayer = $Pause_Screen
 @onready var player = %Player
+@onready var exp_bar: ProgressBar = $UI/MarginContainer/VBoxContainer/HBoxContainer2/Exp_bar
 
 func _ready() -> void:
 	#get_tree().debug_collisions_hint = true
@@ -14,6 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 		%Health_bar.value = player.stats.get_health()
+		exp_bar.value = player.stats.get_exp()
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false

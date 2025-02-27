@@ -4337,7 +4337,7 @@ unique_name_in_owner = true
 position = Vector2(663, 346)
 
 [node name="Spawner" parent="." instance=ExtResource("5_j2sm0")]
-position = Vector2(28, -108)
+position = Vector2(99, -104)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
