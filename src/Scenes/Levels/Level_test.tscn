@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=17 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://d4fhd0oijxlf0" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
-[ext_resource type="Script" path="res://src/Utility_scripts/Spawner/spawner.gd" id="5_e4ptu"]
+[ext_resource type="PackedScene" uid="uid://iviihxbhhy61" path="res://src/Utility_scripts/Spawner/spawner.tscn" id="5_j2sm0"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
 
@@ -4193,9 +4193,6 @@ bg_color = Color(6.35326e-06, 0.657741, 0.856271, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5pq8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tny7h"]
-size = Vector2(1201, 796)
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(-79, 27)
 script = ExtResource("1_iuvy1")
@@ -4337,23 +4334,10 @@ size_flags_horizontal = 4
 
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 unique_name_in_owner = true
-position = Vector2(1369, -12)
+position = Vector2(663, 346)
 
-[node name="Spawner" type="Node2D" parent="."]
-position = Vector2(-219, -133)
-script = ExtResource("5_e4ptu")
-
-[node name="Area2D" type="Area2D" parent="Spawner"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner/Area2D"]
-position = Vector2(848.5, 497)
-shape = SubResource("RectangleShape2D_tny7h")
-
-[node name="Timer" type="Timer" parent="Spawner/Area2D"]
-wait_time = 2.0
-
-[node name="SpawnTimer" type="Timer" parent="Spawner/Area2D"]
-wait_time = 0.5
+[node name="Spawner" parent="." instance=ExtResource("5_j2sm0")]
+position = Vector2(28, -108)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
