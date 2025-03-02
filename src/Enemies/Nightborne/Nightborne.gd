@@ -1,5 +1,7 @@
 class_name EnemyCharacterBody2D extends CharacterBody2D
 
+signal died
+
 @export var movement_speed: float = 60.0
 @export var health: float = 200
 @export var damage: float = 1
@@ -79,6 +81,7 @@ func __die() -> void:
 	if not is_dead:
 		is_dead = true
 		sprite.play(&"die")
+		emit_signal("died", self)
 
 
 func __apply_stun() -> void:
