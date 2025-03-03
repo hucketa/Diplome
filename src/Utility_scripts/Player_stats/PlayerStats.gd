@@ -7,8 +7,8 @@ class_name PlayerStats extends Node
 @export var __crit_chance: float = 0
 @export var __crit_multiplier: float = 0
 @export var __attack_speed: float = 2.0
-@export var __current_experience: int = 0
-@export var __experience_to_level_up: int = 5
+@export var __current_experience: float = 0
+@export var __experience_to_level_up: float = 5
 @export var __level: int = 1
 
 signal health_changed(current_health)
@@ -20,8 +20,8 @@ var is_dead: bool = false
 func get_health() -> int:
 	return max(__current_health, 0)
 
-func get_exp() -> int:
-	return __current_experience
+func get_exp() -> float:
+	return (__current_experience/__experience_to_level_up)*100
 
 func get_lvl() -> int:
 	return __level

@@ -6,7 +6,7 @@ extends Node2D
 @onready var label_2: Label = %Label2
 
 func _ready() -> void:
-	#get_tree().debug_collisions_hint = true
+	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	%Resume.text = tr("BACK")

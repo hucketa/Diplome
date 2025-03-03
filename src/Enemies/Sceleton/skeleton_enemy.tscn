@@ -353,11 +353,11 @@ radius = 18.0
 height = 76.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3b11"]
-radius = 17.0
-height = 62.0
+radius = 12.0
+height = 46.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m0myx"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn6we"]
+size = Vector2(59, 30)
 
 [node name="skelet" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(1, 1)
@@ -393,9 +393,8 @@ collision_mask = 32
 script = ExtResource("3_0g34n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-light_mask = 2
-position = Vector2(2, 0)
-shape = SubResource("CircleShape2D_m0myx")
+position = Vector2(19.5, 1)
+shape = SubResource("RectangleShape2D_yn6we")
 
 [connection signal="animation_finished" from="Skeleton" to="." method="__animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__player_entered"]
