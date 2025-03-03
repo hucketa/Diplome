@@ -63,3 +63,11 @@ msgstr "Вернуться"
 # MAIN_MENU
 msgid "MAIN_MENU"
 msgstr "Главное меню"
+
+# LEVEL
+msgid "LEVEL"
+msgstr "Уровень"
+
+# WAWE
+msgid "WAWE"
+msgstr "Волна"

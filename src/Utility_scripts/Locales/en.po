@@ -63,3 +63,11 @@ msgstr "Back"
 # MAIN_MENU
 msgid "MAIN_MENU"
 msgstr "Main menu"
+
+# LEVEL
+msgid "LEVEL"
+msgstr "Level"
+
+# WAWE
+msgid "WAWE"
+msgstr "Wawe"

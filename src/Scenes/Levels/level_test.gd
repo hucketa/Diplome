@@ -6,7 +6,7 @@ extends Node2D
 @onready var label_2: Label = %Label2
 
 func _ready() -> void:
-	get_tree().debug_collisions_hint = true
+	#get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	%Resume.text = tr("BACK")
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 		%Health_bar.value = player.stats.get_health()
 		exp_bar.value = player.stats.get_exp()
-		label_2.text = str(player.stats.get_lvl())
+		label_2.text = tr(&"LEVEL") + ": "+str(player.stats.get_lvl())
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false

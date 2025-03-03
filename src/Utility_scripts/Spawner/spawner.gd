@@ -26,7 +26,7 @@ func _ready():
 
 func start_wave():
 	current_wave += 1
-	label.text = "Хвиля " + str(current_wave)
+	label.text = tr("WAWE")+": " + str(current_wave)
 	enemies_to_spawn = int(base_enemy_count * pow(wave_multiplier, current_wave))
 	spawn_timer.start()
 	get_tree().create_timer(wave_delay + spawn_interval * enemies_to_spawn).timeout.connect(start_wave, CONNECT_ONE_SHOT)

@@ -64,3 +64,11 @@ msgstr "Повернутися"
 # MAIN_MENU
 msgid "MAIN_MENU"
 msgstr "Головне меню"
+
+# LEVEL
+msgid "LEVEL"
+msgstr "Рівень"
+
+# WAWE
+msgid "WAWE"
+msgstr "Хвиля"
