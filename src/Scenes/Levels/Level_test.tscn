@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=31 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://d4fhd0oijxlf0" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
+[ext_resource type="Texture2D" uid="uid://bfh2hbr70ktw3" path="res://src/Scenes/Setting_w/Settings_window/Buttons.png" id="4_y7cwj"]
+[ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="5_gct7d"]
 [ext_resource type="PackedScene" uid="uid://iviihxbhhy61" path="res://src/Utility_scripts/Spawner/spawner.tscn" id="5_j2sm0"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
@@ -4171,27 +4173,69 @@ sources/0 = SubResource("TileSetAtlasSource_pqalt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82gem"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtm0s"]
-bg_color = Color(0.463298, 0.735745, 0.910916, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17b5i"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0ig1"]
-bg_color = Color(0.158792, 0.456933, 0.517282, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0k7o"]
+texture = ExtResource("4_y7cwj")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3e0b"]
-bg_color = Color(0.349799, 0.652667, 0.712999, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tqtm4"]
+texture = ExtResource("4_y7cwj")
+modulate_color = Color(0.215902, 0.215902, 0.215902, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuxp3"]
-bg_color = Color(0.923669, 0.395774, 0.543845, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hnbo3"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gj14v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3fcq"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0n28b"]
+texture = ExtResource("4_y7cwj")
+modulate_color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vddal"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xmbc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erubf"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dpky"]
+texture = ExtResource("4_y7cwj")
+modulate_color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ywl1"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5pq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5417i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ol2o"]
+texture = ExtResource("4_y7cwj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e5m0"]
+texture = ExtResource("4_y7cwj")
+modulate_color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ud7n5"]
+texture = ExtResource("4_y7cwj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj5e2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0otw3"]
-bg_color = Color(0.407208, 0.653738, 0.627706, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u45ux"]
+texture = ExtResource("4_y7cwj")
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcoy3"]
-bg_color = Color(6.35326e-06, 0.657741, 0.856271, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5pq8"]
+bg_color = Color(0.470588, 0.027451, 0.0235294, 0.717647)
+border_color = Color(0, 0, 0, 1)
+corner_detail = 4
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-79, 27)
@@ -4214,35 +4258,46 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.0
-offset_top = -124.0
-offset_right = 289.0
-offset_bottom = 256.0
+offset_left = -297.0
+offset_top = -104.0
+offset_right = 389.0
+offset_bottom = 307.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_82gem")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pause_Screen/PanelContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 1.34
 
 [node name="Resume" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xtm0s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17b5i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c0k7o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tqtm4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hnbo3")
 text = "Повернутися"
 
 [node name="Main_Menu" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxFlat_d0ig1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gj14v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v3fcq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n28b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vddal")
 text = "Налаштування
 "
 
 [node name="Exit" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxFlat_u3e0b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xmbc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_erubf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6dpky")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ywl1")
 text = "Головне меню"
 
 [node name="CanvasModulate" parent="Pause_Screen" instance=ExtResource("7_cf2ul")]
@@ -4260,6 +4315,11 @@ theme_override_constants/margin_top = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
+[node name="HSeparator3" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c5pq8")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -4269,7 +4329,10 @@ theme_override_constants/separation = 11
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_iuxp3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5417i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ol2o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8e5m0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ud7n5")
 text = "Пауза"
 
 [node name="VSeparator" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -4283,7 +4346,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.38
-theme_override_styles/background = SubResource("StyleBoxFlat_0otw3")
+theme_override_fonts/font = ExtResource("5_gct7d")
+theme_override_styles/background = SubResource("StyleBoxTexture_u45ux")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vcoy3")
 value = 24.0
 
@@ -4294,7 +4358,17 @@ size_flags_stretch_ratio = 1.65
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Волна"
+
 [node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c5pq8")
+
+[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxEmpty_c5pq8")
@@ -4315,25 +4389,23 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.38
-theme_override_styles/background = SubResource("StyleBoxFlat_0otw3")
+theme_override_fonts/font = ExtResource("5_gct7d")
+theme_override_styles/background = SubResource("StyleBoxTexture_u45ux")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vcoy3")
 value = 24.0
 
 [node name="VSeparator2" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.51
+size_flags_stretch_ratio = 3.25
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hj5e2")
 
-[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label2" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+text = "Уровень"
 
 [node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 

@@ -7,3 +7,5 @@
 stream = ExtResource("1_sfqi4")
 volume_db = -75.543
 script = ExtResource("2_rjaff")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

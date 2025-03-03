@@ -7,7 +7,8 @@ const xp_item_scene = preload("res://src/Scenes/Experience_item/Exp_scene.tscn")
 
 @onready var spawn_timer: Timer = $Area2D/SpawnTimer
 @onready var spawn_area: CollisionShape2D = $Area2D/CollisionShape2D
-@onready var label: Label = $"../UI/MarginContainer/VBoxContainer/Label"
+#@onready var label: Label = $"../UI/MarginContainer/VBoxContainer/Label"
+@onready var label: Label = $"../UI/MarginContainer/VBoxContainer/HBoxContainer/Label"
 
 @export var wave_delay: float = 5.0
 @export var spawn_interval: float = 1.5
