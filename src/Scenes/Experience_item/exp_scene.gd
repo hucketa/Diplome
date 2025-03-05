@@ -16,6 +16,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	__player_in_attack_range = null
 	
-func __set_experience(a: float) -> void:
+func set_experience(a: float) -> void:
 	if a >= 0:
 		__experience = a

@@ -2,9 +2,18 @@ class_name EnemyBase extends CharacterBody2D
 
 signal died
 
-var movement_speed: float = 60.0
-var health: float = 1
-var damage: float = 1
+@export var base_health: float = 1
+@export var base_speed: float = 60.0
+@export var base_damage: float = 1
+@export var health_per_wave: float = 1.0
+@export var damage_per_wave: float = 0.5
+@export var xp_reward: int = 1
+
+const XP_ITEM_SCENE = preload("res://src/Scenes/Experience_item/Exp_scene.tscn")
+
+var movement_speed: float
+var health: float
+var damage: float
 var armor: int = 0
 var stun_duration: float = 1.0
 
@@ -19,6 +28,13 @@ var is_stunned: bool = false
 var last_flip: int = 1
 
 var __player_in_attack_range: Node = null
+
+func apply_wave_modifiers(current_wave: int) -> void:
+	health = base_health + health_per_wave * current_wave
+	damage = base_damage + damage_per_wave * current_wave
+	movement_speed = base_speed + randf_range(-10, 10)
+	var extra_xp = 1 if current_wave <= 3 else 1 + ((current_wave - 3) / 5)
+	xp_reward = max(1, int(xp_reward + extra_xp))
 
 func set_sprite(a: AnimatedSprite2D) -> void:
 	sprite = a
@@ -44,7 +60,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			if not is_attacking:
 				start_attack()
-				print("gg")
 		else:
 			velocity = direction * movement_speed
 			face_player(direction)
@@ -75,7 +90,6 @@ func update_hitbox_position(is_facing_left: bool) -> void:
 	hitbox.position.x = sprite.position.x
 	hurtbox.position.x = sprite.position.x
 
-
 func play_walk_animation() -> void:
 	sprite.play("walk")
 
@@ -83,7 +97,14 @@ func __die() -> void:
 	if not is_dead:
 		is_dead = true
 		sprite.play(&"die")
-		emit_signal("died", self)
+		emit_signal("died")
+		drop_experience()
+
+func drop_experience() -> void:
+	var xp_item = XP_ITEM_SCENE.instantiate()
+	xp_item.global_position = global_position
+	xp_item.set_experience(xp_reward)
+	get_parent().add_child(xp_item)
 
 func __apply_stun() -> void:
 	is_stunned = true
