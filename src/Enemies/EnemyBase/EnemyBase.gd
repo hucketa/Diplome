@@ -8,6 +8,7 @@ signal died
 @export var health_per_wave: float = 1.0
 @export var damage_per_wave: float = 0.5
 @export var xp_reward: int = 1
+@export var coins_reward: int = 1
 
 const XP_ITEM_SCENE = preload("res://src/Scenes/Experience_item/Exp_scene.tscn")
 
@@ -99,6 +100,13 @@ func __die() -> void:
 		sprite.play(&"die")
 		emit_signal("died")
 		drop_experience()
+		give_coins_to_player()
+
+func give_coins_to_player() -> void:
+	var player_stats = get_tree().get_first_node_in_group("PlayerStats")
+	if player_stats:
+		print("k")
+		player_stats.gain_coins(coins_reward)
 
 func drop_experience() -> void:
 	var xp_item = XP_ITEM_SCENE.instantiate()

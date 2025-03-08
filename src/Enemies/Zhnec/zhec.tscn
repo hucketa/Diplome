@@ -314,6 +314,7 @@ position = Vector2(-131, -88)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_12ixa")
+coins_reward = 8
 
 [node name="Reaper" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

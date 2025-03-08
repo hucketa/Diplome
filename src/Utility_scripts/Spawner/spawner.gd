@@ -7,9 +7,11 @@ const ENEMY_SCENES = {
 }
 
 const ENEMY_PROBABILITIES = [
-	{"wave": 30, "probabilities": {"reaper": 0.2, "nightborne": 0.3, "skeleton": 0.5}},
-	{"wave": 15, "probabilities": {"skeleton": 0.4, "nightborne": 0.6}},
-	{"wave": 0, "probabilities": {"skeleton": 1.0}}
+	{"wave": 0, "probabilities": {"skeleton": 1.0}},
+	{"wave": 5, "probabilities": {"skeleton": 0.7, "nightborne": 0.3}},
+	{"wave": 10, "probabilities": {"skeleton": 0.5, "nightborne": 0.35, "reaper": 0.15}},
+	{"wave": 15, "probabilities": {"skeleton": 0.4, "nightborne": 0.35, "reaper": 0.25}},
+	{"wave": 20, "probabilities": {"skeleton": 0.4, "nightborne": 0.3, "reaper": 0.3}}
 ]
 
 @onready var spawn_timer: Timer = $Area2D/SpawnTimer

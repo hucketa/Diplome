@@ -10,6 +10,7 @@ class_name PlayerStats extends Node
 @export var __current_experience: float = 0
 @export var __experience_to_level_up: float = 15
 @export var __level: int = 1
+@export var __coins: int = 0
 
 signal health_changed(current_health)
 signal died
@@ -42,6 +43,9 @@ func take_damage(amount: int):
 		emit_signal("died")
 		die()
 
+func get_coins():
+	return __coins
+
 func heal(amount: int):
 	if not is_dead:
 		__current_health = min(__current_health + amount, __max_health)
@@ -58,14 +62,13 @@ func gain_experience(amount: int):
 
 func level_uped():
 	__level += 1
-	
 	var extra_xp = 3 if __level <= 3 else 3 + (__level - 3) / 3
 	__experience_to_level_up += extra_xp * 2
-
 	emit_signal("level_up", __level)
 	print("Вітаємо з новим рівнем:", __level)
 
 func calculate_damage() -> float:
+	print(__coins)
 	var is_critical = randf() < __crit_chance
 	var final_damage = __damage * __crit_multiplier if is_critical else __damage
 	if is_critical:
@@ -73,6 +76,11 @@ func calculate_damage() -> float:
 	else:
 		print("Нанесено урон:", final_damage)
 	return final_damage
+	
 
 func die():
 	print("Герой помер.")
+	
+func gain_coins(amount: int):
+	__coins += amount
+	print("Отримано монет:", amount, "Всього монет:", __coins)

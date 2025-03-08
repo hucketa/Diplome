@@ -318,7 +318,7 @@ radius = 17.0
 height = 48.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_065lq"]
-size = Vector2(77, 52)
+size = Vector2(62, 48)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-27, -49)
@@ -340,7 +340,7 @@ debug_color = Color(0.743545, 0.416871, 0.546863, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
 
-[node name="stats" type="Node" parent="."]
+[node name="stats" type="Node" parent="." groups=["PlayerStats"]]
 script = ExtResource("9_8sxit")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player", "attack"]]
@@ -361,7 +361,7 @@ collision_mask = 64
 script = ExtResource("11_pgy40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(29.5, 97.9997)
+position = Vector2(30, 96.9997)
 shape = SubResource("RectangleShape2D_065lq")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

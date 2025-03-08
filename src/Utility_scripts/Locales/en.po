@@ -71,3 +71,46 @@ msgstr "Level"
 # WAWE
 msgid "WAWE"
 msgstr "Wawe"
+
+# stat_health
+msgid "stat_health"
+msgstr "Health"
+
+# stat_damage
+msgid "stat_damage"
+msgstr "Damage"
+
+# stat_armor
+msgid "stat_armor"
+msgstr "Armor"
+
+# stat_crit_chance
+msgid "stat_crit_chance"
+msgstr "Critical chance"
+
+# stat_attack_speed
+msgid "stat_attack_speed"
+msgstr "Attack speed"
+
+# desc_damage_buff
+msgid "desc_damage_buff"
+msgstr "Additional damage"
+
+# desc_armor_buff
+msgid "desc_armor_buff"
+msgstr "Additional armor"
+
+# desc_as_buff
+msgid "desc_as_buff"
+msgstr "Additional attack speed"
+
+# desc_crit_buff
+msgid "desc_crit_buff"
+msgstr "Additional critical chance"
+
+# desc_hp_buff
+msgid "desc_hp_buff"
+msgstr "Additional HP"
+
+
+

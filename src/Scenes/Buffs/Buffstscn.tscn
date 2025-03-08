@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://du03acu6v07ok"]
+
+[ext_resource type="Script" path="res://src/Scenes/Buffs/buffstscn.gd" id="1_03wpl"]
+[ext_resource type="Texture2D" uid="uid://dwlycnnbp6u63" path="res://src/Scenes/Buffs/Card_hover .webp" id="1_5jqyp"]
+[ext_resource type="Texture2D" uid="uid://bjgdjwiusyo5b" path="res://src/Scenes/Buffs/Card_pressed_v2 .webp" id="1_pmv25"]
+[ext_resource type="Texture2D" uid="uid://chps7mkhyc4tw" path="res://src/Scenes/Buffs/Stock_card_without_borders.webp" id="4_cjgvm"]
+[ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="5_jfboc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbieb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66ey8"]
+texture = ExtResource("1_5jqyp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_st1dd"]
+texture = ExtResource("1_pmv25")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yp7b8"]
+texture = ExtResource("4_cjgvm")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vh2wq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0m2tb"]
+
+[node name="Buffs" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_03wpl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Baffs_block" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -191.0
+offset_right = 541.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="First_button" type="Button" parent="Baffs_block"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sbieb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_66ey8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_st1dd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yp7b8")
+
+[node name="Button_details" type="VBoxContainer" parent="Baffs_block/First_button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171
+anchor_top = 0.227
+anchor_right = 0.839
+anchor_bottom = 0.751
+offset_left = -2.107
+offset_top = -0.0270081
+offset_right = 2.937
+offset_bottom = -0.151031
+
+[node name="Stat_name" type="Label" parent="Baffs_block/First_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Stat_ico" type="TextureRect" parent="Baffs_block/First_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="Baffs_block/First_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 19
+
+[node name="Space_between" type="VSeparator" parent="Baffs_block"]
+layout_mode = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vh2wq")
+
+[node name="Second_button" type="Button" parent="Baffs_block"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sbieb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_66ey8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_st1dd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yp7b8")
+
+[node name="Button_details" type="VBoxContainer" parent="Baffs_block/Second_button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171
+anchor_top = 0.227
+anchor_right = 0.839
+anchor_bottom = 0.751
+offset_left = -2.107
+offset_top = -0.0270081
+offset_right = 2.937
+offset_bottom = -0.151031
+
+[node name="Stat_name" type="Label" parent="Baffs_block/Second_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Stat_ico" type="TextureRect" parent="Baffs_block/Second_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="Baffs_block/Second_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+
+[node name="Space_between2" type="VSeparator" parent="Baffs_block"]
+layout_mode = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0m2tb")
+
+[node name="Third_button" type="Button" parent="Baffs_block"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sbieb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_66ey8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_st1dd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yp7b8")
+
+[node name="Button_details" type="VBoxContainer" parent="Baffs_block/Third_button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171
+anchor_top = 0.227
+anchor_right = 0.839
+anchor_bottom = 0.751
+offset_left = -2.107
+offset_top = -0.0270081
+offset_right = 2.937
+offset_bottom = -0.151031
+
+[node name="Stat_name" type="Label" parent="Baffs_block/Third_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Stat_ico" type="TextureRect" parent="Baffs_block/Third_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="Baffs_block/Third_button/Button_details"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_jfboc")
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1

@@ -71,3 +71,43 @@ msgstr "Уровень"
 # WAWE
 msgid "WAWE"
 msgstr "Волна"
+
+# stat_health
+msgid "stat_health"
+msgstr "Здоровье"
+
+# stat_damage
+msgid "stat_damage"
+msgstr "Урон"
+
+# stat_armor
+msgid "stat_armor"
+msgstr "Броня"
+
+# stat_crit_chance
+msgid "stat_crit_chance"
+msgstr "Критический урон"
+
+# stat_attack_speed
+msgid "stat_attack_speed"
+msgstr "Скорость атаки"
+
+# desc_damage_buff
+msgid "desc_damage_buff"
+msgstr "Дополнительный урон"
+
+# desc_armor_buff
+msgid "desc_armor_buff"
+msgstr "Дополнительная броня"
+
+# desc_as_buff
+msgid "desc_as_buff"
+msgstr "Дополнительная скорость \n атаки"
+
+# desc_crit_buff
+msgid "desc_crit_buff"
+msgstr "Дополнительный шанс \n критического урона"
+
+# desc_hp_buff
+msgid "desc_hp_buff"
+msgstr "Дополнительное здоровье"
