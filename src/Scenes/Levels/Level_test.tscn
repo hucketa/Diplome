@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://xp5yv6tstakg"]
+[gd_scene load_steps=31 format=4 uid="uid://xp5yv6tstakg"]
 
 [ext_resource type="Script" path="res://src/Scenes/Levels/level_test.gd" id="1_iuvy1"]
 [ext_resource type="Texture2D" uid="uid://d4fhd0oijxlf0" path="res://src/Background/Tiles/1224f265-3c14-4f37-a78e-4b18542b92bf.webp" id="3_7bqd0"]
 [ext_resource type="Texture2D" uid="uid://bfh2hbr70ktw3" path="res://src/Scenes/Setting_w/Settings_window/Buttons.png" id="4_y7cwj"]
 [ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="5_gct7d"]
 [ext_resource type="PackedScene" uid="uid://c4msheo4kncdt" path="res://src/Utility_scripts/Brightness/brightness_filter.tscn" id="7_cf2ul"]
+[ext_resource type="PackedScene" uid="uid://tw42ufbb62xu" path="res://src/Enemies/Sceleton/skeleton_enemy.tscn" id="7_ku7si"]
 [ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="8_p15to"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqalt"]
@@ -4413,6 +4414,13 @@ text = "Уровень"
 [node name="Player" parent="." instance=ExtResource("8_p15to")]
 unique_name_in_owner = true
 position = Vector2(663, 346)
+
+[node name="skelet" parent="." instance=ExtResource("7_ku7si")]
+xp_reward = 150
+
+[node name="skelet2" parent="." instance=ExtResource("7_ku7si")]
+position = Vector2(21, 419)
+xp_reward = 150
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
