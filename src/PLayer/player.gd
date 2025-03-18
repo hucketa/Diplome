@@ -6,6 +6,7 @@ class_name PlayerCharacterBody extends CharacterBody2D
 @onready var hitbox: Area2D = $HitBox
 @onready var hurtbox: Area2D = $HurtBox
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var inventory_ui: SimplifiedInventory = $InventoryUi
 
 var last_flip: int = 1
 var __is_in_zone: bool = false
@@ -53,6 +54,7 @@ func movement(delta: float) -> void:
 		sprite.play(&"walk")
 	else:
 		sprite.play(&"idle")
+	inventory_ui.synchronize_weapon_orientation(__facing_left)
 	velocity = move * self.movement_speed
 	move_and_slide()
 

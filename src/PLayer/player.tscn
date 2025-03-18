@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dbhw3n1mvdf3q"]
+[gd_scene load_steps=54 format=3 uid="uid://dbhw3n1mvdf3q"]
 
 [ext_resource type="Texture2D" uid="uid://be4tly3jnqfum" path="res://src/PLayer/Vampire_Girl/Attack_1.png" id="1_ogeth"]
 [ext_resource type="Script" path="res://src/PLayer/player.gd" id="1_sddph"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/Utility_scripts/Player_stats/PlayerStats.gd" id="9_8sxit"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HurtBox/hurt_box.gd" id="10_52sc8"]
 [ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="11_pgy40"]
+[ext_resource type="PackedScene" uid="uid://p27ceawjgy3w" path="res://src/Utility_scripts/Inventory/Inventory_UI.tscn" id="12_nx4hg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06fn1"]
 atlas = ExtResource("1_ogeth")
@@ -363,6 +364,9 @@ script = ExtResource("11_pgy40")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(30, 96.9997)
 shape = SubResource("RectangleShape2D_065lq")
+
+[node name="InventoryUi" parent="." instance=ExtResource("12_nx4hg")]
+position = Vector2(-26, -31)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__enemy_entered_attack_range"]

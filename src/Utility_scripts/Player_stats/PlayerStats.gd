@@ -1,7 +1,6 @@
 class_name PlayerStats
 extends Node
 
-# Объявляем enum для идентификации типов баффов
 enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 
 @export var __max_health: float = 10000
