@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj6qm7lotrwh0"]
+
+[ext_resource type="Texture2D" uid="uid://w6bv33vemxcp" path="res://src/Weapons/Magic_projectile/Снаряд посох.png" id="1_chwyb"]
+[ext_resource type="Script" path="res://src/Weapons/Magic_projectile/magik_projectile.gd" id="1_jpsin"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="2_iwjsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgd6a"]
+atlas = ExtResource("1_chwyb")
+region = Rect2(0, 0, 33, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3t5y"]
+atlas = ExtResource("1_chwyb")
+region = Rect2(33, 0, 33, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vebd"]
+atlas = ExtResource("1_chwyb")
+region = Rect2(66, 0, 33, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxwc"]
+atlas = ExtResource("1_chwyb")
+region = Rect2(99, 0, 33, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmfw1"]
+atlas = ExtResource("1_chwyb")
+region = Rect2(132, 0, 33, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ub2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgd6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3t5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vebd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmfw1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5wes"]
+size = Vector2(31.8614, 16.938)
+
+[node name="MagikProjectile" type="Node2D"]
+script = ExtResource("1_jpsin")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(63, 26)
+scale = Vector2(3.89394, 3.32353)
+sprite_frames = SubResource("SpriteFrames_2ub2f")
+frame = 4
+frame_progress = 1.0
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D" groups=["attack"]]
+collision_layer = 8
+collision_mask = 64
+script = ExtResource("2_iwjsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+light_mask = 2
+position = Vector2(-0.265315, 0.256638)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_a5wes")
+
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="__enemy_entered_attack_range"]
+[connection signal="area_exited" from="AnimatedSprite2D/HitBox" to="." method="__enemy_exited_attack_range"]

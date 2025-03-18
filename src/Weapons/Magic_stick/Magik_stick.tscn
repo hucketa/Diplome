@@ -1,0 +1,119 @@
+[gd_scene load_steps=18 format=3 uid="uid://dr442sgvujxri"]
+
+[ext_resource type="Script" path="res://src/Weapons/Magic_stick/magik_stick.gd" id="1_bymqw"]
+[ext_resource type="Texture2D" uid="uid://cmsgg3tl1h6y7" path="res://src/Weapons/Magic_stick/Посох.png" id="1_x3kuk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2tf2"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(0, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug742"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(335, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8enaw"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(670, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drdmt"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1005, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6dfk"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1340, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rce4"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1675, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pexae"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(2010, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmtqx"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(2010, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uueji"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1675, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ryam"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1340, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27oov"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(1005, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3djt5"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(670, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7roqq"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(335, 0, 335, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha6km"]
+atlas = ExtResource("1_x3kuk")
+region = Rect2(0, 0, 335, 372)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpscw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2tf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8enaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drdmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6dfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rce4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pexae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmtqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uueji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ryam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27oov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3djt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7roqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha6km")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[node name="MagikStick" type="Node2D"]
+script = ExtResource("1_bymqw")
+
+[node name="StickSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(26.0625, 30.5351)
+scale = Vector2(0.166791, 0.166791)
+sprite_frames = SubResource("SpriteFrames_qpscw")
+animation = &"attack"

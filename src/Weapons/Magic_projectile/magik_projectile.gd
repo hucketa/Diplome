@@ -1,4 +1,4 @@
-class_name Bullet
+class_name MagikHit
 extends Node2D
 
 @export var speed: float = 300.0
@@ -9,17 +9,14 @@ var __enemy_in_attack_range: EnemyBase = null
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-func _ready():
-	sprite.flip_h = direction.x < 0
+#func _ready():
+	#print("🚀 Пуля создана! Позиция:", global_position, "Направление:", direction)
 
 func set_direction(new_direction: Vector2):
 	direction = new_direction
 	if sprite:
 		sprite.flip_h = direction.x < 0
-
-#func _ready():
-	#print("🚀 Пуля создана! Позиция:", global_position, "Направление:", direction)
-
+		
 func _process(delta):
 	position += direction * speed * delta
 

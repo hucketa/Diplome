@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0xt1f6q18awj"]
+[gd_scene load_steps=22 format=3 uid="uid://d0xt1f6q18awj"]
 
 [ext_resource type="Script" path="res://src/Weapons/Pistol/pistol.gd" id="1_6ihiv"]
 [ext_resource type="Texture2D" uid="uid://c0agrmbo1qbjt" path="res://src/Weapons/Pistol/Пистолет.png" id="2_ytm2i"]
@@ -39,6 +39,42 @@ region = Rect2(2723, 0, 389, 312)
 atlas = ExtResource("2_ytm2i")
 region = Rect2(3112, 0, 389, 312)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_br3q7"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(3112, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvmgy"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(2723, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn61a"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(2334, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iijx"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(1945, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o01s4"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(1556, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyfdr"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(1167, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ryn"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(778, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eut3r"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(389, 0, 389, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4hj0"]
+atlas = ExtResource("2_ytm2i")
+region = Rect2(0, 0, 389, 312)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqt4c"]
 animations = [{
 "frames": [{
@@ -68,6 +104,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ay0hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br3q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvmgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn61a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iijx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o01s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyfdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ryn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eut3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4hj0")
 }],
 "loop": false,
 "name": &"attack",
@@ -82,5 +145,5 @@ position = Vector2(26.6829, 21)
 scale = Vector2(0.134615, 0.134615)
 sprite_frames = SubResource("SpriteFrames_eqt4c")
 animation = &"attack"
-frame = 8
+frame = 17
 frame_progress = 1.0
