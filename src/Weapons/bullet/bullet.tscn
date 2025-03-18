@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwaxh4kooq5ko"]
+
+[ext_resource type="Script" path="res://src/Weapons/bullet/bullet.gd" id="1_bu3d5"]
+[ext_resource type="Texture2D" uid="uid://bto7bhu6iotoj" path="res://src/Weapons/bullet/Пуля_пистолета.png" id="2_lxcn5"]
+[ext_resource type="Script" path="res://src/Utility_scripts/HitBox/hit_box.gd" id="3_gt45w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n82fa"]
+atlas = ExtResource("2_lxcn5")
+region = Rect2(0, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1u53"]
+atlas = ExtResource("2_lxcn5")
+region = Rect2(17, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoofa"]
+atlas = ExtResource("2_lxcn5")
+region = Rect2(34, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbibk"]
+atlas = ExtResource("2_lxcn5")
+region = Rect2(51, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48a1y"]
+atlas = ExtResource("2_lxcn5")
+region = Rect2(68, 0, 17, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c40mx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n82fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1u53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoofa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48a1y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5wes"]
+size = Vector2(10.0029, 7.81132)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_bu3d5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(23, 9)
+scale = Vector2(3.62879, 2.54474)
+sprite_frames = SubResource("SpriteFrames_c40mx")
+frame = 4
+frame_progress = 1.0
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D" groups=["attack"]]
+collision_layer = 8
+collision_mask = 64
+script = ExtResource("3_gt45w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+light_mask = 2
+position = Vector2(-1.42899, 0.509437)
+shape = SubResource("RectangleShape2D_a5wes")
+
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="__enemy_entered_attack_range"]
+[connection signal="area_exited" from="AnimatedSprite2D/HitBox" to="." method="__enemy_exited_attack_range"]

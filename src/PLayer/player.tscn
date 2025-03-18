@@ -366,7 +366,7 @@ position = Vector2(30, 96.9997)
 shape = SubResource("RectangleShape2D_065lq")
 
 [node name="InventoryUi" parent="." instance=ExtResource("12_nx4hg")]
-position = Vector2(-26, -31)
+position = Vector2(-38, -32)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__enemy_entered_attack_range"]

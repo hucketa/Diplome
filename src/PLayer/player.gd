@@ -19,6 +19,11 @@ func _ready() -> void:
 	stats.connect(&"died", Callable(self, &"_on_player_died"))
 	stats.connect(&"level_up", Callable(self, &"_on_level_up"))
 	__update_hitbox_position()
+	var weapon_scene = preload("res://src/Weapons/Pistol/Pistol.tscn") as PackedScene
+	inventory_ui.add_weapon(weapon_scene, 0)
+	inventory_ui.add_weapon(weapon_scene, 1)
+	inventory_ui.add_weapon(weapon_scene, 2)
+	inventory_ui.add_weapon(weapon_scene, 3)
 
 func _physics_process(delta: float) -> void:
 	if stats.is_dead:
