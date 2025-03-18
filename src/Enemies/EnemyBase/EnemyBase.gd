@@ -99,8 +99,9 @@ func __die() -> void:
 		is_dead = true
 		sprite.play(&"die")
 		emit_signal("died")
-		drop_experience()
-		give_coins_to_player()
+		call_deferred("drop_experience")
+		call_deferred("give_coins_to_player")
+
 
 func give_coins_to_player() -> void:
 	var player_stats = get_tree().get_first_node_in_group("PlayerStats")
