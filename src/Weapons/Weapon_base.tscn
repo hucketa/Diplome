@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3hej6g12syyy"]
+
+[ext_resource type="Script" path="res://src/Weapons/weapon_base.gd" id="1_8o4wg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h65f3"]
+
+[node name="WeaponBase" type="Node2D"]
+script = ExtResource("1_8o4wg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h65f3")
