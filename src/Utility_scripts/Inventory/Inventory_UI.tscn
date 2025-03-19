@@ -6,13 +6,13 @@
 script = ExtResource("1_ducq2")
 
 [node name="Marker1" type="Marker2D" parent="."]
-position = Vector2(-45, 0)
+position = Vector2(-66, 0)
 
 [node name="Marker2" type="Marker2D" parent="."]
-position = Vector2(83, 0)
+position = Vector2(57, 3)
 
 [node name="Marker3" type="Marker2D" parent="."]
-position = Vector2(-44, 50)
+position = Vector2(-66, 70)
 
 [node name="Marker4" type="Marker2D" parent="."]
-position = Vector2(86, 50)
+position = Vector2(61, 69)

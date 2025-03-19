@@ -29,7 +29,6 @@ func __enemy_entered_attack_range(area: Area2D) -> void:
 		__is_in_zone = true
 		__enemy_in_attack_range = enemy
 		__enemy_in_attack_range.take_damage(damage)
-		queue_free()
 
 func __enemy_exited_attack_range(area: Area2D) -> void:
 	if __enemy_in_attack_range and __enemy_in_attack_range == area.get_parent():

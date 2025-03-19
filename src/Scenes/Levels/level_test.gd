@@ -8,7 +8,7 @@ extends Node2D
 const BUFF_SCENE = preload("res://src/Scenes/Buffs/Buffstscn.tscn")
 
 func _ready() -> void:
-	#get_tree().debug_collisions_hint = true
+	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	%Resume.text = tr("BACK")

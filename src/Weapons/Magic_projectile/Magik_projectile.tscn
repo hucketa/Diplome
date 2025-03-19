@@ -68,7 +68,6 @@ script = ExtResource("2_iwjsd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
 light_mask = 2
 position = Vector2(-0.265315, 0.256638)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a5wes")
 
 [connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="__enemy_entered_attack_range"]

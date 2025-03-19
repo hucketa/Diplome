@@ -10,7 +10,7 @@ signal died
 @export var xp_reward: int = 1
 @export var coins_reward: int = 1
 
-const XP_ITEM_SCENE = preload("res://src/Scenes/Experience_item/Exp_scene.tscn")
+var XP_ITEM_SCENE = load("res://src/Scenes/Experience_item/Exp_scene.tscn")
 
 var movement_speed: float
 var health: float

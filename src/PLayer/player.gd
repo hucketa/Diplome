@@ -21,7 +21,8 @@ func _ready() -> void:
 	__update_hitbox_position()
 	#"res://src/Weapons/Pistol/Pistol.tscn"
 	#res://src/Weapons/Magic_stick/Magik_stick.tscn
-	var weapon_scene = preload("res://src/Weapons/Magic_stick/Magik_stick.tscn") as PackedScene
+	#res://src/Weapons/Sword/Sword.tscn
+	var weapon_scene = preload("res://src/Weapons/Sword/Sword.tscn") as PackedScene
 	inventory_ui.add_weapon(weapon_scene, 0)
 	inventory_ui.add_weapon(weapon_scene, 1)
 	inventory_ui.add_weapon(weapon_scene, 2)
