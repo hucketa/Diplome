@@ -3,12 +3,21 @@ extends Weapon
 
 var __gun_sprite: AnimatedSprite2D = null
 var bullet_scene = load("res://src/Weapons/bullet/bullet.tscn")
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+var music_volume: int
 
 func _ready() -> void:
 	if __gun_sprite == null:
 		__gun_sprite = $GunSprite
 	self.connect("attack_started", Callable(self, "_on_attack_started"))
 	__gun_sprite.connect("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished"))
+	var config = ConfigFile.new()
+	if config.load("user://settings.cfg") == OK:
+		music_volume = config.get_value("Settings", "s_volume", -50)
+	else:
+		music_volume = 0
+	print(music_volume)
+	sfx.volume_db = music_volume
 
 func attack():
 	__gun_sprite.play("attack")
@@ -26,4 +35,14 @@ func _on_animated_sprite_2d_animation_finished():
 	bullet.global_position = self.global_position + Vector2(0, +10)
 	var is_facing_left = __gun_sprite.flip_h
 	bullet.set_direction(Vector2.LEFT if is_facing_left else Vector2.RIGHT)
+	play_effect("res://src/Weapons/Pistol/pistol_shot.wav")
 	attack_completed()
+
+func play_effect(effect_path: String) -> void:
+	var effect_stream = load(effect_path)
+	if effect_stream:
+		sfx.stop()
+		sfx.stream = effect_stream
+		sfx.play()
+	else:
+		push_error("Не вдалося завантажити ефект: " + effect_path)

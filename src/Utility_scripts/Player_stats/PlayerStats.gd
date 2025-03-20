@@ -3,8 +3,8 @@ extends Node
 
 enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 
-@export var __max_health: float = 10000
-@export var __current_health: float = 10000
+@export var __max_health: float = 1
+@export var __current_health: float = 1
 @export var __damage: float = 10
 @export var __armor: int = 0
 @export var __crit_chance: float = 0.1

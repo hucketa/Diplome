@@ -4,7 +4,7 @@ const CONFIG_PATH = "user://settings.cfg"
 var one_shot_mode = false
 var health_bar_scale = false
 var reduced_experience = false
-var sound_volume = 0  
+var sound_volume = 0
 var brightness = 1 
 var music_volume = 0
 var localisation = "uk"
@@ -32,6 +32,7 @@ var localisation = "uk"
 @onready var label_mute_m: Label = $"mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox/Label_mute_m"
 @onready var caption_bright_2: Label = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/Caption_bright2"
 @onready var music_sound_slider: HSlider = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar/music_sound_slider"
+@onready var volumme_slider: HSlider = $"mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar/volumme_slider"
 
 func _ready():
 	load_settings()
@@ -88,6 +89,8 @@ func update_ui():
 	caption_bright_2.text = str((brightness_slider.value)*100) + "%"
 	music_sound_slider.value = 1 - (music_volume/-(10))
 	%Caption_music2.text = str(music_sound_slider.value * 100) + "%"
+	volumme_slider.value = 1 - (sound_volume/-(10))
+	%Caption_sound2.text = str(volumme_slider.value * 100) + "%"
 	var current_locale = TranslationServer.get_locale()
 	match current_locale:
 		"ru":
@@ -162,3 +165,15 @@ func _on_music_sound_slider_drag_ended(value_changed: bool) -> void:
 		%Caption_music2.text = str(percentage * 100) + "%"
 	save_settings()
 	music_player.set_music_volume(music_volume)
+
+
+func _on_volumme_slider_drag_ended(value_changed: bool) -> void:
+	if volumme_slider.value == 0:
+		sound_volume = -80
+		%Caption_sound2.text = str(0) + "%"
+	else:
+		var percentage = volumme_slider.value/100
+		print(percentage)
+		sound_volume = -20 + ((percentage * 10))
+		%Caption_sound2.text = str(percentage * 100) + "%"
+	save_settings()

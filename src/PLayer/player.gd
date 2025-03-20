@@ -7,22 +7,31 @@ class_name PlayerCharacterBody extends CharacterBody2D
 @onready var hurtbox: Area2D = $HurtBox
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var inventory_ui: SimplifiedInventory = $InventoryUi
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var last_flip: int = 1
 var __is_in_zone: bool = false
 var __enemy_in_attack_range: EnemyBase = null
 var __facing_left: bool = false
 var __attacking: bool = false
+var music_volume: int = 150
 
 func _ready() -> void:
 	stats.connect(&"health_changed", Callable(self, &"_on_health_changed"))
 	stats.connect(&"died", Callable(self, &"_on_player_died"))
 	stats.connect(&"level_up", Callable(self, &"_on_level_up"))
 	__update_hitbox_position()
+	var config = ConfigFile.new()
+	if config.load("user://settings.cfg") == OK:
+		music_volume = config.get_value("Settings", "s_volume", 40)
+	else:
+		music_volume = 0
+	print(music_volume)
+	sfx.volume_db = music_volume
 	#"res://src/Weapons/Pistol/Pistol.tscn"
 	#res://src/Weapons/Magic_stick/Magik_stick.tscn
 	#res://src/Weapons/Sword/Sword.tscn
-	var weapon_scene = preload("res://src/Weapons/Sword/Sword.tscn") as PackedScene
+	var weapon_scene = preload("res://src/Weapons/Pistol/Pistol.tscn") as PackedScene
 	inventory_ui.add_weapon(weapon_scene, 0)
 	inventory_ui.add_weapon(weapon_scene, 1)
 	inventory_ui.add_weapon(weapon_scene, 2)
@@ -43,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not __attacking:
 		if __enemy_in_attack_range:
+			play_effect("res://src/PLayer/SFX/player_attack.wav")
 			perform_attack()
 		else:
 			movement(delta)
@@ -81,10 +91,12 @@ func __update_hitbox_position() -> void:
 
 func take_damage(amount: float) -> void:
 	print("# Гравець отримує урон:", amount)
+	play_effect("res://src/PLayer/SFX/hurt.wav")
 	stats.take_damage(amount)
 
 func _on_player_died():
 	sprite.play(&"die")
+	play_effect("res://src/PLayer/SFX/Player_die.wav")
 	print("# Гравець загинув.")
 	get_tree().paused = true
 
@@ -119,3 +131,12 @@ func __enemy_exited_attack_range(area: Area2D) -> void:
 	__enemy_in_attack_range = null
 	__is_in_zone = false
 	return
+
+func play_effect(effect_path: String) -> void:
+	var effect_stream = load(effect_path)
+	if effect_stream:
+		sfx.stop()
+		sfx.stream = effect_stream
+		sfx.play()
+	else:
+		push_error("Не вдалося завантажити ефект: " + effect_path)

@@ -343,6 +343,8 @@ debug_color = Color(0.743545, 0.416871, 0.546863, 0.42)
 
 [node name="stats" type="Node" parent="." groups=["PlayerStats"]]
 script = ExtResource("9_8sxit")
+__max_health = 100000.0
+__current_health = 100000.0
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player", "attack"]]
 position = Vector2(0, -124)
@@ -367,6 +369,8 @@ shape = SubResource("RectangleShape2D_065lq")
 
 [node name="InventoryUi" parent="." instance=ExtResource("12_so3wx")]
 position = Vector2(-24, -43)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="__enemy_entered_attack_range"]

@@ -119,8 +119,9 @@ script = ExtResource("3_rbjh0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_sprite/HitBox"]
 light_mask = 2
 position = Vector2(20.7452, -4.07625)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a5wes")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="Sword_sprite/HitBox" to="." method="__enemy_entered_attack_range"]
 [connection signal="area_exited" from="Sword_sprite/HitBox" to="." method="__enemy_exited_attack_range"]

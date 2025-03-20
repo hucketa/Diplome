@@ -9,13 +9,23 @@ var __enemy_in_attack_range: EnemyBase = null
 var __facing_left: bool = false
 var last_flip: bool = false
 @export var damage_sword = 150
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+var music_volume: int
 
 func _ready() -> void:
 	if sword_sprite == null:
 		sword_sprite = $Sword_sprite
+	var config = ConfigFile.new()
+	if config.load("user://settings.cfg") == OK:
+		music_volume = config.get_value("Settings", "s_volume", 40)
+	else:
+		music_volume = 0
+	print(music_volume)
+	sfx.volume_db = music_volume
 
 func attack():
 	__face_sword()
+	
 	sword_sprite.play("attack")
 
 func _process(delta: float) -> void:
@@ -39,13 +49,13 @@ func __update_hitbox_position() -> void:
 		hitbox.position.x = (sword_sprite.position.x) - 90
 
 func perform_attack():
-	if __enemy_in_attack_range:  # Проверка, что враг существует
+	if __enemy_in_attack_range:
 		print(__enemy_in_attack_range)
 		__attacking = true
+		play_effect("res://src/Weapons/Sword/Sword_attack.wav")
 		sword_sprite.play("attack")
 		await sword_sprite.animation_finished
 		__attacking = false
-		# Убедимся, что враг не null перед нанесением урона
 		if __enemy_in_attack_range != null:
 			__enemy_in_attack_range.take_damage(damage_sword)
 		else:
@@ -61,3 +71,12 @@ func __enemy_exited_attack_range(area: Area2D) -> void:
 	if __enemy_in_attack_range and __enemy_in_attack_range == area.get_parent():
 		__enemy_in_attack_range = null
 		__is_in_zone = false
+
+func play_effect(effect_path: String) -> void:
+	var effect_stream = load(effect_path)
+	if effect_stream:
+		sfx.stop()
+		sfx.stream = effect_stream
+		sfx.play()
+	else:
+		push_error("Не вдалося завантажити ефект: " + effect_path)

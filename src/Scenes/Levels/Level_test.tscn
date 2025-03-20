@@ -4422,6 +4422,9 @@ xp_reward = 150
 position = Vector2(21, 419)
 xp_reward = 150
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -75.596
+
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

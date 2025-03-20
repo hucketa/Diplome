@@ -134,3 +134,7 @@ func __player_entered(area: Area2D) -> void:
 
 func __player_exited(area: Area2D) -> void:
 	__player_in_attack_range = null
+
+func play_sound(effect_path: String):
+	pass
+	

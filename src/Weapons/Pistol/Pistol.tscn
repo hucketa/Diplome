@@ -147,3 +147,5 @@ sprite_frames = SubResource("SpriteFrames_eqt4c")
 animation = &"attack"
 frame = 17
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

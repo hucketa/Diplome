@@ -117,3 +117,5 @@ position = Vector2(26.0625, 30.5351)
 scale = Vector2(0.166791, 0.166791)
 sprite_frames = SubResource("SpriteFrames_qpscw")
 animation = &"attack"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
