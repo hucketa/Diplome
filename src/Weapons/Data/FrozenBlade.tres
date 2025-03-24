@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://miwvhs74dkt1"]
+
+[ext_resource type="Texture2D" uid="uid://nb0y0b8s8w4w" path="res://src/Weapons/Assets/Icons/IceSword.png" id="1_gvwq4"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_tvcbc"]
+[ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_6k0x7"]
+[ext_resource type="SpriteFrames" uid="uid://c4xh6b8qnl7lc" path="res://src/Weapons/Assets/SpriteFrames/IceSword.tres" id="3_g1s43"]
+
+[resource]
+script = ExtResource("2_tvcbc")
+weapon_name = "Frozen Blade"
+description = "Холодный на вид, покрыт инеем"
+damage = 11
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_gvwq4")
+weapon_scene = ExtResource("3_6k0x7")
+rarity = "rare"
+weapon_type = "melle"
+sprite_frames = ExtResource("3_g1s43")

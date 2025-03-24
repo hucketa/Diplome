@@ -17,6 +17,11 @@ var __attacking: bool = false
 var music_volume: int = 150
 
 func _ready() -> void:
+	var weapon_data = WeaponDB.get_random(1)[0]
+	inventory_ui.add_weapon_from_data(weapon_data, 0)
+	inventory_ui.add_weapon_from_data(weapon_data, 1)
+	inventory_ui.add_weapon_from_data(weapon_data, 2)
+	inventory_ui.add_weapon_from_data(weapon_data, 3)
 	stats.connect(&"health_changed", Callable(self, &"_on_health_changed"))
 	stats.connect(&"died", Callable(self, &"_on_player_died"))
 	stats.connect(&"level_up", Callable(self, &"_on_level_up"))
@@ -31,11 +36,11 @@ func _ready() -> void:
 	#"res://src/Weapons/Pistol/Pistol.tscn"
 	#res://src/Weapons/Magic_stick/Magik_stick.tscn
 	#res://src/Weapons/Sword/Sword.tscn
-	var weapon_scene = preload("res://src/Weapons/Pistol/Pistol.tscn") as PackedScene
-	inventory_ui.add_weapon(weapon_scene, 0)
-	inventory_ui.add_weapon(weapon_scene, 1)
-	inventory_ui.add_weapon(weapon_scene, 2)
-	inventory_ui.add_weapon(weapon_scene, 3)
+	#var weapon_scene = preload("res://src/Weapons/Pistol/Pistol.tscn") as PackedScene
+	#inventory_ui.add_weapon(weapon_scene, 0)
+	#inventory_ui.add_weapon(weapon_scene, 1)
+	#inventory_ui.add_weapon(weapon_scene, 2)
+	#inventory_ui.add_weapon(weapon_scene, 3)
 
 func _physics_process(delta: float) -> void:
 	if stats.is_dead:

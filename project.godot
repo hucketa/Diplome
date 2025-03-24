@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 MusicManager="*res://src/Utility_scripts/BackGroundMusic/MusicManager.gd"
+WeaponDB="*res://src/Weapons/WeaponDatabase.gd"
 
 [display]
 

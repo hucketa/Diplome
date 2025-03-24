@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://p5st61pgmplj"]
+
+[ext_resource type="Texture2D" uid="uid://dixjfgosrifk1" path="res://src/Weapons/Assets/Icons/IronSword.png" id="1_rf0ud"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_14xba"]
+[ext_resource type="SpriteFrames" uid="uid://bygaqodtr4afo" path="res://src/Weapons/Assets/SpriteFrames/IronSword.tres" id="3_1f5c0"]
+[ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_6wkuj"]
+
+[resource]
+script = ExtResource("2_14xba")
+weapon_name = "Iron Sword"
+description = "Простое, надёжное оружие ближнего боя"
+damage = 7
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_rf0ud")
+weapon_scene = ExtResource("3_6wkuj")
+rarity = "common"
+weapon_type = "melle"
+sprite_frames = ExtResource("3_1f5c0")

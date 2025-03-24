@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://gop3oc4dh1f5"]
+
+[ext_resource type="Texture2D" uid="uid://isi5hp7kf4vb" path="res://src/Weapons/Assets/Icons/Silencer_icon.png" id="1_f5id0"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_w408b"]
+[ext_resource type="SpriteFrames" uid="uid://de8mr2dnxwl2y" path="res://src/Weapons/Assets/SpriteFrames/Silencer.tres" id="3_emhyb"]
+[ext_resource type="PackedScene" uid="uid://d0xt1f6q18awj" path="res://src/Weapons/Pistol/Pistol.tscn" id="4_saxj0"]
+
+[resource]
+script = ExtResource("2_w408b")
+weapon_name = "Silencer"
+description = "Тёмный корпус, тихий выстрел"
+damage = 17
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_f5id0")
+weapon_scene = ExtResource("4_saxj0")
+rarity = "common"
+weapon_type = "epic"
+sprite_frames = ExtResource("3_emhyb")

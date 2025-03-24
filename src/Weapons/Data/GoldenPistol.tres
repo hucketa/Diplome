@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://cks6nrltmlm0n"]
+
+[ext_resource type="Texture2D" uid="uid://2u0rw1unnb23" path="res://src/Weapons/Assets/Icons/GoldenPistol_icon.png" id="1_48bk7"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_xnyjw"]
+[ext_resource type="SpriteFrames" uid="uid://de0rrmyeb5x5p" path="res://src/Weapons/Assets/SpriteFrames/GoldenPistol.tres" id="3_248h7"]
+[ext_resource type="PackedScene" uid="uid://d0xt1f6q18awj" path="res://src/Weapons/Pistol/Pistol.tscn" id="4_7xq6b"]
+
+[resource]
+script = ExtResource("2_xnyjw")
+weapon_name = "Golden Pistol"
+description = "Украшен позолотой, внушает уважение"
+damage = 15
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_48bk7")
+weapon_scene = ExtResource("4_7xq6b")
+rarity = "rare"
+weapon_type = "range"
+sprite_frames = ExtResource("3_248h7")

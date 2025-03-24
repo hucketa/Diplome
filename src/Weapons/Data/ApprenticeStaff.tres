@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://cy8u2dnvg7rfb"]
+
+[ext_resource type="Texture2D" uid="uid://casxo13itq32k" path="res://src/Weapons/Assets/Icons/ApprenticeStaff.png" id="1_kdjw8"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_4yhhf"]
+[ext_resource type="SpriteFrames" uid="uid://bo7hictkmuv1b" path="res://src/Weapons/Assets/SpriteFrames/ApprenticeStaff.tres" id="3_c6f31"]
+[ext_resource type="PackedScene" uid="uid://dr442sgvujxri" path="res://src/Weapons/Magic_stick/Magik_stick.tscn" id="4_71v1j"]
+
+[resource]
+script = ExtResource("2_4yhhf")
+weapon_name = "Apprentice Staff"
+description = " Посох для начинающих магов"
+damage = 6
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_kdjw8")
+weapon_scene = ExtResource("4_71v1j")
+rarity = "common"
+weapon_type = "range"
+sprite_frames = ExtResource("3_c6f31")

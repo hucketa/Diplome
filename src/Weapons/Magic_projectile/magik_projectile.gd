@@ -9,9 +9,6 @@ var __enemy_in_attack_range: EnemyBase = null
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-#func _ready():
-	#print("🚀 Пуля создана! Позиция:", global_position, "Направление:", direction)
-
 func set_direction(new_direction: Vector2):
 	direction = new_direction
 	if sprite:

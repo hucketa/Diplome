@@ -368,7 +368,7 @@ position = Vector2(11.75, 94.9997)
 shape = SubResource("RectangleShape2D_065lq")
 
 [node name="InventoryUi" parent="." instance=ExtResource("12_so3wx")]
-position = Vector2(-24, -43)
+position = Vector2(-1, -4)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

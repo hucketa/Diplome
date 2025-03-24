@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://c46y1xf5am6lt"]
+
+[ext_resource type="Texture2D" uid="uid://bw47y1l7wl0df" path="res://src/Weapons/Assets/Icons/Iicon_32_11.png" id="1_dyhvr"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_e8up4"]
+[ext_resource type="SpriteFrames" uid="uid://7gdwgf7obp0h" path="res://src/Weapons/Assets/SpriteFrames/FireSword.tres" id="3_doo53"]
+[ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_jlone"]
+
+[resource]
+script = ExtResource("2_e8up4")
+weapon_name = "Flaming Sword"
+description = "Окрас клинка будто пылает"
+damage = 12
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_dyhvr")
+weapon_scene = ExtResource("3_jlone")
+rarity = "rare"
+weapon_type = "melle"
+sprite_frames = ExtResource("3_doo53")

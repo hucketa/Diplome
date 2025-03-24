@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://b1ti54ht1g6nn"]
+
+[ext_resource type="Texture2D" uid="uid://ucatwc5v15gp" path="res://src/Weapons/Assets/Icons/CursedSword.png" id="1_p8wbu"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_mw5oa"]
+[ext_resource type="SpriteFrames" uid="uid://ikdo23xd52xf" path="res://src/Weapons/Assets/SpriteFrames/CursedSword.tres" id="3_mh1r2"]
+[ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_ve4se"]
+
+[resource]
+script = ExtResource("2_mw5oa")
+weapon_name = "Cursed Sword"
+description = "Зловещий клинок с мрачной аурой"
+damage = 18
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_p8wbu")
+weapon_scene = ExtResource("3_ve4se")
+rarity = "epic"
+weapon_type = "melle"
+sprite_frames = ExtResource("3_mh1r2")

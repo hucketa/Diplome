@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://bx8nvr7kg2yfw"]
+
+[ext_resource type="Texture2D" uid="uid://c4oiskoyeg07s" path="res://src/Weapons/Assets/Icons/ClassicPistol.png" id="1_wuhme"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_65bbo"]
+[ext_resource type="SpriteFrames" uid="uid://bqnkqrypv2y3g" path="res://src/Weapons/Assets/SpriteFrames/ClasiscPistol.tres" id="3_xovt2"]
+[ext_resource type="PackedScene" uid="uid://d0xt1f6q18awj" path="res://src/Weapons/Pistol/Pistol.tscn" id="4_b6mvy"]
+
+[resource]
+script = ExtResource("2_65bbo")
+weapon_name = "Classic Pistol"
+description = "Обычный пистолет с хорошим балансом"
+damage = 10
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_wuhme")
+weapon_scene = ExtResource("4_b6mvy")
+rarity = "common"
+weapon_type = "range"
+sprite_frames = ExtResource("3_xovt2")

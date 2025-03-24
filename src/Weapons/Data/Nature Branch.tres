@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://de3284of6ty1v"]
+
+[ext_resource type="Texture2D" uid="uid://bmnhxfheewcli" path="res://src/Weapons/Assets/Icons/IceWand.png" id="1_d8o6i"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_oy0a0"]
+[ext_resource type="SpriteFrames" uid="uid://c5w6vfgqj8ski" path="res://src/Weapons/Assets/SpriteFrames/Ice Wand.tres" id="3_xbjip"]
+[ext_resource type="PackedScene" uid="uid://dr442sgvujxri" path="res://src/Weapons/Magic_stick/Magik_stick.tscn" id="4_dut6w"]
+
+[resource]
+script = ExtResource("2_oy0a0")
+weapon_name = "Ice Wand"
+description = "Покрыт инеем, синеватый оттенок"
+damage = 13
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_d8o6i")
+weapon_scene = ExtResource("4_dut6w")
+rarity = "rare"
+weapon_type = "range"
+sprite_frames = ExtResource("3_xbjip")

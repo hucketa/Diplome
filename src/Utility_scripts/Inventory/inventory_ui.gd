@@ -64,6 +64,19 @@ func select_slot(slot_index: int):
 	current_slot = slot_index
 	print("Выбран слот", slot_index)
 
+func add_weapon_from_data(data: WeaponData, slot_index: int) -> bool:
+	if slot_index < 0 or slot_index >= slots_count:
+		push_error("Неверный индекс слота: " + str(slot_index))
+		return false
+	var new_weapon = data.weapon_scene.instantiate()
+	if "set_data" in new_weapon:
+		new_weapon.set_data(data)
+	markers[slot_index].add_child(new_weapon)
+	slots[slot_index].weapon = new_weapon
+	slots[slot_index].weapon_data = data
+	return true
+
+
 func _process(delta: float):
 	for i in range(slots_count):
 		var current_weapon = slots[i].weapon

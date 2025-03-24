@@ -26,10 +26,9 @@ func _process(delta: float) -> void:
 	__gun_sprite.flip_h = super.get_flip()
 
 func _on_attack_started():
-	print("Gun: Атака началась!")
+	pass
 
 func _on_animated_sprite_2d_animation_finished():
-	print("Анимация атаки завершена!")
 	var bullet = bullet_scene.instantiate()
 	self.add_child(bullet)
 	bullet.global_position = self.global_position + Vector2(0, +10)
@@ -46,3 +45,11 @@ func play_effect(effect_path: String) -> void:
 		sfx.play()
 	else:
 		push_error("Не вдалося завантажити ефект: " + effect_path)
+		
+
+func set_data(data: WeaponData):
+	if not __gun_sprite:
+		__gun_sprite = $GunSprite
+	if data.sprite_frames:
+		__gun_sprite.sprite_frames = data.sprite_frames
+		__gun_sprite.play("attack")

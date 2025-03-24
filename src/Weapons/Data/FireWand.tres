@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://ohco8xwh8u30"]
+
+[ext_resource type="Texture2D" uid="uid://c4xyt4745p4c5" path="res://src/Weapons/Assets/Icons/FireWands.png" id="1_j00v2"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_5el6f"]
+[ext_resource type="SpriteFrames" uid="uid://cic71d4k4qysh" path="res://src/Weapons/Assets/SpriteFrames/FireWands.tres" id="3_ccse0"]
+[ext_resource type="PackedScene" uid="uid://dr442sgvujxri" path="res://src/Weapons/Magic_stick/Magik_stick.tscn" id="4_1lm5x"]
+
+[resource]
+script = ExtResource("2_5el6f")
+weapon_name = "Pistol"
+description = "Common pistol"
+damage = 14
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_j00v2")
+weapon_scene = ExtResource("4_1lm5x")
+rarity = "rare"
+weapon_type = "range"
+sprite_frames = ExtResource("3_ccse0")

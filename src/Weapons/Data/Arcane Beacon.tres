@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://boenxxd7468xi"]
+
+[ext_resource type="Texture2D" uid="uid://b2nf7taxh3jjh" path="res://src/Weapons/Assets/Icons/Arcane Beacon.png" id="1_tdmts"]
+[ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_x7yay"]
+[ext_resource type="SpriteFrames" uid="uid://cn5qeatqpjfs7" path="res://src/Weapons/Assets/SpriteFrames/ArcaneBeacon.tres" id="3_aev5t"]
+[ext_resource type="PackedScene" uid="uid://dr442sgvujxri" path="res://src/Weapons/Magic_stick/Magik_stick.tscn" id="4_r4f77"]
+
+[resource]
+script = ExtResource("2_x7yay")
+weapon_name = "Nature Branch"
+description = "Светится фиолетовым, нестабильная энергия"
+damage = 25
+color = Color(0, 0, 0, 1)
+icon = ExtResource("1_tdmts")
+weapon_scene = ExtResource("4_r4f77")
+rarity = "legendary"
+weapon_type = "range"
+sprite_frames = ExtResource("3_aev5t")

@@ -54,20 +54,21 @@ size = Vector2(31.8614, 16.938)
 script = ExtResource("1_jpsin")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(63, 26)
-scale = Vector2(3.89394, 3.32353)
+position = Vector2(-43, -17)
+scale = Vector2(2.56724, 2.19118)
 sprite_frames = SubResource("SpriteFrames_2ub2f")
 frame = 4
 frame_progress = 1.0
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D" groups=["attack"]]
+position = Vector2(16.4358, 7.22124)
 collision_layer = 8
 collision_mask = 64
 script = ExtResource("2_iwjsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
 light_mask = 2
-position = Vector2(-0.265315, 0.256638)
+position = Vector2(-15.6654, -6.92035)
 shape = SubResource("RectangleShape2D_a5wes")
 
 [connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="__enemy_entered_attack_range"]

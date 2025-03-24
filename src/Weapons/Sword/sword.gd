@@ -22,6 +22,7 @@ func _ready() -> void:
 		music_volume = 0
 	print(music_volume)
 	sfx.volume_db = music_volume
+	__update_hitbox_position()
 
 func attack():
 	__face_sword()
@@ -46,7 +47,7 @@ func __update_hitbox_position() -> void:
 	if not __facing_left:
 		hitbox.position.x = (sword_sprite.position.x)
 	else:
-		hitbox.position.x = (sword_sprite.position.x) - 90
+		hitbox.position.x = (sword_sprite.position.x)+10
 
 func perform_attack():
 	if __enemy_in_attack_range:
@@ -59,7 +60,7 @@ func perform_attack():
 		if __enemy_in_attack_range != null:
 			__enemy_in_attack_range.take_damage(damage_sword)
 		else:
-			print("# Враг не найден для атаки или он уже мертв.")
+			print("# Ворог відсутній.")
 
 func __enemy_entered_attack_range(area: Area2D) -> void:
 	var enemy = area.get_parent()
@@ -80,3 +81,10 @@ func play_effect(effect_path: String) -> void:
 		sfx.play()
 	else:
 		push_error("Не вдалося завантажити ефект: " + effect_path)
+
+func set_data(data: WeaponData):
+	if not sword_sprite:
+		sword_sprite = $Sword_sprite
+	if data.sprite_frames:
+		sword_sprite.sprite_frames = data.sprite_frames
+		sword_sprite.play("attack")
