@@ -243,3 +243,36 @@ msgstr "Silencer"
 # SILENCER DESC
 msgid "SILENCER DESC"
 msgstr "Dark casing, quiet shot"
+
+# INVENTORY
+msgid "INVENTORY"
+msgstr "Inventory"
+
+# INVENTORY
+msgid "INVENTORY"
+msgstr "Inventory"
+
+# INVENTORY
+msgid "INVENTORY"
+msgstr "Inventory"
+
+# RESUME
+msgid "RESUME"
+msgstr "Resume"
+
+# SAVE
+msgid "SAVE"
+msgstr "Save"
+
+# MAX_HEALTH
+msgid "MAX_HEALTH"
+msgstr "Maximum value of health"
+
+# BALANCE
+msgid "BALANCE"
+msgstr "Balance"
+
+#Experience
+msgid "Experience"
+msgstr "Experience to level up"
+

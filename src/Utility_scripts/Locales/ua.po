@@ -241,3 +241,26 @@ msgstr "Глушник"
 msgid "SILENCER DESC"
 msgstr "Темний корпус, тихий постріл"
 
+# INVENTORY
+msgid "INVENTORY"
+msgstr "Інвентар"
+
+# RESUME
+msgid "RESUME"
+msgstr "Продовжити"
+
+# SAVE
+msgid "SAVE"
+msgstr "Зберегтися"
+
+# MAX_HEALTH
+msgid "MAX_HEALTH"
+msgstr "Максимальна кількість здоров`я"
+
+# BALANCE
+msgid "BALANCE"
+msgstr "Баланс"
+
+#Experience
+msgid "Experience"
+msgstr "Потрібно досвіду для наступного рівня"

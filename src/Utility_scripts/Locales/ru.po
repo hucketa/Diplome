@@ -239,3 +239,27 @@ msgstr "Глушитель"
 # SILENCER DESC
 msgid "SILENCER DESC"
 msgstr "Темный корпус, тихий выстрел"
+
+# INVENTORY
+msgid "INVENTORY"
+msgstr "Инвентарь"
+
+# RESUME
+msgid "RESUME"
+msgstr "Продолжить"
+
+# SAVE
+msgid "SAVE"
+msgstr "Сохранится"
+
+# MAX_HEALTH
+msgid "MAX_HEALTH"
+msgstr "Максимальное количество здоровья"
+
+# BALANCE
+msgid "BALANCE"
+msgstr "Баланс"
+
+#Experience
+msgid "Experience"
+msgstr "Нужно опыта для следующего уровня"
