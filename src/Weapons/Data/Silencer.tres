@@ -10,6 +10,7 @@ script = ExtResource("2_w408b")
 weapon_name = "SILENCER"
 description = "SILENCER DESC"
 damage = 17
+price = 11.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_f5id0")
 weapon_scene = ExtResource("4_saxj0")

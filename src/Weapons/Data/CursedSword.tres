@@ -10,6 +10,7 @@ script = ExtResource("2_mw5oa")
 weapon_name = "CURSED SWORD"
 description = "CURSED SWORD DESC"
 damage = 18
+price = 2.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_p8wbu")
 weapon_scene = ExtResource("3_ve4se")

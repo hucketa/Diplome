@@ -10,6 +10,7 @@ script = ExtResource("2_5el6f")
 weapon_name = "FIRE WAND"
 description = "FIRE WAND DESC"
 damage = 14
+price = 4.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_j00v2")
 weapon_scene = ExtResource("4_1lm5x")

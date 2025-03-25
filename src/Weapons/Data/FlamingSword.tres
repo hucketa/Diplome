@@ -10,6 +10,7 @@ script = ExtResource("2_e8up4")
 weapon_name = "FLAMING SWORD"
 description = "FLAMING SWORD DESC"
 damage = 12
+price = 6.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_dyhvr")
 weapon_scene = ExtResource("3_jlone")

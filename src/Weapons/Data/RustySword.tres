@@ -10,6 +10,7 @@ script = ExtResource("2_x8liv")
 weapon_name = "RUSTY SWORD"
 description = "RUSTY SWORD DESC"
 damage = 4
+price = 2.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_g6o0b")
 weapon_scene = ExtResource("3_lot3f")

@@ -10,6 +10,7 @@ script = ExtResource("2_14xba")
 weapon_name = "IRON SWORD"
 description = "IRON SWORD DESC"
 damage = 7
+price = 8.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_rf0ud")
 weapon_scene = ExtResource("3_6wkuj")

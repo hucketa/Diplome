@@ -10,6 +10,7 @@ script = ExtResource("2_xnyjw")
 weapon_name = "GOLDEN PISTOL"
 description = "GOLDEN PISTOL DESC"
 damage = 15
+price = 25.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_48bk7")
 weapon_scene = ExtResource("4_7xq6b")

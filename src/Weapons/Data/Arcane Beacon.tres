@@ -10,6 +10,7 @@ script = ExtResource("2_x7yay")
 weapon_name = "ARCANE BEACON"
 description = "ARCANE BEACON DESC"
 damage = 25
+price = 5.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_tdmts")
 weapon_scene = ExtResource("4_r4f77")
