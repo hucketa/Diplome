@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_14xba")
-weapon_name = "Iron Sword"
-description = "Простое, надёжное оружие ближнего боя"
+weapon_name = "IRON SWORD"
+description = "IRON SWORD DESC"
 damage = 7
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_rf0ud")
 weapon_scene = ExtResource("3_6wkuj")
-rarity = "common"
-weapon_type = "melle"
+rarity = "COMMON"
+weapon_type = "MELLE"
 sprite_frames = ExtResource("3_1f5c0")

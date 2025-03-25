@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://blgw47qbdniwm"]
 
-[ext_resource type="Texture2D" uid="uid://cojhy8ce5dhho" path="res://src/Weapons/Assets/SpriteFrames/RustySword.png" id="1_4hib3"]
+[ext_resource type="Texture2D" uid="uid://b123kqm7hykyu" path="res://src/Weapons/Assets/Icons/RustySword_icon.png" id="1_g6o0b"]
 [ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_x8liv"]
 [ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_lot3f"]
 [ext_resource type="SpriteFrames" uid="uid://jecqh4jsaurm" path="res://src/Weapons/Assets/SpriteFrames/rusty_sword_frames.tres" id="3_x51is"]
 
 [resource]
 script = ExtResource("2_x8liv")
-weapon_name = "Rusty Sword"
-description = "Старая и изношенная сталь, почти сломана"
+weapon_name = "RUSTY SWORD"
+description = "RUSTY SWORD DESC"
 damage = 4
 color = Color(0, 0, 0, 1)
-icon = ExtResource("1_4hib3")
+icon = ExtResource("1_g6o0b")
 weapon_scene = ExtResource("3_lot3f")
-rarity = "common"
-weapon_type = "melle"
+rarity = "COMMON"
+weapon_type = "MELLE"
 sprite_frames = ExtResource("3_x51is")

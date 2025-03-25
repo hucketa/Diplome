@@ -112,3 +112,132 @@ msgstr "Додатковий шанс крита"
 # desc_hp_buff
 msgid "desc_hp_buff"
 msgstr "Додаткове здоров`я"
+
+# APPRENTICE STAFF
+msgid "APPRENTICE STAFF"
+msgstr "Палиця учня"
+
+# APPRENTICE STAFF DESC
+msgid "APPRENTICE STAFF DESC"
+msgstr "Палиця для початківців магів"
+
+# COMMON
+msgid "COMMON"
+msgstr "Звичайний"
+
+# RANGE
+msgid "RANGE"
+msgstr "Дальній бій"
+
+# LEGENDARY
+msgid "LEGENDARY"
+msgstr "Легендарний"
+
+# ARCANE BEACON
+msgid "ARCANE BEACON"
+msgstr "Аркановий маяк"
+
+# ARCANE BEACON DESC
+msgid "NATURE BRANCH DESC"
+msgstr "Світиться фіолетовим, нестабільна енергія"
+
+# CLASIC PISTOL
+msgid "CLASIC PISTOL"
+msgstr "Класичний пістолет"
+
+# CLASIC PISTOL DESC
+msgid "CLASIC PISTOL DESC"
+msgstr "Звичайний пістолет з хорошим балансом"
+
+# EPIC
+msgid "EPIC"
+msgstr "Епічний"
+
+# MELLE
+msgid "MELLE"
+msgstr "Ближній бій"
+
+# CURSED SWORD
+msgid "CURSED SWORD"
+msgstr "Проклятий меч"
+
+# CURSED SWORD DESC
+msgid "CURSED SWORD DESC"
+msgstr "Зловісний клинок з містичною аурою"
+
+# RARE
+msgid "RARE"
+msgstr "Рідкісний"
+
+# FIRE WAND
+msgid "FIRE WAND"
+msgstr "Палиця вогню"
+
+# FIRE WAND DESC
+msgid "FIRE WAND DESC"
+msgstr "Палиця з невеликою магічною вогняною силою"
+
+# FLAMING SWORD
+msgid "FLAMING SWORD"
+msgstr "Палаючий меч"
+
+# FLAMING SWORD DESC
+msgid "FLAMING SWORD DESC"
+msgstr "Забарвлення леза, як полум'я"
+
+# FROZEN BLADE
+msgid "FROZEN BLADE"
+msgstr "Заморожене лезо"
+
+# FROZEN BLADE DESC
+msgid "FROZEN BLADE DESC"
+msgstr "Холодне на вигляд, покрите інеєм"
+
+# GOLDEN PISTOL
+msgid "GOLDEN PISTOL"
+msgstr "Золотий пістолет"
+
+# GOLDEN PISTOL DESC
+msgid "GOLDEN PISTOL DESC"
+msgstr "Прикрашений позолотою, надихає на повагу"
+
+# ICE WAND
+msgid "ICE WAND"
+msgstr "Палиця льоду"
+
+# ICE WAND DESC
+msgid "ICE WAND DESC"
+msgstr "Холодне на вигляд, покрите інеєм"
+
+# IRON SWORD
+msgid "IRON SWORD"
+msgstr "Залізний меч"
+
+# IRON SWORD DESC
+msgid "IRON SWORD DESC"
+msgstr "Простий, надійний ближньобійний інструмент"
+
+# NATURE BRANCH
+msgid "NATURE BRANCH"
+msgstr "Гілка природи"
+
+# NATURE BRANCH DESC
+msgid "NATURE BRANCH DESC"
+msgstr "Сила природи"
+
+# RUSTY SWORD
+msgid "RUSTY SWORD"
+msgstr "Ржавий меч"
+
+# RUSTY SWORD DESC
+msgid "RUSTY SWORD DESC"
+msgstr "Старий, зношений метал, майже зламаний"
+
+# SILENCER
+msgid "SILENCER"
+msgstr "Глушник"
+
+# SILENCER DESC
+msgid "SILENCER DESC"
+msgstr "Темний корпус, тихий постріл"
+

@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_xnyjw")
-weapon_name = "Golden Pistol"
-description = "Украшен позолотой, внушает уважение"
+weapon_name = "GOLDEN PISTOL"
+description = "GOLDEN PISTOL DESC"
 damage = 15
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_48bk7")
 weapon_scene = ExtResource("4_7xq6b")
-rarity = "rare"
-weapon_type = "range"
+rarity = "RARE"
+weapon_type = "RANGE"
 sprite_frames = ExtResource("3_248h7")

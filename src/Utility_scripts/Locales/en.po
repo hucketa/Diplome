@@ -112,5 +112,134 @@ msgstr "Additional critical chance"
 msgid "desc_hp_buff"
 msgstr "Additional HP"
 
+# APPRENTICE STAFF
+msgid "APPRENTICE STAFF"
+msgstr "Apprentice Staff"
 
+# APPRENTICE STAFF DESC
+msgid "APPRENTICE STAFF DESC"
+msgstr "A staff for aspiring mages"
 
+# COMMON
+msgid "COMMON"
+msgstr "Common"
+
+# RANGE
+msgid "RANGE"
+msgstr "Range"
+
+# LEGENDARY
+msgid "LEGENDARY"
+msgstr "Legendary"
+
+# LEGENDARY
+msgid "LEGENDARY"
+msgstr "Legendary"
+
+# ARCANE BEACON
+msgid "ARCANE BEACON"
+msgstr "Arcane Beacon"
+
+# ARCANE BEACON DESC
+msgid "NATURE BRANCH DESC"
+msgstr "Glowing purple, unstable energy"
+
+# CLASIC PISTOL
+msgid "CLASIC PISTOL"
+msgstr "Clasic Pistol"
+
+# CLASIC PISTOL DESC
+msgid "CLASIC PISTOL DESC"
+msgstr "An ordinary gun with good balance"
+
+# EPIC
+msgid "EPIC"
+msgstr "Epic"
+
+# MELLE
+msgid "MELLE"
+msgstr "Melee"
+
+# CURSED SWORD
+msgid "CURSED SWORD"
+msgstr "Cursed Sword"
+
+# CURSED SWORD DESC
+msgid "CURSED SWORD DESC"
+msgstr "An ominous blade with an eerie aura."
+
+# RARE
+msgid "RARE"
+msgstr "Rare"
+
+# FIRE WAND
+msgid "FIRE WAND"
+msgstr "Fire Wand"
+
+# FIRE WAND DESC
+msgid "FIRE WAND DESC"
+msgstr "A staff with a bit of fire magic power"
+
+# FLAMING SWORD
+msgid "FLAMING SWORD"
+msgstr "Flaming sword"
+
+# FLAMING SWORD DESC
+msgid "FLAMING SWORD DESC"
+msgstr "The coloring of the blade is like a flame"
+
+# FROZEN BLADE
+msgid "FROZEN BLADE"
+msgstr "Frozen Blade"
+
+# FROZEN BLADE DESC
+msgid "FROZEN BLADE DESC"
+msgstr "Cold in appearance, covered in frost."
+
+# GOLDEN PISTOL
+msgid "GOLDEN PISTOL"
+msgstr "Golden Pistol"
+
+# GOLDEN PISTOL DESC
+msgid "GOLDEN PISTOL DESC"
+msgstr "Decorated with gilding, it inspires respect"
+
+# ICE WAND
+msgid "ICE WAND"
+msgstr "Ice Wand"
+
+# ICE WAND DESC
+msgid "ICE WAND DESC"
+msgstr "Cold in appearance, covered in frost."
+
+# IRON SWORD
+msgid "IRON SWORD"
+msgstr "Iron Sword"
+
+# IRON SWORD DESC
+msgid "IRON SWORD DESC"
+msgstr "A simple, reliable melee weapon."
+
+# NATURE BRANCH
+msgid "NATURE BRANCH"
+msgstr "Nature Branch"
+
+# NATURE BRANCH DESC
+msgid "NATURE BRANCH DESC"
+msgstr "Power of nature"
+
+# RUSTY SWORD
+msgid "RUSTY SWORD"
+msgstr "Rusty Sword"
+
+# RUSTY SWORD DESC
+msgid "RUSTY SWORD DESC"
+msgstr "Old and worn steel, almost broken"
+
+# SILENCER
+msgid "SILENCER"
+msgstr "Silencer"
+
+# SILENCER DESC
+msgid "SILENCER DESC"
+msgstr "Dark casing, quiet shot"

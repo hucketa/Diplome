@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_65bbo")
-weapon_name = "Classic Pistol"
-description = "Обычный пистолет с хорошим балансом"
+weapon_name = "CLASIC PISTOL"
+description = "CLASIC PISTOL DESC"
 damage = 10
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_wuhme")
 weapon_scene = ExtResource("4_b6mvy")
-rarity = "common"
-weapon_type = "range"
+rarity = "COMMON"
+weapon_type = "RANGE"
 sprite_frames = ExtResource("3_xovt2")

@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_tvcbc")
-weapon_name = "Frozen Blade"
-description = "Холодный на вид, покрыт инеем"
+weapon_name = "FROZEN BLADE"
+description = "FROZEN BLADE DESC"
 damage = 11
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_gvwq4")
 weapon_scene = ExtResource("3_6k0x7")
-rarity = "rare"
-weapon_type = "melle"
+rarity = "RARE"
+weapon_type = "MELLE"
 sprite_frames = ExtResource("3_g1s43")

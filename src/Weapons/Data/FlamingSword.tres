@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_e8up4")
-weapon_name = "Flaming Sword"
-description = "Окрас клинка будто пылает"
+weapon_name = "FLAMING SWORD"
+description = "FLAMING SWORD DESC"
 damage = 12
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_dyhvr")
 weapon_scene = ExtResource("3_jlone")
-rarity = "rare"
-weapon_type = "melle"
+rarity = "RARE"
+weapon_type = "MELLE"
 sprite_frames = ExtResource("3_doo53")

@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_r85wh")
-weapon_name = "IceWand"
-description = "Холодный на вид, покрыт инеем"
+weapon_name = "ICE WAND"
+description = "ICE WAND DESC"
 damage = 10
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_2fqf0")
 weapon_scene = ExtResource("4_2jo2o")
-rarity = "rare"
-weapon_type = "range"
+rarity = "RARE"
+weapon_type = "RANGE"
 sprite_frames = ExtResource("3_f85sx")

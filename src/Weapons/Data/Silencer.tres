@@ -7,12 +7,12 @@
 
 [resource]
 script = ExtResource("2_w408b")
-weapon_name = "Silencer"
-description = "Тёмный корпус, тихий выстрел"
+weapon_name = "SILENCER"
+description = "SILENCER DESC"
 damage = 17
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_f5id0")
 weapon_scene = ExtResource("4_saxj0")
-rarity = "common"
-weapon_type = "epic"
+rarity = "COMMON"
+weapon_type = "EPIC"
 sprite_frames = ExtResource("3_emhyb")
