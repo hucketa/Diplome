@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfspfc0f0ivf"]
+
+[ext_resource type="Texture2D" uid="uid://dg10rlho8i5jr" path="res://src/shop/Assets/Button.png" id="1_lo2u7"]
+[ext_resource type="Texture2D" uid="uid://b7xypo5y7qcvd" path="res://src/Weapons/Assets/Icons/NatureBranch.png" id="2_rsb4n"]
+[ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="3_gg8f5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdbtq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prwv7"]
+texture = ExtResource("1_lo2u7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xiou6"]
+texture = ExtResource("1_lo2u7")
+modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[node name="Button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.215
+offset_left = 1.0
+offset_right = 0.127991
+offset_bottom = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cdbtq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_prwv7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xiou6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwv7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.202
+anchor_right = 0.765
+anchor_bottom = 0.76
+offset_left = 0.408997
+offset_top = 0.0659981
+offset_right = 0.104996
+offset_bottom = 0.0799866
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.45
+texture = ExtResource("2_rsb4n")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_gg8f5")
+theme_override_font_sizes/font_size = 16
+text = "Nature Bramch
+"
+horizontal_alignment = 1
+vertical_alignment = 1
