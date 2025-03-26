@@ -263,3 +263,7 @@ msgstr "Баланс"
 #Experience
 msgid "Experience"
 msgstr "Нужно опыта для следующего уровня"
+
+#COINS
+msgid "COINS"
+msgstr "мон."

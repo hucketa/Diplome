@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dggiyb6qq2j1k"]
+[gd_scene load_steps=26 format=3 uid="uid://dggiyb6qq2j1k"]
 
+[ext_resource type="Script" path="res://src/shop/shop.gd" id="1_6x6kv"]
 [ext_resource type="Texture2D" uid="uid://dg10rlho8i5jr" path="res://src/shop/Assets/Button.png" id="1_gk8fi"]
 [ext_resource type="Texture2D" uid="uid://cdhkvodc7a8x7" path="res://src/Weapons/Assets/Icons/FireSword.png" id="2_rwfrm"]
 [ext_resource type="Texture2D" uid="uid://5vt7ja5emmim" path="res://src/shop/Assets/v2.png" id="3_ore3v"]
@@ -64,6 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6x6kv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

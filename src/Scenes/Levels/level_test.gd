@@ -5,10 +5,12 @@ extends Node2D
 @onready var exp_bar: ProgressBar = $UI/MarginContainer/VBoxContainer/HBoxContainer2/Exp_bar
 @onready var label_2: Label = %Label2
 @onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var control: Control = $Control
 
 const BUFF_SCENE = preload("res://src/Scenes/Buffs/Buffstscn.tscn")
 
 func _ready() -> void:
+	control.show()
 	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false

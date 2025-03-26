@@ -276,3 +276,7 @@ msgstr "Balance"
 msgid "Experience"
 msgstr "Experience to level up"
 
+#COINS
+msgid "COINS"
+msgstr "coins"
+
