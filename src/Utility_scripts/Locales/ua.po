@@ -249,8 +249,8 @@ msgstr "Інвентар"
 msgid "RESUME"
 msgstr "Продовжити"
 
-# SAVE
-msgid "SAVE"
+# Save
+msgid "Save"
 msgstr "Зберегтися"
 
 # MAX_HEALTH
@@ -268,3 +268,7 @@ msgstr "Потрібно досвіду для наступного рівня"
 #COINS
 msgid "COINS"
 msgstr "мон."
+
+#STATS
+msgid "STATS"
+msgstr "Статистика гравця"

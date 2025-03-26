@@ -248,8 +248,8 @@ msgstr "Инвентарь"
 msgid "RESUME"
 msgstr "Продолжить"
 
-# SAVE
-msgid "SAVE"
+# Save
+msgid "Save"
 msgstr "Сохранится"
 
 # MAX_HEALTH
@@ -267,3 +267,7 @@ msgstr "Нужно опыта для следующего уровня"
 #COINS
 msgid "COINS"
 msgstr "мон."
+
+#STATS
+msgid "STATS"
+msgstr "Статистика игрока"

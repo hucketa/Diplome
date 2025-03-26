@@ -7,13 +7,13 @@ enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 @export var __current_health: float = 1
 @export var __damage: float = 10
 @export var __armor: int = 0
-@export var __crit_chance: float = 0.1
+@export var __crit_chance: float = 0.01
 @export var __crit_multiplier: float = 2.0
 @export var __attack_speed: float = 15.0
 @export var __current_experience: float = 0
 @export var __experience_to_level_up: float = 15
 @export var __level: int = 1
-@export var __coins: int = 0
+@export var __coins: int = 10000
 
 signal health_changed(current_health)
 signal died

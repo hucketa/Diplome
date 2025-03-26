@@ -248,20 +248,12 @@ msgstr "Dark casing, quiet shot"
 msgid "INVENTORY"
 msgstr "Inventory"
 
-# INVENTORY
-msgid "INVENTORY"
-msgstr "Inventory"
-
-# INVENTORY
-msgid "INVENTORY"
-msgstr "Inventory"
-
 # RESUME
 msgid "RESUME"
 msgstr "Resume"
 
-# SAVE
-msgid "SAVE"
+# Save
+msgid "Save"
 msgstr "Save"
 
 # MAX_HEALTH
@@ -280,3 +272,6 @@ msgstr "Experience to level up"
 msgid "COINS"
 msgstr "coins"
 
+#STATS
+msgid "STATS"
+msgstr "Player stats"
