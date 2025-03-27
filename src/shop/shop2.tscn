@@ -607,3 +607,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 
 [node name="Player" parent="." instance=ExtResource("7_bwu1o")]
 position = Vector2(598, 323)
+
+[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot1" to="." method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot2" to="." method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3" to="." method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot4" to="." method="populate_inventory_ui"]

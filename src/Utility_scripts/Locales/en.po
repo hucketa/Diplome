@@ -275,3 +275,20 @@ msgstr "coins"
 #STATS
 msgid "STATS"
 msgstr "Player stats"
+
+#OK_BUTT
+msgid "OK_BUTT"
+msgstr "Ok"
+
+#CANCEL
+msgid "CANCEL"
+msgstr "Cancel"
+
+#POPDIALOG
+msgid "POPDIALOG"
+msgstr "Do you really want to clear this slot?"
+
+#INVENTORY_CLEAR
+msgid "INVENTORY_CLEAR"
+msgstr "Inventory slot cleaning"
+

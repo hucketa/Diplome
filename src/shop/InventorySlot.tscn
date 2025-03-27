@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqfspfc0f0ivf"]
+[gd_scene load_steps=8 format=3 uid="uid://dqfspfc0f0ivf"]
 
 [ext_resource type="Texture2D" uid="uid://dg10rlho8i5jr" path="res://src/shop/Assets/Button.png" id="1_lo2u7"]
+[ext_resource type="Script" path="res://src/shop/inventory_slot.gd" id="2_5qs13"]
 [ext_resource type="Texture2D" uid="uid://b7xypo5y7qcvd" path="res://src/Weapons/Assets/Icons/NatureBranch.png" id="2_rsb4n"]
 [ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="3_gg8f5"]
 
@@ -27,6 +28,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cdbtq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_prwv7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xiou6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwv7")
+script = ExtResource("2_5qs13")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -58,3 +60,16 @@ text = "Nature Bramch
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+title = "INVENTORY_CLEAR"
+ok_button_text = "OK_BUTT"
+dialog_text = "POPDIALOG"
+cancel_button_text = "CANCEL"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmed"]

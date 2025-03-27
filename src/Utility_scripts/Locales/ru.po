@@ -271,3 +271,23 @@ msgstr "мон."
 #STATS
 msgid "STATS"
 msgstr "Статистика игрока"
+
+#OK_BUTT
+msgid "OK_BUTT"
+msgstr "Подтверждаю"
+
+#CANCEL
+msgid "CANCEL"
+msgstr "Отменить"
+
+#POPDIALOG
+msgid "POPDIALOG"
+msgstr "Ok"
+
+#POPDIALOG
+msgid "POPDIALOG"
+msgstr "Вы действительно хотите очистить этот слот?"
+
+#INVENTORY_CLEAR
+msgid "INVENTORY_CLEAR"
+msgstr "Очистка слота"

@@ -345,6 +345,7 @@ debug_color = Color(0.743545, 0.416871, 0.546863, 0.42)
 script = ExtResource("9_8sxit")
 __max_health = 100000.0
 __current_health = 100000.0
+__coins = 40
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player", "attack"]]
 position = Vector2(0, -124)
