@@ -141,7 +141,7 @@ msgid "ARCANE BEACON"
 msgstr "Arcane Beacon"
 
 # ARCANE BEACON DESC
-msgid "NATURE BRANCH DESC"
+msgid "ARCANE BEACON DESC"
 msgstr "Glowing purple, unstable energy"
 
 # CLASIC PISTOL

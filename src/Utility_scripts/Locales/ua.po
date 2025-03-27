@@ -138,7 +138,7 @@ msgid "ARCANE BEACON"
 msgstr "Аркановий маяк"
 
 # ARCANE BEACON DESC
-msgid "NATURE BRANCH DESC"
+msgid "ARCANE BEACON DESC"
 msgstr "Світиться фіолетовим, нестабільна енергія"
 
 # CLASIC PISTOL
