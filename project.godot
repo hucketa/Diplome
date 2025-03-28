@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DarkLifer"
-run/main_scene="res://src/shop/shop2.tscn"
+run/main_scene="res://src/Scenes/Levels/Level_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -23,6 +23,7 @@ WeaponDB="*res://src/Weapons/WeaponDatabase.gd"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale=1.05

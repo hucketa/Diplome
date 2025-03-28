@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dggiyb6qq2j1k"]
+[gd_scene load_steps=26 format=3 uid="uid://dggiyb6qq2j1k"]
 
 [ext_resource type="Script" path="res://src/shop/shop.gd" id="1_6x6kv"]
 [ext_resource type="Texture2D" uid="uid://dg10rlho8i5jr" path="res://src/shop/Assets/Button.png" id="1_gk8fi"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://5vt7ja5emmim" path="res://src/shop/Assets/v2.png" id="3_ore3v"]
 [ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="4_bu623"]
 [ext_resource type="PackedScene" uid="uid://dqfspfc0f0ivf" path="res://src/shop/InventorySlot.tscn" id="5_c6320"]
-[ext_resource type="PackedScene" uid="uid://dbhw3n1mvdf3q" path="res://src/PLayer/player.tscn" id="7_bwu1o"]
 
 [sub_resource type="Gradient" id="Gradient_7v635"]
 colors = PackedColorArray(0.259294, 0.259294, 0.259294, 1, 0.197937, 0.197937, 0.197937, 1)
@@ -66,9 +65,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Base" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 script = ExtResource("1_6x6kv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Base"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +86,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_v80cf")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Base"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,36 +94,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BuySlots and Stats" type="HBoxContainer" parent="VBoxContainer"]
+[node name="BuySlots and Stats" type="HBoxContainer" parent="Base/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/BuySlots and Stats"]
+[node name="VSeparator2" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k4c67")
 
-[node name="Buy_slots" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats"]
+[node name="Buy_slots" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/BuySlots and Stats/Buy_slots"]
+[node name="HSeparator3" type="HSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots"]
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bnf11")
 
-[node name="BuySlot1" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots"]
+[node name="BuySlot1" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1"]
+[node name="TextureRect" type="TextureRect" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_gk8fi")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.195
@@ -133,7 +139,7 @@ grow_vertical = 2
 texture = ExtResource("2_rwfrm")
 expand_mode = 1
 
-[node name="Slot_1_buy" type="Button" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1"]
+[node name="Slot_1_buy" type="Button" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -145,7 +151,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_b6jmc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_n6t2l")
 theme_override_styles/normal = SubResource("StyleBoxTexture_b6jmc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy"]
 layout_mode = 2
 anchor_left = 0.083
 anchor_top = 0.289
@@ -159,48 +165,48 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 38
 theme_override_styles/separator = SubResource("StyleBoxEmpty_58xa3")
 
-[node name="Slot 1" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer"]
+[node name="Slot 1" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = -2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="WeaponName" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="WeaponName" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "Arcane Beacon"
 
-[node name="Rarity" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="Rarity" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "Legendary"
 
-[node name="Price" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="Price" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "18 монет"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Description" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/VBoxContainer"]
+[node name="Description" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy/HBoxContainer/Slot 1/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -209,23 +215,23 @@ theme_override_font_sizes/font_size = 20
 text = "Светится фиолетовым, нестабильная энергия"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/BuySlots and Stats/Buy_slots"]
+[node name="HSeparator" type="HSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots"]
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bnf11")
 
-[node name="BuySlot2" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots"]
+[node name="BuySlot2" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2"]
+[node name="TextureRect" type="TextureRect" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_gk8fi")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.195
@@ -241,7 +247,7 @@ grow_vertical = 2
 texture = ExtResource("2_rwfrm")
 expand_mode = 1
 
-[node name="Slot2_buy" type="Button" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2"]
+[node name="Slot2_buy" type="Button" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -253,7 +259,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_b6jmc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kt1kq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_b6jmc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy"]
 layout_mode = 2
 anchor_left = 0.083
 anchor_top = 0.289
@@ -267,48 +273,48 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 38
 theme_override_styles/separator = SubResource("StyleBoxEmpty_58xa3")
 
-[node name="Slot 1" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer"]
+[node name="Slot 1" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = -2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="WeaponName" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="WeaponName" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "Arcane Beacon"
 
-[node name="Rarity" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="Rarity" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "Legendary"
 
-[node name="Price" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
+[node name="Price" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 20
 text = "18 монет"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Description" type="Label" parent="VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/VBoxContainer"]
+[node name="Description" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy/HBoxContainer/Slot 1/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -317,242 +323,242 @@ theme_override_font_sizes/font_size = 20
 text = "Светится фиолетовым, нестабильная энергия"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/BuySlots and Stats/Buy_slots"]
+[node name="HSeparator2" type="HSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Buy_slots"]
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bnf11")
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k4c67")
 
-[node name="Stats" type="VBoxContainer" parent="VBoxContainer/BuySlots and Stats"]
+[node name="Stats" type="VBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="HSeparator" type="HSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dquav")
 
-[node name="Label" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Label" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 30
 text = "STATS"
 horizontal_alignment = 1
 
-[node name="Health" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Health" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Max_health" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Health"]
+[node name="Max_health" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Health"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "MAX_HEALTH"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Health"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Health"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Health"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Health"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Damage" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Damage" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Damage" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Damage"]
+[node name="Damage" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Damage"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "stat_damage"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Damage"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Damage"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Damage"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Damage"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="AS" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="AS" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="AS" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/AS"]
+[node name="AS" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/AS"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "stat_attack_speed"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/AS"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/AS"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/AS"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/AS"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Crit_chance" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Crit_chance" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Crit_chance" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
+[node name="Crit_chance" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "stat_crit_chance"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Crit_chance"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Level" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Level" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Level" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Level"]
+[node name="Level" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Level"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "LEVEL"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Level"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Level"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Level"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Level"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Experience" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Experience" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Experience" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Experience"]
+[node name="Experience" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "Experience"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Experience"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Experience"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Gold" type="HBoxContainer" parent="VBoxContainer/BuySlots and Stats/Stats"]
+[node name="Gold" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
-[node name="Gold" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Gold"]
+[node name="Gold" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Gold"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "BALANCE"
 
-[node name="Value" type="Label" parent="VBoxContainer/BuySlots and Stats/Stats/Gold"]
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Gold"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "1"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/BuySlots and Stats/Stats/Gold"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Gold"]
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Inventory and Buttons" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Inventory and Buttons" type="HBoxContainer" parent="Base/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Inventory and Buttons"]
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/Inventory and Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 
-[node name="Inventory" type="VBoxContainer" parent="VBoxContainer/Inventory and Buttons"]
+[node name="Inventory" type="VBoxContainer" parent="Base/VBoxContainer/Inventory and Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Inventory and Buttons/Inventory"]
+[node name="Label" type="Label" parent="Base/VBoxContainer/Inventory and Buttons/Inventory"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_bu623")
 theme_override_font_sizes/font_size = 18
 text = "INVENTORY"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Inventory"]
+[node name="HSeparator2" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Inventory"]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cbg7m")
 
-[node name="Inventory" type="HBoxContainer" parent="VBoxContainer/Inventory and Buttons/Inventory"]
+[node name="Inventory" type="HBoxContainer" parent="Base/VBoxContainer/Inventory and Buttons/Inventory"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.65
 
-[node name="Slot1" parent="VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
+[node name="Slot1" parent="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
 layout_mode = 2
 
-[node name="Slot2" parent="VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
+[node name="Slot2" parent="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
 layout_mode = 2
 
-[node name="Slot 3" parent="VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
+[node name="Slot 3" parent="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
 layout_mode = 2
 
-[node name="Slot4" parent="VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
+[node name="Slot4" parent="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory" instance=ExtResource("5_c6320")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Inventory"]
+[node name="HSeparator" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Inventory"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cbg7m")
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Inventory and Buttons"]
+[node name="VSeparator2" type="VSeparator" parent="Base/VBoxContainer/Inventory and Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/Inventory and Buttons"]
+[node name="Buttons" type="VBoxContainer" parent="Base/VBoxContainer/Inventory and Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="HSeparator3" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 28
 theme_override_styles/separator = SubResource("StyleBoxEmpty_r81lv")
 
-[node name="Resume" type="Button" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="Resume" type="Button" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("4_bu623")
@@ -563,12 +569,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rvstr")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8pfog")
 text = "RESUME"
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="HSeparator2" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_r81lv")
 
-[node name="Save" type="Button" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="Save" type="Button" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("4_bu623")
@@ -579,12 +585,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rvstr")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8pfog")
 text = "Save"
 
-[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="HSeparator4" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 13
 theme_override_styles/separator = SubResource("StyleBoxEmpty_r81lv")
 
-[node name="Exit" type="Button" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="Exit" type="Button" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("4_bu623")
@@ -595,20 +601,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rvstr")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8pfog")
 text = "EXIT"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Inventory and Buttons/Buttons"]
+[node name="HSeparator" type="HSeparator" parent="Base/VBoxContainer/Inventory and Buttons/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 44
 theme_override_styles/separator = SubResource("StyleBoxEmpty_q4y7s")
 
-[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Inventory and Buttons"]
+[node name="VSeparator3" type="VSeparator" parent="Base/VBoxContainer/Inventory and Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 
-[node name="Player" parent="." instance=ExtResource("7_bwu1o")]
-position = Vector2(598, 323)
-
-[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot1" to="." method="populate_inventory_ui"]
-[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot2" to="." method="populate_inventory_ui"]
-[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3" to="." method="populate_inventory_ui"]
-[connection signal="inventory_changed" from="VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot4" to="." method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot1" to="Base" method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot2" to="Base" method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3" to="Base" method="populate_inventory_ui"]
+[connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot4" to="Base" method="populate_inventory_ui"]
+[connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Resume" to="Base" method="_on_resume_pressed"]
+[connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Exit" to="Base" method="_on_exit_pressed"]

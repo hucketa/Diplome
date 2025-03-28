@@ -1,5 +1,7 @@
 extends Node2D
 
+signal wave_finished
+
 const ENEMY_SCENES = {
 	"skeleton": preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn"),
 	"nightborne": preload("res://src/Enemies/Nightborne/nightborne.tscn"),
@@ -22,11 +24,13 @@ const ENEMY_PROBABILITIES = [
 @export var spawn_interval: float = 1.5
 @export var max_enemies: int = 30
 
+
 var current_wave: int = 0
 var base_enemy_count: int = 4
 var wave_multiplier: float = 1.2
 var enemies_to_spawn: int = 0
 var spawned_enemies: Array = []
+var shop_instance
 
 func _ready():
 	spawn_timer.wait_time = spawn_interval
@@ -36,15 +40,15 @@ func _ready():
 func start_wave():
 	current_wave += 1
 	label.text = tr("WAWE") + ": " + str(current_wave)
+
 	enemies_to_spawn = int(base_enemy_count * pow(wave_multiplier, current_wave))
 	spawn_timer.start()
-	get_tree().create_timer(wave_delay + spawn_interval * enemies_to_spawn).timeout.connect(start_wave, CONNECT_ONE_SHOT)
 
 func _on_SpawnTimer_timeout():
 	if enemies_to_spawn > 0:
 		spawn_enemy()
 		enemies_to_spawn -= 1
-	else:
+	elif spawned_enemies.is_empty():
 		spawn_timer.stop()
 
 func spawn_enemy():
@@ -53,47 +57,45 @@ func spawn_enemy():
 
 	var enemy_type = choose_enemy_type()
 	var enemy_scene = get_enemy_scene(enemy_type)
-	var enemy = enemy_scene.instantiate() as EnemyBase
+	var enemy = enemy_scene.instantiate()
 
 	enemy.position = get_random_point_in_area()
 	spawned_enemies.append(enemy)
-	enemy.apply_wave_modifiers(current_wave)
-	add_child(enemy)
-	enemy.died.connect(_on_enemy_died.bind(enemy))
+	get_tree().current_scene.add_child(enemy)
+
+	if enemy.has_signal("died"):
+		enemy.connect("died", Callable(self, "_on_enemy_died").bind(enemy))
+
+	if enemy.has_method("apply_wave_modifiers"):
+		enemy.apply_wave_modifiers(current_wave)
+
+func _on_enemy_died(enemy):
+	spawned_enemies.erase(enemy)
+
+	if enemies_to_spawn == 0 and spawned_enemies.is_empty():
+		wave_finished.emit()
+
+func choose_enemy_type() -> String:
+	var probabilities = ENEMY_PROBABILITIES[0]["probabilities"]
+	for entry in ENEMY_PROBABILITIES:
+		if current_wave >= entry["wave"]:
+			probabilities = entry["probabilities"]
+		else:
+			break
+
+	var rand = randf()
+	var cumulative = 0.0
+	for enemy_type in probabilities.keys():
+		cumulative += probabilities[enemy_type]
+		if rand <= cumulative:
+			return enemy_type
+	return "skeleton"
 
 func get_enemy_scene(enemy_type: String) -> PackedScene:
 	return ENEMY_SCENES.get(enemy_type, ENEMY_SCENES["skeleton"])
 
-func choose_enemy_type() -> String:
-	for entry in ENEMY_PROBABILITIES:
-		if current_wave >= entry["wave"]:
-			return weighted_random(entry["probabilities"])
-	return "skeleton"
-
-func weighted_random(probabilities: Dictionary) -> String:
-	var roll = randf()
-	var cumulative = 0.0
-	for enemy in probabilities.keys():
-		cumulative += probabilities[enemy]
-		if roll < cumulative:
-			return enemy
-	return probabilities.keys()[0]
-
 func get_random_point_in_area() -> Vector2:
-	var shape = spawn_area.shape
-	var area_position = spawn_area.global_position
-
-	if shape is RectangleShape2D:
-		var half_size = shape.size * 0.5
-		return area_position + Vector2(randf_range(-half_size.x, half_size.x), randf_range(-half_size.y, half_size.y))
-	
-	if shape is CircleShape2D:
-		var radius = shape.radius
-		var angle = randf() * TAU
-		var distance = sqrt(randf()) * radius
-		return area_position + Vector2(cos(angle), sin(angle)) * distance
-	
-	return area_position
-
-func _on_enemy_died(dead_enemy):
-	spawned_enemies.erase(dead_enemy)
+	var rect = spawn_area.shape.get_rect()
+	var x = randf_range(rect.position.x, rect.position.x + rect.size.x)
+	var y = randf_range(rect.position.y, rect.position.y + rect.size.y)
+	return Vector2(x, y) + spawn_area.global_position

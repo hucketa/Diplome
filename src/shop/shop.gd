@@ -1,5 +1,7 @@
 extends Control
 
+signal shop_closed
+
 @onready var slot_1_buy: Button = $"VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy"
 @onready var slot_2_buy: Button = $"VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy"
 
@@ -104,3 +106,11 @@ func fill_stats() -> void:
 	$"VBoxContainer/BuySlots and Stats/Stats/Level/Value".text = str(player_stats.__level)
 	$"VBoxContainer/BuySlots and Stats/Stats/Experience/Value".text = str(player_stats.__experience_to_level_up)
 	$"VBoxContainer/BuySlots and Stats/Stats/Gold/Value".text = str(player_stats.__coins)
+
+
+func _on_resume_pressed() -> void:
+	emit_signal("shop_closed")
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
