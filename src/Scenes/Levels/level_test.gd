@@ -16,17 +16,13 @@ func _ready() -> void:
 	get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
-	%Resume.text = tr("BACK")
-	%Main_Menu.text = tr("SETTINGS")
-	%Exit.text = tr("MAIN_MENU")
-	%Pause_ui.text = tr("PAUSE")
-
 	player.stats.connect("show_buff_cards", Callable(self, "_on_show_buff_cards"))
 
 func _process(_delta: float) -> void:
 	%Health_bar.value = player.stats.get_health()
 	exp_bar.value = player.stats.get_exp()
-	label_2.text = tr("РІВЕНЬ") + ": " + str(player.stats.__coins)
+	label_2.text = tr("BALANCE") + ": " + str(player.stats.__coins)
+
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false

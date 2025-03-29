@@ -3,17 +3,18 @@ extends Node
 
 enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 
-@export var __max_health: float = 1
+@export var __max_health: float = 5
 @export var __current_health: float = 1
 @export var __damage: float = 10
 @export var __armor: int = 0
 @export var __crit_chance: float = 0.01
 @export var __crit_multiplier: float = 2.0
-@export var __attack_speed: float = 15.0
+@export var __attack_speed: float = 1
 @export var __current_experience: float = 0
 @export var __experience_to_level_up: float = 15
 @export var __level: int = 1
-@export var __coins: int = 10000
+@export var __coins: float = 5
+
 
 signal health_changed(current_health)
 signal died
@@ -24,7 +25,10 @@ var is_dead: bool = false
 var buff_effects = {}
 
 func _ready():
+	__max_health *= GameManager.__hp_scale
 	__current_health = __max_health
+	print(__current_health)
+	print(__max_health)
 	buff_effects = {
 		Stats.HEALTH: func(value): __max_health += value; __current_health = __max_health,
 		Stats.DAMAGE: func(value): __damage += value,
@@ -34,7 +38,7 @@ func _ready():
 	}
 
 func get_health() -> int:
-	return max(__current_health, 0)
+	return (__current_health/__max_health)*100
 
 func get_exp() -> float:
 	return (__current_experience / __experience_to_level_up) * 100
@@ -55,7 +59,7 @@ func take_damage(amount: int):
 		emit_signal("died")
 		die()
 
-func get_coins():
+func get_coins() -> float:
 	return __coins
 
 func heal(amount: int):
@@ -64,9 +68,10 @@ func heal(amount: int):
 		emit_signal("health_changed", __current_health)
 		print("Відновлено здоров'я на:", amount)
 
-func gain_experience(amount: int):
+func gain_experience(amount: float):
 	__current_experience += amount
 	print("Отримано досвід:", amount, "Поточний досвід:", __current_experience)
+	print(str(__experience_to_level_up)+"не вистачає")
 	while __current_experience >= __experience_to_level_up:
 		__current_experience -= __experience_to_level_up
 		level_uped()
@@ -96,7 +101,7 @@ func apply_buff(buff_type: int, value: float) -> void:
 func die():
 	print("Герой помер.")
 	
-func gain_coins(amount: int):
+func gain_coins(amount: float):
 	__coins += amount
 	print("Отримано монет:", amount, "Всього монет:", __coins)
 

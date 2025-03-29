@@ -4281,17 +4281,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_17b5i")
 theme_override_styles/hover = SubResource("StyleBoxTexture_c0k7o")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tqtm4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hnbo3")
-text = "Повернутися"
+text = "BACK"
 
-[node name="Main_Menu" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
+[node name="Save_last_wave" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gj14v")
 theme_override_styles/hover = SubResource("StyleBoxTexture_v3fcq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0n28b")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vddal")
-text = "Налаштування
-"
+text = "SAVEWAVE"
 
 [node name="Exit" type="Button" parent="Pause_Screen/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -4300,7 +4299,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6xmbc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_erubf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_6dpky")
 theme_override_styles/normal = SubResource("StyleBoxTexture_6ywl1")
-text = "Головне меню"
+text = "MAIN_MENU"
 
 [node name="CanvasModulate" parent="Pause_Screen" instance=ExtResource("7_cf2ul")]
 
@@ -4335,7 +4334,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5417i")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1ol2o")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8e5m0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ud7n5")
-text = "Пауза"
+text = "PAUSE"
 
 [node name="VSeparator" type="VSeparator" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -4409,7 +4408,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("5_gct7d")
-text = "Уровень"
+text = "BALANCE"
 
 [node name="CanvasModulate" parent="UI" instance=ExtResource("7_cf2ul")]
 
@@ -4424,7 +4423,7 @@ volume_db = -75.596
 position = Vector2(67, 24)
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Save_last_wave" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]
 [connection signal="wave_finished" from="Spawner" to="." method="_on_spawner_wave_finished"]

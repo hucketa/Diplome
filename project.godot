@@ -11,21 +11,22 @@ config_version=5
 [application]
 
 config/name="DarkLifer"
-run/main_scene="res://src/Scenes/Levels/Level_test.tscn"
+run/main_scene="res://src/Scenes/MainMenu/MainScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
-MusicManager="*res://src/Utility_scripts/BackGroundMusic/MusicManager.gd"
 WeaponDB="*res://src/Weapons/WeaponDatabase.gd"
+GameManager="*res://src/GameManager.gd"
 
 [display]
 
 window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/stretch/scale=1.05
 window/vsync/vsync_mode=0
 
@@ -107,7 +108,7 @@ player_move_down={
 [internationalization]
 
 locale/translation_remaps={}
-locale/translations=PackedStringArray("res://src/Utility_scripts/Locales/en.po", "res://src/Utility_scripts/Locales/ru.po", "res://src/Utility_scripts/Locales/ua.po")
+locale/translations=PackedStringArray("res://src/Utility_scripts/Locales/ua.po", "res://src/Utility_scripts/Locales/ru.po", "res://src/Utility_scripts/Locales/en.po")
 locale/include_text_server_data=true
 
 [layer_names]

@@ -29,17 +29,8 @@ func _on_exit_bt_pressed():
 func _ready():
 	var config = ConfigFile.new()
 	if config.load(CONFIG_PATH) == OK:
-		var localisation = config.get_value(\"Settings\", \"locale\", \"en\")
+		var localisation = config.get_value(\"Settings\", \"locale\", \"uk\")
 		TranslationServer.set_locale(localisation)
-	update_button_texts()
-
-func update_button_texts():
-	start_button.text = tr(\"PLAY\")
-	settings_button.text = tr(\"SETTINGS\")
-	exit_button.text = tr(\"EXIT\")
-
-func _on_translation_changed():
-	update_button_texts()
 
 func _on_settings_bt_pressed():
 	get_tree().change_scene_to_file(\"res://src/Scenes/Setting_w/settings.tscn\")
@@ -126,8 +117,7 @@ theme_override_font_sizes/font_size = 43
 theme_override_styles/hover = SubResource("StyleBoxTexture_0504l")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u5rxe")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hp6tm")
-text = "
-Грати"
+text = "PLAY"
 
 [node name="Settings_Bt" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
@@ -139,8 +129,7 @@ theme_override_font_sizes/font_size = 43
 theme_override_styles/hover = SubResource("StyleBoxTexture_uf7yn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ihrac")
 theme_override_styles/normal = SubResource("StyleBoxTexture_1dold")
-text = "
-Налаштування"
+text = "SETTINGS"
 
 [node name="Exit_bt" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
@@ -153,8 +142,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_6fbu0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3qpx7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_o33tu")
-text = "
-Вийти"
+text = "EXIT"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("11_0xtfl")]
 

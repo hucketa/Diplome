@@ -7,8 +7,8 @@ signal died
 @export var base_damage: float = 1
 @export var health_per_wave: float = 1.0
 @export var damage_per_wave: float = 0.5
-@export var xp_reward: int = 1
-@export var coins_reward: int = 1
+@export var xp_reward: float = 1
+@export var coins_reward: float = 1
 
 var XP_ITEM_SCENE = load("res://src/Scenes/Experience_item/Exp_scene.tscn")
 
@@ -30,12 +30,15 @@ var last_flip: int = 1
 
 var __player_in_attack_range: Node = null
 
-func apply_wave_modifiers(current_wave: int) -> void:
+func apply_wave_modifiers(current_wave: float) -> void:
 	health = base_health + health_per_wave * current_wave
 	damage = base_damage + damage_per_wave * current_wave
 	movement_speed = base_speed + randf_range(-10, 10)
-	var extra_xp = 1 if current_wave <= 3 else 1 + ((current_wave - 3) / 5)
-	xp_reward = max(1, int(xp_reward + extra_xp))
+	var extra_xp = 1.0
+	if current_wave > 3:
+		extra_xp += (current_wave - 3) / 5.0
+	xp_reward = max(1.0, float(xp_reward + extra_xp))
+
 
 func set_sprite(a: AnimatedSprite2D) -> void:
 	sprite = a
@@ -106,13 +109,15 @@ func __die() -> void:
 func give_coins_to_player() -> void:
 	var player_stats = get_tree().get_first_node_in_group("PlayerStats")
 	if player_stats:
-		print("k")
-		player_stats.gain_coins(coins_reward)
+		player_stats.gain_coins(coins_reward*GameManager.__gold_scale)
 
 func drop_experience() -> void:
 	var xp_item = XP_ITEM_SCENE.instantiate()
 	xp_item.global_position = global_position
-	xp_item.set_experience(xp_reward)
+	print(GameManager.__xp_scale)
+	print(xp_reward)
+	print(GameManager.__xp_scale * xp_reward)
+	xp_item.set_experience(xp_reward * GameManager.__xp_scale)
 	get_parent().add_child(xp_item)
 
 func __apply_stun() -> void:

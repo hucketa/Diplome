@@ -34,11 +34,11 @@ msgstr "Additional settings"
 
 # ONE_TRY
 msgid "ONE_TRY"
-msgstr "\"One-try\" mode"
+msgstr "Hard mode"
 
-# HEALTH_BAR_SHOW
-msgid "HEALTH_BAR_SHOW"
-msgstr "Show health bar"
+# Less_gold
+msgid "Less_gold"
+msgstr "Less gold income"
 
 # LOWER_EXP
 msgid "LOWER_EXP"
@@ -255,6 +255,10 @@ msgstr "Resume"
 # Save
 msgid "Save"
 msgstr "Save"
+
+#SAVEWAVE
+msgid "SAVEWAVE"
+msgstr "Save progress of last wave and exit"
 
 # MAX_HEALTH
 msgid "MAX_HEALTH"

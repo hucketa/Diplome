@@ -108,7 +108,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 40
-text = "Налаштування"
+text = "SETTINGS"
 
 [node name="ProgressBars and language Choice" type="MarginContainer" parent="mainContainer"]
 layout_mode = 2
@@ -135,9 +135,10 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 28
-text = "Звук"
+text = "SOUND"
 
 [node name="volumme_slider" type="HSlider" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -149,6 +150,8 @@ theme_override_icons/tick = ExtResource("3_qormx")
 theme_override_styles/slider = SubResource("StyleBoxLine_yaxio")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_6dx2e")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6dx2e")
+max_value = 1.0
+step = 0.1
 
 [node name="space5" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 visible = false
@@ -162,7 +165,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
-text = "Проценты"
 
 [node name="MusicProgressBar" type="HBoxContainer" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars"]
 layout_mode = 2
@@ -173,8 +175,7 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 27
-text = "Музика
-"
+text = "MUSIC"
 
 [node name="space" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar"]
 layout_mode = 2
@@ -214,7 +215,7 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 22
-text = "Яскравість"
+text = "BRIGHTNESS"
 
 [node name="space" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar"]
 layout_mode = 2
@@ -257,8 +258,7 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
-unique_name_in_owner = true
+[node name="EnButton" type="Button" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
@@ -328,8 +328,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 34
-text = "Додатково
-"
+text = "ADDITIONAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -345,9 +344,9 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.08
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 26
-text = "Режим \"Одна спроба\""
+text = "ONE_TRY"
 
-[node name="one_try" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode"]
+[node name="hard_mode" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yi7qe")
 
@@ -363,9 +362,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 28
-text = "Шкала здоров`я"
+text = "Less_gold"
 
-[node name="view_bar_button" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView"]
+[node name="less_gold_button" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ifbab")
 
@@ -380,7 +379,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 24
-text = "Зменшений досвід"
+text = "LOWER_EXP"
 
 [node name="low_exp_scale_button" type="CheckButton" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale"]
 layout_mode = 2
@@ -396,7 +395,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ph1id")
 theme_override_styles/hover = SubResource("StyleBoxTexture_pttv7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kwlkh")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pttv7")
-text = "Повернутися назад"
+text = "BACK"
 
 [node name="space_between" type="VSeparator" parent="mainContainer/Additional and mute buttons/Additional and mute buttons container"]
 layout_mode = 2
@@ -411,7 +410,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 33
-text = "Звук"
+text = "SOUND_MUTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -437,8 +436,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1fo6v")
 theme_override_font_sizes/font_size = 30
-text = "Музика
-"
+text = "MUSIC_MUTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -460,6 +458,13 @@ unique_name_in_owner = true
 [connection signal="drag_ended" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/MusicProgressBar/music_sound_slider" to="." method="_on_music_sound_slider_drag_ended"]
 [connection signal="drag_ended" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/brightness_slider" to="." method="_on_brightness_slider_drag_ended"]
 [connection signal="value_changed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/BrightnessProgressBar/brightness_slider" to="." method="_on_brightness_slider_value_changed"]
-[connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/EnButton" to="." method="_on_en_button_pressed"]
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/RuButton" to="." method="_on_ru_button_pressed"]
 [connection signal="pressed" from="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/Localisation_buttons/VBoxContainer/UaButton" to="." method="_on_ua_button_pressed"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Hard_mode/hard_mode" to="." method="_on_hard_mode_pressed"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView/less_gold_button" to="." method="_on_less_gold_button_pressed"]
+[connection signal="toggled" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/HPBarView/less_gold_button" to="." method="_on_less_gold_button_toggled"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/Experience_scale/low_exp_scale_button" to="." method="_on_low_exp_scale_button_pressed"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/Addition_settings_border_box/Additional_Settings/BackButton" to="." method="_on_back_main_pressed"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/SoundBox/sound_mute_off" to="." method="_on_sound_mute_off_pressed"]
+[connection signal="pressed" from="mainContainer/Additional and mute buttons/Additional and mute buttons container/MusicBox/music_mute_off" to="." method="_on_music_mute_off_pressed"]

@@ -9,10 +9,10 @@ func _ready():
 	else:
 		music_volume = 0
 	self.volume_db = music_volume
-	play(MusicManager.music_position)
+	play(GameManager.music_position)
 	
 func _process(delta: float) -> void:
-	MusicManager.music_position = self.get_playback_position()
+	GameManager.music_position = self.get_playback_position()
 
 func set_music_volume(volume: int):
 	music_volume = volume

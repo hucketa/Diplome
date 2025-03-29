@@ -13,7 +13,6 @@ var slots: Array = []
 var current_slot: int = 0
 
 func _ready():
-	print("Инициализация инвентаря...")
 	_initialize_slots()
 	_find_inventory_markers()
 
@@ -29,7 +28,6 @@ func _initialize_slots():
 		var slot = {}
 		slot.weapon = null
 		slots.append(slot)
-		print("Слот", i, "инициализирован.")
 
 
 func synchronize_weapon_orientation(is_facing_left: bool):
@@ -39,33 +37,26 @@ func synchronize_weapon_orientation(is_facing_left: bool):
 
 func add_weapon(weapon_scene: PackedScene, slot_index: int) -> bool:
 	if slot_index < 0 or slot_index >= slots_count:
-		push_error("Неверный индекс слота: " + str(slot_index))
 		return false
 	var new_weapon = weapon_scene.instantiate()
 	markers[slot_index].add_child(new_weapon)
 	slots[slot_index].weapon = new_weapon
-	print("Добавлено оружие в слот", slot_index, ": ", weapon_scene)
 	return true
 
 func remove_weapon(slot_index: int):
 	if slot_index < 0 or slot_index >= slots_count:
-		push_error("Неверный индекс слота: " + str(slot_index))
 		return
 	if slots[slot_index].weapon:
 		slots[slot_index].weapon.queue_free()
 		slots[slot_index].weapon = null
-		print("Оружие удалено из слота", slot_index)
 
 func select_slot(slot_index: int):
 	if slot_index < 0 or slot_index >= slots_count:
-		push_error("Неверный индекс слота: " + str(slot_index))
 		return
 	current_slot = slot_index
-	print("Выбран слот", slot_index)
 
 func add_weapon_from_data(data: WeaponData, slot_index: int) -> bool:
 	if slot_index < 0 or slot_index >= slots_count:
-		push_error("Неверный индекс слота: " + str(slot_index))
 		return false
 	var new_weapon = data.weapon_scene.instantiate()
 	if "set_data" in new_weapon:

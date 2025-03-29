@@ -9,6 +9,10 @@ msgstr ""
 msgid "PLAY"
 msgstr "Грати"
 
+#SAVEWAVE
+msgid "SAVEWAVE"
+msgstr "Зберегти прогресс останньої хвилі і вийти"
+
 # SETTINGS
 msgid "SETTINGS"
 msgstr "Налаштування"
@@ -35,11 +39,11 @@ msgstr "Додаткові налаштування"
 
 # ONE_TRY
 msgid "ONE_TRY"
-msgstr "Режим \"Одна спроба\""
+msgstr "Важкий режим"
 
-# HEALTH_BAR_SHOW
-msgid "HEALTH_BAR_SHOW"
-msgstr "Показувати шкалу здоров'я"
+# Less_gold
+msgid "Less_gold"
+msgstr "Менша нагорода за вбивство"
 
 # LOWER_EXP
 msgid "LOWER_EXP"

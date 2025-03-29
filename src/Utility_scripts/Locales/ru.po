@@ -8,6 +8,10 @@ msgstr ""
 msgid "PLAY"
 msgstr "Играть"
 
+#SAVEWAVE
+msgid "SAVEWAVE"
+msgstr "Сохранить прогресс преведущей волны и выйти"
+
 # SETTINGS
 msgid "SETTINGS"
 msgstr "Настройки"
@@ -34,11 +38,11 @@ msgstr "Дополнительные настройки"
 
 # ONE_TRY
 msgid "ONE_TRY"
-msgstr "Режим \"Одна попытка\""
+msgstr "Тяжелый режим"
 
-# HEALTH_BAR_SHOW
-msgid "HEALTH_BAR_SHOW"
-msgstr "Показывать шкалу здоровья"
+# Less_gold
+msgid "Less_gold"
+msgstr "Уменьшеная награда за убийство"
 
 # LOWER_EXP
 msgid "LOWER_EXP"
