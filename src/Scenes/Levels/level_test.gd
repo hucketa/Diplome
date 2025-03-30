@@ -6,17 +6,22 @@ extends Node2D
 @onready var label_2: Label = %Label2
 @onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var shop_scene: PackedScene
-@onready var spawner: Node2D = $Spawner
+#@onready var spawner: Node2D = $Spawner
+@onready var spawner: Spawner_logic = $Spawner
+@onready var label: Label = $UI/MarginContainer/VBoxContainer/HBoxContainer/Label
 
 var canvas_layer: CanvasLayer
 
 const BUFF_SCENE = preload("res://src/Scenes/Buffs/Buffstscn.tscn")
 
 func _ready() -> void:
-	get_tree().debug_collisions_hint = true
+	#get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	player.stats.connect("show_buff_cards", Callable(self, "_on_show_buff_cards"))
+	player.stats.connect("died", Callable(self, "_on_died"))
+	spawner.start_wave()
+	%GameOver.visible = false
 
 func _process(_delta: float) -> void:
 	%Health_bar.value = player.stats.get_health()
@@ -73,3 +78,42 @@ func _on_control_shop_closed() -> void:
 	get_tree().paused = false
 	spawner.start_wave()
 	shop_scene = null
+
+func _on_spawner_wave_started() -> void:
+	label.text = tr("WAWE") + ": " + str(spawner.get_current_wave())
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+
+func _on_new_game_pressed() -> void:
+	respawn_player()
+	_clear_lost_xp()
+	spawner.set_current_wave(0)
+	%GameOver.visible = false
+	get_tree().paused = false
+
+func _on_load_game_pressed() -> void:
+	var data = GameManager.load_game(1)
+	if data:
+		player.stats.from_dict(data["player_stats"])
+		player.inventory_ui.load_inventory_data(data["inventory"])
+		spawner.set_current_wave(data.get("wave", 1))
+		respawn_player()
+		_clear_lost_xp()
+	%GameOver.visible = false
+	get_tree().paused = false
+
+func respawn_player():
+	var center = get_viewport().size / 2
+	player.global_position = center
+	player.stats.revive()
+	player.sprite.play("idle")
+
+func _on_died():
+	get_tree().paused = true
+	%GameOver.visible = true
+
+func _clear_lost_xp():
+	for child in get_tree().get_current_scene().get_children():
+		if child is Experience:
+			child.queue_free()

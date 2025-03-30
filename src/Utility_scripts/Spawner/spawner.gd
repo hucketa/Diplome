@@ -1,6 +1,8 @@
+class_name  Spawner_logic
 extends Node2D
 
 signal wave_finished
+signal wave_started
 
 const ENEMY_SCENES = {
 	"skeleton": preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn"),
@@ -35,14 +37,17 @@ var shop_instance
 func _ready():
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_SpawnTimer_timeout)
-	start_wave()
 
 func start_wave():
+	for enemy in spawned_enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	spawned_enemies.clear()
 	current_wave += 1
-	label.text = tr("WAWE") + ": " + str(current_wave)
-
 	enemies_to_spawn = int(base_enemy_count * pow(wave_multiplier, current_wave))
 	spawn_timer.start()
+	emit_signal("wave_started")
+
 
 func _on_SpawnTimer_timeout():
 	if enemies_to_spawn > 0:
@@ -99,3 +104,10 @@ func get_random_point_in_area() -> Vector2:
 	var x = randf_range(rect.position.x, rect.position.x + rect.size.x)
 	var y = randf_range(rect.position.y, rect.position.y + rect.size.y)
 	return Vector2(x, y) + spawn_area.global_position
+	
+func get_current_wave() -> int:
+	return current_wave
+
+func set_current_wave(a: int) -> void:
+	current_wave = a
+	start_wave()

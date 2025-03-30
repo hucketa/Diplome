@@ -114,9 +114,6 @@ func give_coins_to_player() -> void:
 func drop_experience() -> void:
 	var xp_item = XP_ITEM_SCENE.instantiate()
 	xp_item.global_position = global_position
-	print(GameManager.__xp_scale)
-	print(xp_reward)
-	print(GameManager.__xp_scale * xp_reward)
 	xp_item.set_experience(xp_reward * GameManager.__xp_scale)
 	get_parent().add_child(xp_item)
 

@@ -4422,8 +4422,48 @@ volume_db = -75.596
 [node name="Spawner" parent="." instance=ExtResource("7_bgxbk")]
 position = Vector2(67, 24)
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+anchors_preset = -1
+anchor_top = 0.449
+anchor_right = 1.0
+anchor_bottom = 0.551
+offset_top = 0.0479736
+offset_bottom = -0.0480042
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NewGame" type="Button" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+text = "NewGame"
+
+[node name="LoadGame" type="Button" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+text = "LOAD
+"
+
+[node name="ExitButton" type="Button" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Save_last_wave" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer/Pause_ui" to="." method="_on_pause_ui_pressed"]
 [connection signal="wave_finished" from="Spawner" to="." method="_on_spawner_wave_finished"]
+[connection signal="wave_started" from="Spawner" to="." method="_on_spawner_wave_started"]
+[connection signal="pressed" from="GameOver/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

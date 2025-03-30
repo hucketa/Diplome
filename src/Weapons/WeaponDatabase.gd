@@ -35,3 +35,9 @@ func get_by_rarity(rarity: String) -> Array:
 
 func get_by_type(weapon_type: String) -> Array:
 	return weapons.filter(func(w): return w.weapon_type == weapon_type)
+
+func get_by_name(weapon_name: String) -> WeaponData:
+	for w in weapons:
+		if w.weapon_name == weapon_name:
+			return w
+	return null

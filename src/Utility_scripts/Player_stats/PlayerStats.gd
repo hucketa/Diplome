@@ -13,7 +13,7 @@ enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 @export var __current_experience: float = 0
 @export var __experience_to_level_up: float = 15
 @export var __level: int = 1
-@export var __coins: float = 5
+@export var __coins: float = 0
 
 
 signal health_changed(current_health)
@@ -116,3 +116,46 @@ func print_stats() -> void:
 	print("  - Досвід:", __current_experience, "/", __experience_to_level_up, "(", str(get_exp()), "% )")
 	print("  - Рівень:", __level)
 	print("  - Монети:", __coins)
+
+func to_dict() -> Dictionary:
+	return {
+		"max_health": __max_health,
+		"current_health": __current_health,
+		"damage": __damage,
+		"armor": __armor,
+		"crit_chance": __crit_chance,
+		"crit_multiplier": __crit_multiplier,
+		"attack_speed": __attack_speed,
+		"current_experience": __current_experience,
+		"experience_to_level_up": __experience_to_level_up,
+		"level": __level,
+		"coins": __coins
+	}
+
+func from_dict(data: Dictionary) -> void:
+	__max_health = data.get("max_health", 5)
+	__current_health = data.get("current_health", 1)
+	__damage = data.get("damage", 10)
+	__armor = data.get("armor", 0)
+	__crit_chance = data.get("crit_chance", 0.01)
+	__crit_multiplier = data.get("crit_multiplier", 2.0)
+	__attack_speed = data.get("attack_speed", 1)
+	__current_experience = data.get("current_experience", 0)
+	__experience_to_level_up = data.get("experience_to_level_up", 15)
+	__level = data.get("level", 1)
+	__coins = data.get("coins", 5)
+
+func revive():
+	is_dead = false
+	__max_health = 5
+	__current_health = __max_health
+	__damage = 10
+	__armor = 0
+	__crit_chance = 0.01
+	__crit_multiplier = 2.0
+	__attack_speed = 1
+	__current_experience = 0
+	__experience_to_level_up = 15
+	__level = 1
+	__coins = 0
+	emit_signal("health_changed", __current_health)

@@ -75,3 +75,21 @@ func _process(delta: float):
 				current_weapon.attack()
 			#else:
 				#print("Оружие в слоте", i, "не имеет метода атаки!")
+
+func get_inventory_data() -> Array:
+	var inventory_data = []
+	for slot in slots:
+		if slot.has("weapon_data") and slot.weapon_data:
+			inventory_data.append(slot.weapon_data.weapon_name)
+		else:
+			inventory_data.append(null)
+	return inventory_data
+
+func load_inventory_data(names: Array) -> void:
+	for i in range(min(names.size(), slots_count)):
+		remove_weapon(i)
+		var weapon_name = names[i]
+		if weapon_name != null:
+			var data = WeaponDB.get_by_name(weapon_name)
+			if data:
+				add_weapon_from_data(data, i)
