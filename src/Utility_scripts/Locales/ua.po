@@ -9,6 +9,14 @@ msgstr ""
 msgid "PLAY"
 msgstr "Грати"
 
+#NewGame
+msgid "NewGame"
+msgstr "Почати заново"
+
+#LOAD
+msgid "LOAD"
+msgstr "Завантажити збереження"
+
 #SAVEWAVE
 msgid "SAVEWAVE"
 msgstr "Зберегти прогресс останньої хвилі і вийти"

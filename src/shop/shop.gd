@@ -1,6 +1,7 @@
 extends Control
 
 signal shop_closed
+signal save_progress
 
 @onready var slot_1_buy: Button = $"VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot1/Slot_1_buy"
 @onready var slot_2_buy: Button = $"VBoxContainer/BuySlots and Stats/Buy_slots/BuySlot2/Slot2_buy"
@@ -114,3 +115,7 @@ func _on_resume_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_save_pressed() -> void:
+	emit_signal("save_progress")

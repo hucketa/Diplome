@@ -8,6 +8,14 @@ msgstr ""
 msgid "PLAY"
 msgstr "Играть"
 
+#NewGame
+msgid "NewGame"
+msgstr "Начать заново"
+
+#LOAD
+msgid "LOAD"
+msgstr "Загрузить сохранение"
+
 #SAVEWAVE
 msgid "SAVEWAVE"
 msgstr "Сохранить прогресс преведущей волны и выйти"

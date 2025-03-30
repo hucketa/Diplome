@@ -70,7 +70,10 @@ func _on_spawner_wave_finished() -> void:
 	shop_scene_instance.global_position = player.global_position - 1.70*(shop_size / 2)
 	var shop_control = shop_scene_instance.get_node("Base")
 	shop_control.connect("shop_closed", Callable(self, "_on_control_shop_closed"))
+	shop_control.connect("save_progress", Callable(self, "_on_save_progress"))
+
 	get_tree().paused = true
+
 
 
 func _on_control_shop_closed() -> void:
@@ -87,6 +90,8 @@ func _on_exit_button_pressed() -> void:
 
 func _on_new_game_pressed() -> void:
 	respawn_player()
+	player.stats._default_stats()
+	player._clear_inventory()
 	_clear_lost_xp()
 	spawner.set_current_wave(0)
 	%GameOver.visible = false
@@ -99,15 +104,16 @@ func _on_load_game_pressed() -> void:
 		player.inventory_ui.load_inventory_data(data["inventory"])
 		spawner.set_current_wave(data.get("wave", 1))
 		respawn_player()
-		_clear_lost_xp()
 	%GameOver.visible = false
 	get_tree().paused = false
+
 
 func respawn_player():
 	var center = get_viewport().size / 2
 	player.global_position = center
+	_clear_lost_xp()
 	player.stats.revive()
-	player.sprite.play("idle")
+	#player.sprite.play("idle")
 
 func _on_died():
 	get_tree().paused = true
@@ -117,3 +123,12 @@ func _clear_lost_xp():
 	for child in get_tree().get_current_scene().get_children():
 		if child is Experience:
 			child.queue_free()
+
+func _on_save_progress():
+	GameManager.save_game(1, player.stats, player.inventory_ui, spawner)
+	%GameOver.visible = false
+	get_tree().paused = false
+
+func _on_save_last_wave_pressed() -> void:
+	spawner.current_wave -= 1
+	GameManager.save_game(1, player.stats, player.inventory_ui, spawner)

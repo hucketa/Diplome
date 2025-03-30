@@ -616,4 +616,5 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 [connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3" to="Base" method="populate_inventory_ui"]
 [connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot4" to="Base" method="populate_inventory_ui"]
 [connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Resume" to="Base" method="_on_resume_pressed"]
+[connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Save" to="Base" method="_on_save_pressed"]
 [connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Exit" to="Base" method="_on_exit_pressed"]

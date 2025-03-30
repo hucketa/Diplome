@@ -132,3 +132,8 @@ func play_effect(effect_path: String) -> void:
 		sfx.play()
 	else:
 		push_error("Не вдалося завантажити ефект: " + effect_path)
+		
+
+func _clear_inventory():
+	for i in range(inventory_ui.slots.size()):
+		inventory_ui.remove_weapon(i)

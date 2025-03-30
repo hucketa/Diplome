@@ -25,10 +25,6 @@ var is_dead: bool = false
 var buff_effects = {}
 
 func _ready():
-	__max_health *= GameManager.__hp_scale
-	__current_health = __max_health
-	print(__current_health)
-	print(__max_health)
 	buff_effects = {
 		Stats.HEALTH: func(value): __max_health += value; __current_health = __max_health,
 		Stats.DAMAGE: func(value): __damage += value,
@@ -147,6 +143,11 @@ func from_dict(data: Dictionary) -> void:
 
 func revive():
 	is_dead = false
+	if __current_health <= 0:
+		__current_health = __max_health
+	emit_signal("health_changed", __current_health)
+
+func _default_stats():
 	__max_health = 5
 	__current_health = __max_health
 	__damage = 10

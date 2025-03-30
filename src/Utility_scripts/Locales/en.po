@@ -272,6 +272,14 @@ msgstr "Balance"
 msgid "Experience"
 msgstr "Experience to level up"
 
+#NewGame
+msgid "NewGame"
+msgstr "Try again"
+
+#LOAD
+msgid "LOAD"
+msgstr "Load game progress"
+
 #COINS
 msgid "COINS"
 msgstr "coins"
