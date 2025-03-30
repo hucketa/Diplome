@@ -28,15 +28,12 @@ func __load_from_config() -> void:
 
 func set_xp_scale(a: float):
 	__xp_scale = a
-	print(__xp_scale)
 
 func set_gold_scale(a: float):
 	__gold_scale = a
-	print(__gold_scale)
 
 func set_hp_scale(a: float):
 	__hp_scale = a
-	print(__hp_scale)
 
 func save_game(slot: int, stats: PlayerStats, inventory: SimplifiedInventory, Spawner: Spawner_logic) -> void:
 	var wave = Spawner.get_current_wave()

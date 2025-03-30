@@ -32,7 +32,6 @@ func _on_animated_sprite_2d_animation_finished():
 	var bullet = bullet_scene.instantiate()
 	self.add_child(bullet)
 	bullet.damage = self.damage
-	print(bullet.damage)
 	bullet.global_position = self.global_position + Vector2(0, 0)
 	var is_facing_left = __stick_sprite.flip_h
 	bullet.set_direction(Vector2.LEFT if is_facing_left else Vector2.RIGHT)

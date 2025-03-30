@@ -71,10 +71,7 @@ func _on_spawner_wave_finished() -> void:
 	var shop_control = shop_scene_instance.get_node("Base")
 	shop_control.connect("shop_closed", Callable(self, "_on_control_shop_closed"))
 	shop_control.connect("save_progress", Callable(self, "_on_save_progress"))
-
 	get_tree().paused = true
-
-
 
 func _on_control_shop_closed() -> void:
 	canvas_layer.queue_free()
@@ -113,7 +110,7 @@ func respawn_player():
 	player.global_position = center
 	_clear_lost_xp()
 	player.stats.revive()
-	#player.sprite.play("idle")
+	player.sprite.play("idle")
 
 func _on_died():
 	get_tree().paused = true

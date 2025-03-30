@@ -73,8 +73,6 @@ func _process(delta: float):
 		if current_weapon != null:
 			if current_weapon.has_method("attack"):
 				current_weapon.attack()
-			#else:
-				#print("Оружие в слоте", i, "не имеет метода атаки!")
 
 func get_inventory_data() -> Array:
 	var inventory_data = []

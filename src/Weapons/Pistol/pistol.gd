@@ -17,7 +17,6 @@ func _ready() -> void:
 		music_volume = config.get_value("Settings", "s_volume", -50)
 	else:
 		music_volume = 0
-	print(music_volume)
 	sfx.volume_db = music_volume
 
 func attack():
@@ -32,7 +31,6 @@ func _on_attack_started():
 func _on_animated_sprite_2d_animation_finished():
 	var bullet = bullet_scene.instantiate()
 	bullet.damage = self.damage
-	print(bullet.damage)
 	self.add_child(bullet)
 	bullet.global_position = self.global_position + Vector2(0, +10)
 	var is_facing_left = __gun_sprite.flip_h

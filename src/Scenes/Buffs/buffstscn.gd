@@ -83,7 +83,6 @@ func _on_buff_button_pressed(button: Button) -> void:
 	if player:
 		player.stats.apply_buff(stat, buff_value)
 		var buff_name = STAT_NAMES.get(stat, "Невідомий бафф")
-		print("Застосовано бафф:", buff_name, "(+", buff_value, ")")
 	else:
 		print("Помилка: гравець не знайдений!")
 	get_tree().paused = false

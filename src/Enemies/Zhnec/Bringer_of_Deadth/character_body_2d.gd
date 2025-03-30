@@ -15,7 +15,6 @@ func _ready() -> void:
 		music_volume = config.get_value("Settings", "s_volume", 40)
 	else:
 		music_volume = 0
-	print(music_volume)
 	sfx.volume_db = music_volume
 
 func face_player(direction: Vector2) -> void:

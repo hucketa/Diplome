@@ -49,7 +49,6 @@ func take_damage(amount: int):
 	__current_health -= reduced_damage
 	__current_health = max(__current_health, 0)
 	emit_signal("health_changed", __current_health)
-	print("Отримано урон:", reduced_damage, "Поточне здоров'я:", __current_health)
 	if __current_health <= 0 and not is_dead:
 		is_dead = true
 		emit_signal("died")
@@ -62,12 +61,9 @@ func heal(amount: int):
 	if not is_dead:
 		__current_health = min(__current_health + amount, __max_health)
 		emit_signal("health_changed", __current_health)
-		print("Відновлено здоров'я на:", amount)
 
 func gain_experience(amount: float):
 	__current_experience += amount
-	print("Отримано досвід:", amount, "Поточний досвід:", __current_experience)
-	print(str(__experience_to_level_up)+"не вистачає")
 	while __current_experience >= __experience_to_level_up:
 		__current_experience -= __experience_to_level_up
 		level_uped()
@@ -81,13 +77,12 @@ func level_uped():
 	print("Вітаємо з новим рівнем:", __level)
 
 func calculate_damage() -> float:
-	print(__coins)
 	var is_critical = randf() < __crit_chance
 	var final_damage = __damage * __crit_multiplier if is_critical else __damage
-	if is_critical:
-		print("Нанесено урон:", final_damage, "(Критичний удар!)")
-	else:
-		print("Нанесено урон:", final_damage)
+	#if is_critical:
+		#print("Нанесено урон:", final_damage, "(Критичний удар!)")
+	#else:
+		#print("Нанесено урон:", final_damage)
 	return final_damage
 
 func apply_buff(buff_type: int, value: float) -> void:
@@ -99,7 +94,6 @@ func die():
 	
 func gain_coins(amount: float):
 	__coins += amount
-	print("Отримано монет:", amount, "Всього монет:", __coins)
 
 func print_stats() -> void:
 	print("# Статистика гравця:")

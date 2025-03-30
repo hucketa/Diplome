@@ -45,4 +45,4 @@ func _on_pressed() -> void:
 		confirm_dialog.popup_centered()
 
 func _on_confirmation_dialog_canceled() -> void:
-	print("hhh")
+	pass

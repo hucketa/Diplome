@@ -141,7 +141,6 @@ func _on_volumme_slider_drag_ended(value_changed: bool) -> void:
 	else:
 		var percent = volumme_slider.value
 		sound_volume = -10  + (percent * 10)
-		print(sound_volume)
 		%Caption_sound2.text = str(percent*100)+"%"
 	save_settings()
 	GameManager.sfx_volume = sound_volume	

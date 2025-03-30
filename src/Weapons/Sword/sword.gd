@@ -20,7 +20,6 @@ func _ready() -> void:
 		music_volume = config.get_value("Settings", "s_volume", 40)
 	else:
 		music_volume = 0
-	print(music_volume)
 	sfx.volume_db = music_volume
 	__update_hitbox_position()
 
@@ -51,8 +50,6 @@ func __update_hitbox_position() -> void:
 
 func perform_attack():
 	if __enemy_in_attack_range:
-		#print(__enemy_in_attack_range)
-		print(damage_sword)
 		__attacking = true
 		play_effect("res://src/Weapons/Sword/Sword_attack.wav")
 		sword_sprite.play("attack")

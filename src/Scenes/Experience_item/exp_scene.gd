@@ -7,7 +7,6 @@ var __experience: float = 1
 
 func _process(delta: float) -> void:
 	if __player_in_attack_range != null and __experience!=0:
-		print("ff")
 		player.stats.gain_experience(__experience)
 		queue_free()
 
