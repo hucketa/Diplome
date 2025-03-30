@@ -5,6 +5,7 @@ extends Weapon
 var bullet_scene = load("res://src/Weapons/Magic_projectile/Magik_projectile.tscn")
 @onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var music_volume: int
+var damage: float = 0
 
 func _ready() -> void:
 	if __stick_sprite == null:
@@ -30,6 +31,8 @@ func _on_attack_started():
 func _on_animated_sprite_2d_animation_finished():
 	var bullet = bullet_scene.instantiate()
 	self.add_child(bullet)
+	bullet.damage = self.damage
+	print(bullet.damage)
 	bullet.global_position = self.global_position + Vector2(0, 0)
 	var is_facing_left = __stick_sprite.flip_h
 	bullet.set_direction(Vector2.LEFT if is_facing_left else Vector2.RIGHT)
@@ -51,4 +54,5 @@ func set_data(data: WeaponData):
 		__stick_sprite = $StickSprite
 	if data.sprite_frames:
 		__stick_sprite.sprite_frames = data.sprite_frames
+		self.damage = data.damage
 		__stick_sprite.play("attack")

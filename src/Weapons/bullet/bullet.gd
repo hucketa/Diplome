@@ -17,9 +17,6 @@ func set_direction(new_direction: Vector2):
 	if sprite:
 		sprite.flip_h = direction.x < 0
 
-#func _ready():
-	#print("🚀 Пуля создана! Позиция:", global_position, "Направление:", direction)
-
 func _process(delta):
 	position += direction * speed * delta
 
@@ -29,6 +26,7 @@ func __enemy_entered_attack_range(area: Area2D) -> void:
 		__is_in_zone = true
 		__enemy_in_attack_range = enemy
 		__enemy_in_attack_range.take_damage(damage)
+		queue_free()
 
 func __enemy_exited_attack_range(area: Area2D) -> void:
 	if __enemy_in_attack_range and __enemy_in_attack_range == area.get_parent():

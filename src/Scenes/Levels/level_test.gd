@@ -53,6 +53,7 @@ func _on_spawner_wave_finished() -> void:
 	var viewport_size = get_viewport().size
 	var center_position = viewport_size / 2
 	player.global_position = center_position
+	player.stats.__current_health = player.stats.__max_health
 	shop_scene = load("res://src/shop/shop2.tscn")
 	var shop_scene_instance = shop_scene.instantiate()
 	canvas_layer = CanvasLayer.new()

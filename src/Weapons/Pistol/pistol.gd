@@ -3,6 +3,7 @@ extends Weapon
 
 var __gun_sprite: AnimatedSprite2D = null
 var bullet_scene = load("res://src/Weapons/bullet/bullet.tscn")
+var damage: float = 0
 @onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var music_volume: int
 
@@ -30,6 +31,8 @@ func _on_attack_started():
 
 func _on_animated_sprite_2d_animation_finished():
 	var bullet = bullet_scene.instantiate()
+	bullet.damage = self.damage
+	print(bullet.damage)
 	self.add_child(bullet)
 	bullet.global_position = self.global_position + Vector2(0, +10)
 	var is_facing_left = __gun_sprite.flip_h
@@ -53,3 +56,4 @@ func set_data(data: WeaponData):
 	if data.sprite_frames:
 		__gun_sprite.sprite_frames = data.sprite_frames
 		__gun_sprite.play("attack")
+		self.damage = data.damage
