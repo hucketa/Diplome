@@ -8,6 +8,38 @@ msgstr ""
 msgid "PLAY"
 msgstr "Play"
 
+# YES
+msgid "YES"
+msgstr "Yes"
+
+msgid "SAVE_SLOT_INFO"
+msgstr "Slot %d (Lvl. %d, Wave %d, %d gold)"
+
+msgid "SAVE_SLOT_EMPTY"
+msgstr "Slot %d (empty)"
+
+msgid "OVERWRITE_SLOT"
+msgstr "Overwrite slot %d?"
+
+msgid "DELETE_SLOT"
+msgstr "Delete slot %d?"
+
+# NO
+msgid "NO"
+msgstr "No"
+
+# DELETE_SLOT
+msgid "DELETE_SLOT"
+msgstr "Are you ready to delete slot?"
+
+# OVERWRITE_SLOT
+msgid "OVERWRITE_SLOT"
+msgstr "Are you ready to overwrite slot?"
+
+# SLOTS
+msgid "SLOTS"
+msgstr "Slots for save"
+
 # SETTINGS
 msgid "SETTINGS"
 msgstr "Settings"

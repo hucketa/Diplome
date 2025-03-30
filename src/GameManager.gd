@@ -1,5 +1,7 @@
 extends Node
 
+const SAVE_PATH_TEMPLATE := "user://save_slot_%d.json"
+
 var __xp_scale: float 
 var __gold_scale: float
 var __hp_scale: float
@@ -35,20 +37,21 @@ func set_gold_scale(a: float):
 func set_hp_scale(a: float):
 	__hp_scale = a
 
-func save_game(slot: int, stats: PlayerStats, inventory: SimplifiedInventory, Spawner: Spawner_logic) -> void:
-	var wave = Spawner.get_current_wave()
+
+func save_game(slot: int, stats: PlayerStats, inventory: SimplifiedInventory, spawner: Spawner_logic) -> void:
 	var save_data = {
-		"wave": wave,
+		"wave": spawner.get_current_wave(),
 		"player_stats": stats.to_dict(),
 		"inventory": inventory.get_inventory_data()
 	}
-	var file = FileAccess.open("user://save_slot_%d.json" % slot, FileAccess.WRITE)
+	var path = SAVE_PATH_TEMPLATE % slot
+	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data, "\t"))
 	file.close()
-	print("Игра сохранена в слот", slot, "на волне", wave)
+	print("Игра сохранена в слот", slot, "на волне", save_data.wave)
 
 func load_game(slot: int) -> Dictionary:
-	var path = "user://save_slot_%d.json" % slot
+	var path = SAVE_PATH_TEMPLATE % slot
 	if not FileAccess.file_exists(path):
 		push_warning("Файл сейва не найден!")
 		return {}
@@ -59,7 +62,21 @@ func load_game(slot: int) -> Dictionary:
 	return data
 
 func delete_save(slot: int) -> void:
-	var path = "user://save_slot_%d.json" % slot
+	var path = SAVE_PATH_TEMPLATE % slot
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 		print("Сейв слот %d удалён" % slot)
+
+func get_save_summary(slot: int) -> Dictionary:
+	var path = SAVE_PATH_TEMPLATE % slot
+	if not FileAccess.file_exists(path):
+		return {"exists": false}
+	var file = FileAccess.open(path, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+	return {
+		"exists": true,
+		"wave": data.get("wave", 0),
+		"level": data.get("player_stats", {}).get("level", 1),
+		"coins": data.get("player_stats", {}).get("coins", 0)
+	}

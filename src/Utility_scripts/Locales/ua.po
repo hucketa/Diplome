@@ -9,6 +9,38 @@ msgstr ""
 msgid "PLAY"
 msgstr "Грати"
 
+# YES
+msgid "YES"
+msgstr "Так"
+
+# NO
+msgid "NO"
+msgstr "Ні"
+
+msgid "SAVE_SLOT_INFO"
+msgstr "Слот %d (Рівень %d, Хвиля %d, %d золота)"
+
+msgid "SAVE_SLOT_EMPTY"
+msgstr "Слот %d (порожній)"
+
+msgid "OVERWRITE_SLOT"
+msgstr "Перезаписати слот %d?"
+
+msgid "DELETE_SLOT"
+msgstr "Видалити слот %d?"
+
+# DELETE_SLOT
+msgid "DELETE_SLOT"
+msgstr "Ви впевнені що хочете видалити слот?"
+
+# OVERWRITE_SLOT
+msgid "OVERWRITE_SLOT"
+msgstr "Ви впевнені що хочете перезаписати слот?"
+
+# SLOTS
+msgid "SLOTS"
+msgstr "Слоти для збереження прогресу"
+
 #NewGame
 msgid "NewGame"
 msgstr "Почати заново"

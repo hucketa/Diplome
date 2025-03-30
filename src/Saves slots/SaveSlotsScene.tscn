@@ -1,0 +1,322 @@
+[gd_scene load_steps=26 format=3 uid="uid://c6yc2thv6vsb4"]
+
+[ext_resource type="Texture2D" uid="uid://bfh2hbr70ktw3" path="res://src/Scenes/Setting_w/Settings_window/Buttons.png" id="1_7i6nf"]
+[ext_resource type="Script" path="res://src/Saves slots/save_slots_scene.gd" id="1_dkf3h"]
+[ext_resource type="Texture2D" uid="uid://u82r8p74g0tl" path="res://src/Saves slots/StockCake-Cathedral At Night_1743352755.jpg" id="2_u5kyh"]
+[ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="2_vob0x"]
+[ext_resource type="Texture2D" uid="uid://c4ol5jvsair58" path="res://src/Saves slots/image(1).png" id="4_cq1o4"]
+[ext_resource type="Texture2D" uid="uid://gpnclfqq4y8i" path="res://src/Saves slots/cancel.png" id="4_o76fp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qff7v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cnbp3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb61n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1o5f"]
+bg_color = Color(0.259293, 0.259294, 0.259293, 1)
+corner_radius_top_left = 350
+corner_radius_top_right = 350
+corner_radius_bottom_right = 350
+corner_radius_bottom_left = 350
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvx11"]
+bg_color = Color(0.389286, 0.389287, 0.389286, 1)
+corner_radius_top_left = 350
+corner_radius_top_right = 350
+corner_radius_bottom_right = 350
+corner_radius_bottom_left = 350
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvvy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p86og"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyeu7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qqws5"]
+texture = ExtResource("1_7i6nf")
+modulate_color = Color(0.813258, 0.813258, 0.813258, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y10yn"]
+texture = ExtResource("1_7i6nf")
+modulate_color = Color(0.116586, 0.316535, 0.383617, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkpwh"]
+texture = ExtResource("1_7i6nf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmurv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3al76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8kcj"]
+bg_color = Color(0.299411, 0.317556, 0.36587, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f34gl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvcli"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdghn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0lrx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j7d1"]
+bg_color = Color(0.347817, 0.347817, 0.347817, 1)
+
+[node name="SaveSlotsScene" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dkf3h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u5kyh")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 52
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qff7v")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 60
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnbp3")
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vob0x")
+theme_override_font_sizes/font_size = 39
+text = "SLOTS"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 492
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnbp3")
+
+[node name="Cancel" type="Button" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_icons/icon = ExtResource("4_o76fp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hb61n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j1o5f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvx11")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gnvvy")
+icon_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 61
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qff7v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="slot1" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot1"]
+layout_mode = 2
+theme_override_constants/separation = 36
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="Slot1" type="Button" parent="VBoxContainer2/VBoxContainer/slot1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.17
+theme_override_fonts/font = ExtResource("2_vob0x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyeu7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qqws5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y10yn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fkpwh")
+
+[node name="space" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot1"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dmurv")
+
+[node name="Del1" type="Button" parent="VBoxContainer2/VBoxContainer/slot1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/icon = ExtResource("4_cq1o4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3al76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8kcj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f34gl")
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvcli")
+
+[node name="slot2" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot2"]
+layout_mode = 2
+theme_override_constants/separation = 36
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="Slot2" type="Button" parent="VBoxContainer2/VBoxContainer/slot2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.17
+theme_override_fonts/font = ExtResource("2_vob0x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyeu7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qqws5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y10yn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fkpwh")
+
+[node name="space" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot2"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dmurv")
+
+[node name="Del2" type="Button" parent="VBoxContainer2/VBoxContainer/slot2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/icon = ExtResource("4_cq1o4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3al76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8kcj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f34gl")
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvcli")
+
+[node name="slot3" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot3"]
+layout_mode = 2
+theme_override_constants/separation = 36
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="Slot3" type="Button" parent="VBoxContainer2/VBoxContainer/slot3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.17
+theme_override_fonts/font = ExtResource("2_vob0x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyeu7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qqws5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y10yn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fkpwh")
+
+[node name="space" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot3"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dmurv")
+
+[node name="Del3" type="Button" parent="VBoxContainer2/VBoxContainer/slot3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/icon = ExtResource("4_cq1o4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3al76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8kcj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f34gl")
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer2/VBoxContainer/slot3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p86og")
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 39
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qff7v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vdghn")
+
+[node name="NewGame" type="Button" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.17
+theme_override_fonts/font = ExtResource("2_vob0x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fyeu7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qqws5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y10yn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fkpwh")
+text = "NewGame"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 51
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r0lrx")
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 44
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qff7v")
+
+[node name="Popup" type="Popup" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5j7d1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Popup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Popup/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Yes" type="Button" parent="Popup/PanelContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="No" type="Button" parent="Popup/PanelContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3

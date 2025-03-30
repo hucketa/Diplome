@@ -30,7 +30,6 @@ signal save_progress
 var buy_slot_weapons: Array = []
 
 func _ready():
-	TranslationServer.set_locale("uk")
 	slot_1.set_player(player)
 	slot_2.set_player(player)
 	slot_3.set_player(player)

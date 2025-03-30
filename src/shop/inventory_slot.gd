@@ -29,6 +29,7 @@ func _ready() -> void:
 	update_display(null, 1,null)
 	update_display(null, 2,null)
 	update_display(null, 3,null)
+	
 
 func _on_confirmed():
 	if inventory and inventory.has_method("remove_weapon"):

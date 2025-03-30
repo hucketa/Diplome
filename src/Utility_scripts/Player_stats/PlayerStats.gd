@@ -142,7 +142,7 @@ func revive():
 	emit_signal("health_changed", __current_health)
 
 func _default_stats():
-	__max_health = 5
+	__max_health = 25
 	__current_health = __max_health
 	__damage = 10
 	__armor = 0

@@ -4254,7 +4254,7 @@ tile_set = SubResource("TileSet_5jcuy")
 
 [node name="Pause_Screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-process_mode = 2
+process_mode = 3
 visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="Pause_Screen"]
@@ -4428,6 +4428,7 @@ position = Vector2(67, 24)
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="GameOver"]
 anchors_preset = 15
@@ -4484,6 +4485,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1ol2o")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8e5m0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ud7n5")
 text = "EXIT"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause_Screen/PanelContainer/VBoxContainer/Save_last_wave" to="." method="_on_save_last_wave_pressed"]

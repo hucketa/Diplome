@@ -8,6 +8,38 @@ msgstr ""
 msgid "PLAY"
 msgstr "Играть"
 
+# YES
+msgid "YES"
+msgstr "Да"
+
+msgid "SAVE_SLOT_INFO"
+msgstr "Слот %d (Уровень %d, Волна %d, %d золота)"
+
+msgid "SAVE_SLOT_EMPTY"
+msgstr "Слот %d (пусто)"
+
+msgid "OVERWRITE_SLOT"
+msgstr "Перезаписать слот %d?"
+
+msgid "DELETE_SLOT"
+msgstr "Удалить слот %d?"
+
+# NO
+msgid "NO"
+msgstr "Нет"
+
+# DELETE_SLOT
+msgid "DELETE_SLOT"
+msgstr "Вы уверены что хотите удалить слот?"
+
+# OVERWRITE_SLOT
+msgid "OVERWRITE_SLOT"
+msgstr "Вы уверены что хотите перезаписать слот?"
+
+# SLOTS
+msgid "SLOTS"
+msgstr "Слоты для сохранения процесса"
+
 #NewGame
 msgid "NewGame"
 msgstr "Начать заново"
