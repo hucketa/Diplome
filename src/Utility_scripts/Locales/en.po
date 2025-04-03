@@ -12,6 +12,10 @@ msgstr "Play"
 msgid "YES"
 msgstr "Yes"
 
+# NO_MONEY
+msgid "NO_MONEY"
+msgstr "The balance is not sufficient"
+
 msgid "SAVE_SLOT_INFO"
 msgstr "Slot %d (Lvl. %d, Wave %d, %d gold)"
 

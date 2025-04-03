@@ -12,6 +12,10 @@ msgstr "Играть"
 msgid "YES"
 msgstr "Да"
 
+# NO_MONEY
+msgid "NO_MONEY"
+msgstr "Баланс недостаточен"
+
 msgid "SAVE_SLOT_INFO"
 msgstr "Слот %d (Уровень %d, Волна %d, %d золота)"
 

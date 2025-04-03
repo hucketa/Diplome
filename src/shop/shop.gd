@@ -26,6 +26,8 @@ signal save_progress
 @onready var slot_2: Button = $"VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot2"
 @onready var slot_3: Button = $"VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3"
 @onready var slot_4: Button = $"VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot4"
+@onready var label_error: Label = $"../Message/PanelContainer/Label"
+
 
 var buy_slot_weapons: Array = []
 
@@ -38,26 +40,31 @@ func _ready():
 	connect_buy_signals()
 	populate_inventory_ui()
 	fill_stats()
+	%Message.layer = 2
 
 func populate_buy_slots():
+	var wave = GameManager.__current_wave
 	buy_slot_weapons.clear()
-	var weapons = WeaponDB.get_random(2)
-
-	var weapon_1 = weapons[0]
+	var weapon_1 = WeaponDB.get_weapon_for_wave(wave)
 	buy_slot_weapons.append(weapon_1)
 	texture_rect_1.texture = weapon_1.icon
 	weapon_name_1.text = weapon_1.weapon_name
 	rarity_1.text = weapon_1.rarity
 	price_1.text = str(weapon_1.price) + " " + tr("COINS")
 	description_1.text = weapon_1.description
-
-	var weapon_2 = weapons[1]
+	var weapon_2 = WeaponDB.get_weapon_for_wave(wave)
 	buy_slot_weapons.append(weapon_2)
 	texture_rect_2.texture = weapon_2.icon
 	weapon_name_2.text = weapon_2.weapon_name
 	rarity_2.text = weapon_2.rarity
 	price_2.text = str(weapon_2.price) + " " + tr("COINS")
 	description_2.text = weapon_2.description
+
+
+func _show_message(a: String):
+	label_error.text = a
+	%Message.visible = true
+	%Timer.start()
 
 func connect_buy_signals():
 	slot_1_buy.connect("pressed", Callable(self, "_on_buy_slot_pressed").bind(1))
@@ -75,9 +82,9 @@ func _on_buy_slot_pressed(slot_index: int):
 			ui_slot.update_display(weapon, free_index, inventory)
 			fill_stats()
 		else:
-			print("Немає вільних слотів в інвентарі.")
+			print("Зброю не знайдено")
 	else:
-		print("Недостатньо золота для покупки.")
+		_show_message(tr(&"NO_MONEY"))
 
 func find_first_free_inventory_slot() -> int:
 	for i in inventory.slots.size():
@@ -105,7 +112,7 @@ func fill_stats() -> void:
 	$"VBoxContainer/BuySlots and Stats/Stats/Crit_chance/Value".text = str(player_stats.__crit_chance * 100)
 	$"VBoxContainer/BuySlots and Stats/Stats/Level/Value".text = str(player_stats.__level)
 	$"VBoxContainer/BuySlots and Stats/Stats/Experience/Value".text = str(player_stats.__experience_to_level_up)
-	$"VBoxContainer/BuySlots and Stats/Stats/Gold/Value".text = str(player_stats.__coins)
+	$"VBoxContainer/BuySlots and Stats/Stats/Gold/Value".text = str(round(player_stats.__coins))
 
 
 func _on_resume_pressed() -> void:
@@ -118,3 +125,9 @@ func _on_exit_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	emit_signal("save_progress")
+
+
+func _on_timer_timeout() -> void:
+	print("ddd")
+	%Message.visible = false
+	%Timer.stop()

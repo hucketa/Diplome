@@ -4,6 +4,8 @@ extends Node2D
 signal wave_finished
 signal wave_started
 
+
+
 const ENEMY_SCENES = {
 	"skeleton": preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn"),
 	"nightborne": preload("res://src/Enemies/Nightborne/nightborne.tscn"),
@@ -39,6 +41,7 @@ func _ready():
 	spawn_timer.timeout.connect(_on_SpawnTimer_timeout)
 
 func start_wave():
+	GameManager.__current_wave = current_wave
 	for enemy in spawned_enemies:
 		if is_instance_valid(enemy):
 			enemy.queue_free()

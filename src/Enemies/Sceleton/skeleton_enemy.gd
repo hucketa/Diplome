@@ -21,10 +21,10 @@ func __die() -> void:
 	if not is_dead:
 		is_dead = true
 		sprite.play(&"die")
-		play_sound("res://src/Enemies/Sceleton/Skelet_die.wav")
-		emit_signal("died")
+		give_coins_to_player()
 		call_deferred("drop_experience")
-		call_deferred("give_coins_to_player")
+		emit_signal("died")
+
 
 func start_attack() -> void:
 	is_attacking = true

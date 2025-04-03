@@ -11,7 +11,7 @@ enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 @export var __crit_multiplier: float = 2.0
 @export var __attack_speed: float = 1
 @export var __current_experience: float = 0
-@export var __experience_to_level_up: float = 15
+@export var __experience_to_level_up: float = 4
 @export var __level: int = 1
 @export var __coins: float = 0
 
@@ -150,7 +150,7 @@ func _default_stats():
 	__crit_multiplier = 2.0
 	__attack_speed = 1
 	__current_experience = 0
-	__experience_to_level_up = 15
+	__experience_to_level_up = 4
 	__level = 1
 	__coins = 0
 	emit_signal("health_changed", __current_health)

@@ -8,6 +8,7 @@ var __hp_scale: float
 var music_position: float = 0.0
 var sfx_volume: float = 0.0
 const CONFIG_PATH = "user://settings.cfg"
+var __current_wave:int = 0
 
 func _ready() -> void:
 	__load_from_config()

@@ -49,6 +49,7 @@ func __die() -> void:
 		is_dead = true
 		sprite.play(&"die")
 		play_sound("res://src/Enemies/Nightborne/monster_die.wav")
-		emit_signal("died")
+		give_coins_to_player()
 		call_deferred("drop_experience")
-		call_deferred("give_coins_to_player")
+		emit_signal("died")
+		

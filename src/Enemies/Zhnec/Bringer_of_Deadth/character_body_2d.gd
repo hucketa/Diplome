@@ -10,6 +10,10 @@ func _ready() -> void:
 	damage = 1.5
 	var new_sprite: AnimatedSprite2D = $Reaper
 	set_sprite(new_sprite)
+	$WordCollision.scale.x = abs($WordCollision.scale.x) * -1
+	$WordCollision.position = sprite.position
+	$WordCollision.position.x -= 45
+	$WordCollision.position.y += 20
 	var config = ConfigFile.new()
 	if config.load("user://settings.cfg") == OK:
 		music_volume = config.get_value("Settings", "s_volume", 40)
@@ -18,14 +22,24 @@ func _ready() -> void:
 	sfx.volume_db = music_volume
 
 func face_player(direction: Vector2) -> void:
-	var is_facing_left = direction.x >= 0
+	var is_facing_left = direction.x < 0
 	var flip_value = 1
 	if is_facing_left:
 		flip_value = -1
 	if last_flip != flip_value:
 		sprite.flip_h = is_facing_left
+		$WordCollision.scale.x = abs($WordCollision.scale.x) * flip_value
+		$WordCollision.position = sprite.position
+		if is_facing_left:
+			$WordCollision.position.x += 40
+			$WordCollision.position.y += 20
+		else:
+			$WordCollision.position.x -= 40
+			$WordCollision.position.y += 15
 		update_hitbox_position(is_facing_left)
 		last_flip = flip_value
+
+
 		
 
 func __die() -> void:
@@ -33,9 +47,9 @@ func __die() -> void:
 		is_dead = true
 		sprite.play(&"die")
 		play_sound("res://src/Enemies/Zhnec/monster_die.wav")
-		emit_signal("died")
+		give_coins_to_player()
 		call_deferred("drop_experience")
-		call_deferred("give_coins_to_player")
+		emit_signal("died")
 
 func start_attack() -> void:
 	is_attacking = true

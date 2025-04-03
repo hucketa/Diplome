@@ -1,14 +1,18 @@
-class_name EnemyBase extends CharacterBody2D
+class_name EnemyBase
+extends CharacterBody2D
 
 signal died
 
 @export var base_health: float = 1
 @export var base_speed: float = 60.0
 @export var base_damage: float = 1
-@export var health_per_wave: float = 1.0
-@export var damage_per_wave: float = 0.5
-@export var xp_reward: float = 1
-@export var coins_reward: float = 1
+@export var health_growth_factor: float = 1.25
+@export var damage_growth_factor: float = 1.10
+@export var speed_growth_factor: float = 1.05
+@export var xp_growth_factor: float = 1.15
+@export var coins_growth_factor: float = 1.03
+@export var base_xp_reward: float = 1
+@export var base_coins_reward: float = 1
 
 var XP_ITEM_SCENE = load("res://src/Scenes/Experience_item/Exp_scene.tscn")
 
@@ -17,6 +21,9 @@ var health: float
 var damage: float
 var armor: int = 0
 var stun_duration: float = 1.0
+
+var xp_reward: float
+var coins_reward: float
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var hitbox: Area2D = $HitBox
@@ -31,14 +38,12 @@ var last_flip: int = 1
 var __player_in_attack_range: Node = null
 
 func apply_wave_modifiers(current_wave: float) -> void:
-	health = base_health + health_per_wave * current_wave
-	damage = base_damage + damage_per_wave * current_wave
-	movement_speed = base_speed + randf_range(-10, 10)
-	var extra_xp = 1.0
-	if current_wave > 3:
-		extra_xp += (current_wave - 3) / 5.0
-	xp_reward = max(1.0, float(xp_reward + extra_xp))
-
+	var wave_index = max(current_wave - 1, 0)
+	health = base_health * pow(health_growth_factor, wave_index)
+	damage = base_damage * pow(damage_growth_factor, wave_index)
+	movement_speed = (base_speed * pow(speed_growth_factor, wave_index)) + randf_range(-10, 10)
+	xp_reward = base_xp_reward * pow(xp_growth_factor, wave_index)
+	coins_reward = base_coins_reward * pow(coins_growth_factor, wave_index)
 
 func set_sprite(a: AnimatedSprite2D) -> void:
 	sprite = a
@@ -100,16 +105,15 @@ func play_walk_animation() -> void:
 func __die() -> void:
 	if not is_dead:
 		is_dead = true
-		sprite.play(&"die")
-		emit_signal("died")
+		sprite.play("die")
+		give_coins_to_player()
 		call_deferred("drop_experience")
-		call_deferred("give_coins_to_player")
-
+		emit_signal("died")
 
 func give_coins_to_player() -> void:
 	var player_stats = get_tree().get_first_node_in_group("PlayerStats")
 	if player_stats:
-		player_stats.gain_coins(coins_reward*GameManager.__gold_scale)
+		player_stats.gain_coins(round(coins_reward) * GameManager.__gold_scale)
 
 func drop_experience() -> void:
 	var xp_item = XP_ITEM_SCENE.instantiate()
@@ -139,4 +143,3 @@ func __player_exited(area: Area2D) -> void:
 
 func play_sound(effect_path: String):
 	pass
-	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dggiyb6qq2j1k"]
+[gd_scene load_steps=27 format=3 uid="uid://dggiyb6qq2j1k"]
 
 [ext_resource type="Script" path="res://src/shop/shop.gd" id="1_6x6kv"]
 [ext_resource type="Texture2D" uid="uid://dg10rlho8i5jr" path="res://src/shop/Assets/Button.png" id="1_gk8fi"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://5vt7ja5emmim" path="res://src/shop/Assets/v2.png" id="3_ore3v"]
 [ext_resource type="FontFile" uid="uid://ch8jrpljohs62" path="res://src/Fonts/American TextC.ttf" id="4_bu623"]
 [ext_resource type="PackedScene" uid="uid://dqfspfc0f0ivf" path="res://src/shop/InventorySlot.tscn" id="5_c6320"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmojo"]
+bg_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="Gradient" id="Gradient_7v635"]
 colors = PackedColorArray(0.259294, 0.259294, 0.259294, 1, 0.197937, 0.197937, 0.197937, 1)
@@ -65,6 +68,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Message" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+layer = 2
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="Message"]
+anchors_preset = -1
+anchor_left = 0.36
+anchor_top = 0.469
+anchor_right = 0.64
+anchor_bottom = 0.531
+offset_left = 6.27997
+offset_top = 6.08798
+offset_right = 5.71997
+offset_bottom = 5.91199
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmojo")
+
+[node name="Label" type="Label" parent="Message/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bu623")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
 
 [node name="Base" type="Control" parent="."]
 process_mode = 3
@@ -611,6 +640,12 @@ layout_mode = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+wait_time = 0.25
+one_shot = true
+
 [connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot1" to="Base" method="populate_inventory_ui"]
 [connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot2" to="Base" method="populate_inventory_ui"]
 [connection signal="inventory_changed" from="Base/VBoxContainer/Inventory and Buttons/Inventory/Inventory/Slot 3" to="Base" method="populate_inventory_ui"]
@@ -618,3 +653,4 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jltga")
 [connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Resume" to="Base" method="_on_resume_pressed"]
 [connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Save" to="Base" method="_on_save_pressed"]
 [connection signal="pressed" from="Base/VBoxContainer/Inventory and Buttons/Buttons/Exit" to="Base" method="_on_exit_pressed"]
+[connection signal="timeout" from="Timer" to="Base" method="_on_timer_timeout"]
