@@ -9,11 +9,12 @@
 script = ExtResource("2_65bbo")
 weapon_name = "CLASIC PISTOL"
 description = "CLASIC PISTOL DESC"
-damage = 10
-price = 1.0
+damage = 12.0
+tier = 1
+price = 12.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_wuhme")
 weapon_scene = ExtResource("4_b6mvy")
-rarity = "COMMON"
+rarity = "RARE"
 weapon_type = "RANGE"
 sprite_frames = ExtResource("3_xovt2")

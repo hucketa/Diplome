@@ -9,11 +9,12 @@
 script = ExtResource("2_oy0a0")
 weapon_name = "NATURE BRANCH"
 description = "NATURE BRANCH DESC"
-damage = 13
-price = 16.0
+damage = 75.0
+tier = 1
+price = 250.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_mona8")
 weapon_scene = ExtResource("4_dut6w")
-rarity = "RARE"
+rarity = "LEGENDARY"
 weapon_type = "RANGE"
 sprite_frames = ExtResource("3_srtk5")

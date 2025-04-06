@@ -5,6 +5,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%10<=4 || n%10>=7) && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 
+# FULL INVENTORY
+msgid "FULL INVENTORY"
+msgstr "Інвентар повний і об'єднання неможливе."
+
 # PLAY
 msgid "PLAY"
 msgstr "Грати"

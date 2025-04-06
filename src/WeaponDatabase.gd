@@ -90,4 +90,18 @@ func get_weapon_for_wave(wave: int) -> WeaponData:
 		# fallback если вдруг нет такого оружия
 		return null
 	# выберем случайный
-	return arr[randi() % arr.size()]
+	return arr[randi() % arr.size()]	
+
+static func get_weapon_by_name_and_tier(name: String, tier: int) -> Resource:
+	for w in WeaponDB.weapons:
+		if w.weapon_name == name and w.tier == tier:
+			return w
+	print("НЕ НАЙДЕНО: %s tier %d" % [name, tier])
+	return null
+
+static func get_by_name(name: String) -> Resource:
+	for w in WeaponDB.weapons:
+		if w.weapon_name == name:
+			return w
+	print("НЕ НАЙДЕНО: %s" % [name])
+	return null

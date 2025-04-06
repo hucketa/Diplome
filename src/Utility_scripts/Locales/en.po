@@ -8,6 +8,10 @@ msgstr ""
 msgid "PLAY"
 msgstr "Play"
 
+# FULL INVENTORY
+msgid "FULL INVENTORY"
+msgstr "The inventory is full and consolidation is impossible."
+
 # YES
 msgid "YES"
 msgstr "Yes"

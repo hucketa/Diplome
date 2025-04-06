@@ -134,5 +134,5 @@ func play_effect(effect_path: String) -> void:
 		
 
 func _clear_inventory():
-	for i in range(inventory_ui.slots.size()):
+	for i in range(inventory_ui.slots.size()-1):
 		inventory_ui.remove_weapon(i)

@@ -8,6 +8,10 @@ msgstr ""
 msgid "PLAY"
 msgstr "Играть"
 
+# FULL INVENTORY
+msgid "FULL INVENTORY"
+msgstr "Инвентарь полон и объединение невозможно."
+
 # YES
 msgid "YES"
 msgstr "Да"

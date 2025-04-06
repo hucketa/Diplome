@@ -10,6 +10,7 @@ script = ExtResource("2_tvcbc")
 weapon_name = "FROZEN BLADE"
 description = "FROZEN BLADE DESC"
 damage = 11
+tier = 1
 price = 15.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_gvwq4")

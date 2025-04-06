@@ -8,7 +8,7 @@ class_name SimplifiedInventory
 	$Marker4
 ]
 
-@export var slots_count: int = 4
+@export var slots_count: int = 5
 var slots: Array = []
 var current_slot: int = 0
 var player_node = null
@@ -50,6 +50,8 @@ func remove_weapon(slot_index: int):
 	if slots[slot_index].weapon:
 		slots[slot_index].weapon.queue_free()
 		slots[slot_index].weapon = null
+	slots[slot_index].weapon_data = null
+
 
 func select_slot(slot_index: int):
 	if slot_index < 0 or slot_index >= slots_count:
@@ -79,7 +81,7 @@ func add_weapon(weapon_scene: PackedScene, slot_index: int) -> bool:
 
 
 func add_weapon_from_data(data: WeaponData, slot_index: int) -> bool:
-	if slot_index < 0 or slot_index >= slots_count:
+	if slot_index < 0 or slot_index >= slots_count-1:
 		return false
 	var new_weapon = data.weapon_scene.instantiate()
 	if player_node and "set_player" in new_weapon:
@@ -101,18 +103,28 @@ func _process(delta: float):
 
 func get_inventory_data() -> Array:
 	var inventory_data = []
-	for slot in slots:
+	for i in range(min(slots.size(), 4)):
+		var slot = slots[i]
 		if slot.has("weapon_data") and slot.weapon_data:
-			inventory_data.append(slot.weapon_data.weapon_name)
+			inventory_data.append({
+				"name": slot.weapon_data.weapon_name,
+				"tier": slot.weapon_data.tier,
+				"damage": slot.weapon_data.damage
+			})
 		else:
 			inventory_data.append(null)
 	return inventory_data
 
-func load_inventory_data(names: Array) -> void:
-	for i in range(min(names.size(), slots_count)):
+
+
+func load_inventory_data(data: Array) -> void:
+	for i in range(min(data.size(), 4)):
 		remove_weapon(i)
-		var weapon_name = names[i]
-		if weapon_name != null:
-			var data = WeaponDB.get_by_name(weapon_name)
-			if data:
-				add_weapon_from_data(data, i)
+		var entry = data[i]
+		if entry != null:
+			var base_data = WeaponDB.get_by_name(entry.name)
+			if base_data:
+				var weapon = base_data.duplicate()
+				weapon.tier = entry.tier
+				weapon.damage = entry.damage
+				add_weapon_from_data(weapon, i)

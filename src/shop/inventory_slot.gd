@@ -5,6 +5,7 @@ var inventory: Node
 var weapon_data: WeaponData
 var player: CharacterBody2D
 signal inventory_changed 
+signal inventory_cleared
 
 @onready var texture_rect: TextureRect = $VBoxContainer/TextureRect
 @onready var name_label: Label = $VBoxContainer/Label
@@ -34,7 +35,7 @@ func _ready() -> void:
 func _on_confirmed():
 	if inventory and inventory.has_method("remove_weapon"):
 		inventory.remove_weapon(slot_index)
-		player.stats.__coins += weapon_data.price
+		player.stats.__coins += weapon_data.price * 0.8
 		emit_signal("inventory_changed")
 		texture_rect.texture = null
 		name_label.text = ""
@@ -44,6 +45,7 @@ func _on_confirmed():
 func _on_pressed() -> void:
 	if weapon_data != null:
 		confirm_dialog.popup_centered()
+		emit_signal("inventory_cleared")
 
 func _on_confirmation_dialog_canceled() -> void:
 	pass
