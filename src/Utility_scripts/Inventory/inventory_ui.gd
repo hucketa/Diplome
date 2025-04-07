@@ -18,7 +18,7 @@ func _ready():
 	_find_inventory_markers()
 
 func _find_inventory_markers():
-	for i in range(slots_count):
+	for i in range(slots_count-1):
 		if i < markers.size():
 			print("Найден маркер для слота", i)
 		else:
