@@ -88,4 +88,3 @@ func _on_buff_button_pressed(button: Button) -> void:
 	get_tree().paused = false
 	player.stats.print_stats()
 	queue_free()
-	

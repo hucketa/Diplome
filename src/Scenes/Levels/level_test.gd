@@ -39,6 +39,13 @@ func _on_resume_pressed() -> void:
 	get_tree().paused = false
 	pause_screen.visible = false
 
+func _input(event):
+	if event.is_action_pressed("Pause"):
+		if not get_tree().paused:
+			get_tree().paused = true
+			pause_screen.visible = true
+
+
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/Scenes/Setting_w/settings.tscn")
@@ -60,8 +67,9 @@ func _on_show_buff_cards() -> void:
 	buff_scene_instance.global_position = player_position - Vector2(buff_size.x / 2, buff_size.y * 0.6)
 
 func _on_spawner_wave_finished() -> void:
-	var viewport_size = get_viewport().size
-	var center_position = viewport_size / 2
+	var window_size = get_viewport().get_visible_rect().size
+	var center_position = window_size / 2
+	await get_tree().process_frame
 	player.global_position = center_position
 	player.stats.__current_health = player.stats.__max_health
 	shop_scene = load("res://src/shop/shop2.tscn")
@@ -70,7 +78,6 @@ func _on_spawner_wave_finished() -> void:
 	var base_node = shop_scene_instance.get_node("Base")
 	var shop_rect = base_node.get_rect()
 	var shop_size = shop_rect.size
-	shop_scene_instance.global_position = player.global_position - 1.70 * (shop_size / 2)
 	var shop_control = shop_scene_instance.get_node("Base")
 	shop_control.connect("shop_closed", Callable(self, "_on_control_shop_closed"))
 	shop_control.connect("save_progress", Callable(self, "_on_save_game_menu"))
@@ -80,6 +87,7 @@ func _on_control_shop_closed() -> void:
 	for child in canvas_layer.get_children():
 		child.queue_free()
 	get_tree().paused = false
+	_pick_up_experience()
 	spawner.start_wave()
 	shop_scene = null
 
@@ -155,6 +163,13 @@ func _start_new_game():
 	respawn_player()
 	%GameOver.visible = false
 	get_tree().paused = false
+
+func _pick_up_experience():
+	for child in get_tree().get_current_scene().get_children():
+		if child is Experience:
+			player.stats.gain_experience(child.__experience)
+			child.queue_free()
+	#get_tree().paused = true
 
 
 func _on_save_last_wave_pressed() -> void:
