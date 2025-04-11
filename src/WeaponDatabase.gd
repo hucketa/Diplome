@@ -1,7 +1,7 @@
 extends Node
 class_name WeaponDatabase
-
-var weapons: Array[WeaponData] = []
+#WeaponData
+var weapons: Array = []
 var wave_config = [
 	{
 		"min_wave": 1,
@@ -40,23 +40,59 @@ func _ready():
 	weapons = load_all_weapon_data("res://src/Weapons/Data")
 	print("WeaponDatabase загружено оружий:", weapons.size())
 
+#func load_all_weapon_data(path: String) -> Array:
+#	var result: Array[WeaponData] = []
+#	var dir = DirAccess.open(path)
+#	if dir:
+#		dir.list_dir_begin()
+#		var file = dir.get_next()
+#		while file != "":
+#			if file.ends_with(".tres"):
+#				var res = load(path + "/" + file)
+#				if res is WeaponData:
+#					result.append(res)
+#				else:
+#					push_error("Файл не WeaponData: " + file)
+#			file = dir.get_next()
+#	else:
+#		push_error("Не удалось открыть папку: " + path)
+#	return result
+
 func load_all_weapon_data(path: String) -> Array:
-	var result: Array[WeaponData] = []
+	var result = []
 	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file = dir.get_next()
-		while file != "":
-			if file.ends_with(".tres"):
-				var res = load(path + "/" + file)
-				if res is WeaponData:
-					result.append(res)
-				else:
-					push_error("Файл не WeaponData: " + file)
-			file = dir.get_next()
-	else:
+	if dir == null:
 		push_error("Не удалось открыть папку: " + path)
+		return result
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.begins_with("."):
+			file_name = dir.get_next()
+			continue
+		var full_path = "%s/%s" % [path, file_name]
+		if dir.current_is_dir():
+			result += load_all_weapon_data(full_path)
+		else:
+			var res: Resource = null
+			if file_name.ends_with(".remap"):
+				var tres_path = full_path.substr(0, full_path.length() - ".remap".length())
+				res = ResourceLoader.load(tres_path)
+				if not res:
+					push_error("Не удалось загрузить remapped ресурс: " + tres_path)
+			else:
+				res = ResourceLoader.load(full_path)
+			if res and res is WeaponData:
+				result.append(res)
+			elif res:
+				push_warning("Загружен ресурс, но не WeaponData: " + full_path)
+		file_name = dir.get_next()
+	dir.list_dir_end()
 	return result
+
+
+
+
 
 func get_distribution_for_wave(wave: int) -> Array:
 	for segment in wave_config:

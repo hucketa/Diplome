@@ -26,12 +26,6 @@ msgstr "Slot %d (Lvl. %d, Wave %d, %d gold)"
 msgid "SAVE_SLOT_EMPTY"
 msgstr "Slot %d (empty)"
 
-msgid "OVERWRITE_SLOT"
-msgstr "Overwrite slot %d?"
-
-msgid "DELETE_SLOT"
-msgstr "Delete slot %d?"
-
 # NO
 msgid "NO"
 msgstr "No"
@@ -167,10 +161,6 @@ msgstr "Common"
 # RANGE
 msgid "RANGE"
 msgstr "Range"
-
-# LEGENDARY
-msgid "LEGENDARY"
-msgstr "Legendary"
 
 # LEGENDARY
 msgid "LEGENDARY"

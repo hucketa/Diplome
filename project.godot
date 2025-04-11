@@ -11,10 +11,12 @@ config_version=5
 [application]
 
 config/name="DarkLifer"
+config/version="1.0"
 run/main_scene="res://src/Scenes/MainMenu/MainScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+config/windows_native_icon="res://assets/icon.ico"
 
 [autoload]
 

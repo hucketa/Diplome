@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=5 format=3 uid="uid://c46y1xf5am6lt"]
 
-[ext_resource type="Texture2D" uid="uid://bw47y1l7wl0df" path="res://src/Weapons/Assets/Icons/Iicon_32_11.png" id="1_dyhvr"]
+[ext_resource type="Texture2D" uid="uid://cdhkvodc7a8x7" path="res://src/Weapons/Assets/Icons/FireSword.png" id="1_3cmeo"]
 [ext_resource type="Script" path="res://src/Weapons/WeaponData.gd" id="2_e8up4"]
 [ext_resource type="SpriteFrames" uid="uid://7gdwgf7obp0h" path="res://src/Weapons/Assets/SpriteFrames/FireSword.tres" id="3_doo53"]
 [ext_resource type="PackedScene" uid="uid://56tsgnpvqnvp" path="res://src/Weapons/Sword/Sword.tscn" id="3_jlone"]
@@ -13,8 +13,8 @@ damage = 12
 tier = 1
 price = 15.0
 color = Color(0, 0, 0, 1)
-icon = ExtResource("1_dyhvr")
+icon = ExtResource("1_3cmeo")
 weapon_scene = ExtResource("3_jlone")
-rarity = "RARE"
+rarity = "COMMON"
 weapon_type = "MELLE"
 sprite_frames = ExtResource("3_doo53")

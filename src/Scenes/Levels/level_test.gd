@@ -13,7 +13,7 @@ extends Node2D
 const BUFF_SCENE = preload("res://src/Scenes/Buffs/Buffstscn.tscn")
 
 func _ready():
-	get_tree().debug_collisions_hint = true
+	#get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	player.stats.connect("show_buff_cards", Callable(self, "_on_show_buff_cards"))
