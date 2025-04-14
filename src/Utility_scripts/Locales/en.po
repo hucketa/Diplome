@@ -12,6 +12,10 @@ msgstr "Play"
 msgid "FULL INVENTORY"
 msgstr "The inventory is full and consolidation is impossible."
 
+# ARMOR
+msgid "ARMOR"
+msgstr "Armor"
+
 # YES
 msgid "YES"
 msgstr "Yes"
@@ -120,7 +124,7 @@ msgstr "Armor"
 
 # stat_crit_chance
 msgid "stat_crit_chance"
-msgstr "Critical chance"
+msgstr "Critical damage chance"
 
 # stat_attack_speed
 msgid "stat_attack_speed"

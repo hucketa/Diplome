@@ -15,6 +15,6 @@ price = 15.0
 color = Color(0, 0, 0, 1)
 icon = ExtResource("1_3cmeo")
 weapon_scene = ExtResource("3_jlone")
-rarity = "COMMON"
+rarity = "RARE"
 weapon_type = "MELLE"
 sprite_frames = ExtResource("3_doo53")

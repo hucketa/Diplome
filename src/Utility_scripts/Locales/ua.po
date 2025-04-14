@@ -13,6 +13,10 @@ msgstr "Інвентар повний і об'єднання неможливе.
 msgid "PLAY"
 msgstr "Грати"
 
+# ARMOR
+msgid "ARMOR"
+msgstr "Броня"
+
 # YES
 msgid "YES"
 msgstr "Так"
@@ -139,7 +143,7 @@ msgstr "Броня"
 
 # stat_crit_chance
 msgid "stat_crit_chance"
-msgstr "Критичний урон"
+msgstr "Шанс критичного удару"
 
 # stat_attack_speed
 msgid "stat_attack_speed"

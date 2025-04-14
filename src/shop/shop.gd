@@ -327,10 +327,10 @@ func fill_stats():
 	$"VBoxContainer/BuySlots and Stats/Stats/Health/Value".text = str(player_stats.__max_health)
 	$"VBoxContainer/BuySlots and Stats/Stats/Damage/Value".text = str(player_stats.__damage)
 	$"VBoxContainer/BuySlots and Stats/Stats/AS/Value".text = str(player_stats.__attack_speed)
-	$"VBoxContainer/BuySlots and Stats/Stats/Crit_chance/Value".text = str(player_stats.__crit_chance * 100)
+	$"VBoxContainer/BuySlots and Stats/Stats/Crit_chance/Value".text = str(player_stats.__crit_chance)
 	$"VBoxContainer/BuySlots and Stats/Stats/Level/Value".text = str(player_stats.__level)
-	$"VBoxContainer/BuySlots and Stats/Stats/Experience/Value".text = str(player_stats.__experience_to_level_up)
 	$"VBoxContainer/BuySlots and Stats/Stats/Gold/Value".text = str(round(player_stats.__coins))
+	$"VBoxContainer/BuySlots and Stats/Stats/Armor/Value".text = str(player_stats.__armor)
 
 func apply_tier_color_to_slot(slot_button: Button, tier: int):
 	var tier_colors := {

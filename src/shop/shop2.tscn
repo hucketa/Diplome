@@ -484,27 +484,6 @@ layout_mode = 2
 theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
 
-[node name="Experience" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
-layout_mode = 2
-
-[node name="Experience" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_bu623")
-theme_override_font_sizes/font_size = 18
-text = "Experience"
-
-[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_fonts/font = ExtResource("4_bu623")
-theme_override_font_sizes/font_size = 18
-text = "1"
-
-[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Experience"]
-layout_mode = 2
-theme_override_constants/separation = 35
-theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
-
 [node name="Gold" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
 layout_mode = 2
 
@@ -522,6 +501,27 @@ theme_override_font_sizes/font_size = 18
 text = "1"
 
 [node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Gold"]
+layout_mode = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")
+
+[node name="Armor" type="HBoxContainer" parent="Base/VBoxContainer/BuySlots and Stats/Stats"]
+layout_mode = 2
+
+[node name="Armor" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Armor"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bu623")
+theme_override_font_sizes/font_size = 18
+text = "ARMOR"
+
+[node name="Value" type="Label" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Armor"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("4_bu623")
+theme_override_font_sizes/font_size = 18
+text = "1"
+
+[node name="VSeparator" type="VSeparator" parent="Base/VBoxContainer/BuySlots and Stats/Stats/Armor"]
 layout_mode = 2
 theme_override_constants/separation = 35
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0ud5t")

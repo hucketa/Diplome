@@ -12,6 +12,10 @@ msgstr "Играть"
 msgid "FULL INVENTORY"
 msgstr "Инвентарь полон и объединение невозможно."
 
+# ARMOR
+msgid "ARMOR"
+msgstr "Броня"
+
 # YES
 msgid "YES"
 msgstr "Да"
@@ -138,7 +142,7 @@ msgstr "Броня"
 
 # stat_crit_chance
 msgid "stat_crit_chance"
-msgstr "Критический урон"
+msgstr "Шанс критического урона"
 
 # stat_attack_speed
 msgid "stat_attack_speed"
