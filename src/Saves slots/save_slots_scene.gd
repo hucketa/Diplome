@@ -2,6 +2,7 @@ extends Control
 
 signal slot_selected(slot: int)
 signal slot_deleted(slot: int)
+var load_next_wave_after_load := false
 signal new_game_requested
 signal closed()
 

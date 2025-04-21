@@ -90,7 +90,7 @@ func connect_buy_signals():
 #	debug_print_inventory()
 
 func populate_buy_slots(slot_index := -1):
-	var wave = GameManager.__current_wave
+	var wave = GameManager.__current_wave+1
 	if slot_index == -1 or slot_index == 1:
 		var weapon_1 = WeaponDB.get_weapon_for_wave(wave)
 		if buy_slot_weapons.size() >= 1:

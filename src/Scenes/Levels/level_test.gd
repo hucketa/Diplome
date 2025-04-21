@@ -11,15 +11,14 @@ extends Node2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 const BUFF_SCENE = preload("res://src/Scenes/Buffs/Buffstscn.tscn")
+var __load_next_wave_after_load := false
 
 func _ready():
-	#get_tree().debug_collisions_hint = true
 	$UI.visible = true
 	pause_screen.visible = false
 	player.stats.connect("show_buff_cards", Callable(self, "_on_show_buff_cards"))
 	player.stats.connect("died", Callable(self, "_on_died"))
 	%GameOver.visible = false
-
 	var has_any_save = false
 	for i in range(1, 4):
 		if GameManager.get_save_summary(i).exists:
@@ -80,7 +79,9 @@ func _on_spawner_wave_finished() -> void:
 	var shop_size = shop_rect.size
 	var shop_control = shop_scene_instance.get_node("Base")
 	shop_control.connect("shop_closed", Callable(self, "_on_control_shop_closed"))
+	GameManager.save_next_wave = true
 	shop_control.connect("save_progress", Callable(self, "_on_save_game_menu"))
+	player.stats.heal()
 	get_tree().paused = true
 
 func _on_control_shop_closed() -> void:
@@ -112,6 +113,19 @@ func _on_load_game_pressed() -> void:
 func _on_save_game_menu() -> void:
 	_show_save_menu(true)
 
+#func _on_slot_selected(slot: int, is_saving: bool):
+#	if is_saving:
+#		GameManager.save_game(slot, player.stats, player.inventory_ui, spawner)
+#		print("Сохранено в слот", slot)
+#	else:
+#		var data = GameManager.load_game(slot)
+#		if data:
+#			player.stats.from_dict(data["player_stats"])
+#			player.inventory_ui.load_inventory_data(data["inventory"])
+#			spawner.set_current_wave(data.get("wave", 1))
+#			respawn_player()
+#		get_tree().paused = false
+#	%GameOver.visible = false
 func _on_slot_selected(slot: int, is_saving: bool):
 	if is_saving:
 		GameManager.save_game(slot, player.stats, player.inventory_ui, spawner)
@@ -121,23 +135,40 @@ func _on_slot_selected(slot: int, is_saving: bool):
 		if data:
 			player.stats.from_dict(data["player_stats"])
 			player.inventory_ui.load_inventory_data(data["inventory"])
-			spawner.set_current_wave(data.get("wave", 1))
+			var loaded_wave = data.get("wave", 1)
+			if not __load_next_wave_after_load and loaded_wave > 0:
+				loaded_wave -= 1
+			spawner.set_current_wave(loaded_wave)
 			respawn_player()
+			if __load_next_wave_after_load:
+				spawner.start_wave()
 		get_tree().paused = false
 	%GameOver.visible = false
 
-
-func _show_save_menu(is_saving: bool, block_cancel := false):
+#func _show_save_menu(is_saving: bool, block_cancel := false):
+#	var menu_scene = preload("res://src/Saves slots/SaveSlotsScene.tscn")
+#	var menu = menu_scene.instantiate()
+#	menu.is_saving = is_saving
+#	menu.block_cancel_button = block_cancel
+#	var new_canvas_layer = CanvasLayer.new()
+#	new_canvas_layer.name = "SaveMenuCanvas"
+#	new_canvas_layer.add_child(menu)
+#	add_child(new_canvas_layer)
+#	menu.connect("slot_selected", Callable(self, "_on_slot_selected").bind(is_saving))
+#	menu.connect("new_game_requested", Callable(self, "_start_new_game"))
+func _show_save_menu(is_saving: bool, block_cancel := false, load_next_wave := false):
 	var menu_scene = preload("res://src/Saves slots/SaveSlotsScene.tscn")
 	var menu = menu_scene.instantiate()
 	menu.is_saving = is_saving
 	menu.block_cancel_button = block_cancel
+	menu.load_next_wave_after_load = load_next_wave
 	var new_canvas_layer = CanvasLayer.new()
 	new_canvas_layer.name = "SaveMenuCanvas"
 	new_canvas_layer.add_child(menu)
 	add_child(new_canvas_layer)
 	menu.connect("slot_selected", Callable(self, "_on_slot_selected").bind(is_saving))
 	menu.connect("new_game_requested", Callable(self, "_start_new_game"))
+	__load_next_wave_after_load = load_next_wave
 
 
 func respawn_player():
@@ -173,4 +204,6 @@ func _pick_up_experience():
 
 
 func _on_save_last_wave_pressed() -> void:
+	GameManager.save_next_wave = false
+	player.stats.heal()
 	_show_save_menu(true)

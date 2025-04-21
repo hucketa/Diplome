@@ -153,18 +153,13 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6dx2
 max_value = 1.0
 step = 0.1
 
-[node name="space5" type="VSeparator" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 9
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f3ua0")
-
 [node name="Caption_sound2" type="Label" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars/SoundProgressBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1fo6v")
+text = "1"
+horizontal_alignment = 1
 
 [node name="MusicProgressBar" type="HBoxContainer" parent="mainContainer/ProgressBars and language Choice/ProgressBars and language Choice/ProgressBars"]
 layout_mode = 2

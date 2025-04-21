@@ -9,6 +9,7 @@ var music_position: float = 0.0
 var sfx_volume: float = 0.0
 const CONFIG_PATH = "user://settings.cfg"
 var __current_wave:int = 0
+var save_next_wave:bool = false
 
 func _ready() -> void:
 	__load_from_config()
@@ -40,8 +41,11 @@ func set_hp_scale(a: float):
 
 
 func save_game(slot: int, stats: PlayerStats, inventory: SimplifiedInventory, spawner: Spawner_logic) -> void:
+	var wave = spawner.get_current_wave()
+	if save_next_wave:
+		wave += 1
 	var save_data = {
-		"wave": spawner.get_current_wave(),
+		"wave": wave,
 		"player_stats": stats.to_dict(),
 		"inventory": inventory.get_inventory_data()
 	}
@@ -50,6 +54,7 @@ func save_game(slot: int, stats: PlayerStats, inventory: SimplifiedInventory, sp
 	file.store_string(JSON.stringify(save_data, "\t"))
 	file.close()
 	print("Игра сохранена в слот", slot, "на волне", save_data.wave)
+
 
 func load_game(slot: int) -> Dictionary:
 	var path = SAVE_PATH_TEMPLATE % slot

@@ -15,7 +15,6 @@ enum Stats { HEALTH, DAMAGE, ARMOR, CRIT_CHANCE, ATTACK_SPEED }
 @export var __level: int = 1
 @export var __coins: float = 0
 
-
 signal health_changed(current_health)
 signal died
 signal level_up(new_level)
@@ -24,7 +23,17 @@ signal show_buff_cards
 var is_dead: bool = false
 var buff_effects = {}
 
+var base_max_health: float = 15
+var base_gold: float = 0
+
 func _ready():
+	base_max_health = __max_health
+	base_gold = __coins
+
+	__max_health = base_max_health * GameManager.__hp_scale
+	__current_health = __max_health
+	__coins = base_gold * GameManager.__gold_scale
+
 	buff_effects = {
 		Stats.HEALTH: func(value): __max_health += value; __current_health = __max_health,
 		Stats.DAMAGE: func(value): __damage += value,
@@ -34,7 +43,7 @@ func _ready():
 	}
 
 func get_health() -> int:
-	return (__current_health/__max_health)*100
+	return (__current_health / __max_health) * 100
 
 func get_exp() -> float:
 	return (__current_experience / __experience_to_level_up) * 100
@@ -57,9 +66,9 @@ func take_damage(amount: int):
 func get_coins() -> float:
 	return __coins
 
-func heal(amount: int):
+func heal():
 	if not is_dead:
-		__current_health = min(__current_health + amount, __max_health)
+		__current_health = __max_health
 		emit_signal("health_changed", __current_health)
 
 func gain_experience(amount: float):
@@ -79,10 +88,6 @@ func level_uped():
 func calculate_damage() -> float:
 	var is_critical = randf() < __crit_chance
 	var final_damage = __damage * __crit_multiplier if is_critical else __damage
-	#if is_critical:
-		#print("Нанесено урон:", final_damage, "(Критичний удар!)")
-	#else:
-		#print("Нанесено урон:", final_damage)
 	return final_damage
 
 func apply_buff(buff_type: int, value: float) -> void:
@@ -91,9 +96,10 @@ func apply_buff(buff_type: int, value: float) -> void:
 
 func die():
 	print("Герой помер.")
-	
+
 func gain_coins(amount: float):
-	__coins += amount
+	base_gold+=amount
+	__coins += amount * GameManager.__gold_scale
 
 func print_stats() -> void:
 	print("# Статистика гравця:")
@@ -109,8 +115,8 @@ func print_stats() -> void:
 
 func to_dict() -> Dictionary:
 	return {
-		"max_health": __max_health,
-		"current_health": __current_health,
+		"max_health": base_max_health,
+		"current_health": base_max_health,#__current_health,
 		"damage": __damage,
 		"armor": __armor,
 		"crit_chance": __crit_chance,
@@ -119,21 +125,24 @@ func to_dict() -> Dictionary:
 		"current_experience": __current_experience,
 		"experience_to_level_up": __experience_to_level_up,
 		"level": __level,
-		"coins": __coins
+		"coins": base_gold
 	}
 
 func from_dict(data: Dictionary) -> void:
-	__max_health = data.get("max_health", 5)
-	__current_health = data.get("current_health", 1)
+	base_max_health = data.get("max_health", 15)
+	base_gold = data.get("coins", 0)
+	__max_health = base_max_health * GameManager.__hp_scale
+	__current_health = data.get("current_health", __max_health)
+	__current_experience = data.get("current_experience",  __current_experience)
+	__coins = base_gold * GameManager.__gold_scale
 	__damage = data.get("damage", 10)
 	__armor = data.get("armor", 0)
 	__crit_chance = data.get("crit_chance", 0.01)
 	__crit_multiplier = data.get("crit_multiplier", 2.0)
 	__attack_speed = data.get("attack_speed", 1)
-	__current_experience = data.get("current_experience", 0)
 	__experience_to_level_up = data.get("experience_to_level_up", 15)
 	__level = data.get("level", 1)
-	__coins = data.get("coins", 5)
+
 
 func revive():
 	is_dead = false
@@ -142,7 +151,9 @@ func revive():
 	emit_signal("health_changed", __current_health)
 
 func _default_stats():
-	__max_health = 25
+	base_max_health = 15
+	base_gold = 0
+	__max_health = base_max_health * GameManager.__hp_scale
 	__current_health = __max_health
 	__damage = 10
 	__armor = 0
@@ -152,5 +163,5 @@ func _default_stats():
 	__current_experience = 0
 	__experience_to_level_up = 4
 	__level = 1
-	__coins = 0
+	__coins = base_gold * GameManager.__gold_scale
 	emit_signal("health_changed", __current_health)
