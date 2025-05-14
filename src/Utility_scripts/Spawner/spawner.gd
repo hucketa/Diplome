@@ -4,8 +4,6 @@ extends Node2D
 signal wave_finished
 signal wave_started
 
-
-
 const ENEMY_SCENES = {
 	"skeleton": preload("res://src/Enemies/Sceleton/skeleton_enemy.tscn"),
 	"nightborne": preload("res://src/Enemies/Nightborne/nightborne.tscn"),

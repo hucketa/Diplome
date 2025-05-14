@@ -145,8 +145,6 @@ func _on_volumme_slider_drag_ended(value_changed: bool) -> void:
 	save_settings()
 	GameManager.sfx_volume = sound_volume	
 
-# Дополнительные натсройки
-
 func _on_hard_mode_pressed() -> void:
 	if(hp_scale):
 		GameManager.set_hp_scale(1)

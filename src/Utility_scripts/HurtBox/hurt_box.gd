@@ -4,7 +4,6 @@ signal hit(damage)
 
 @onready var damage_timer: Timer = Timer.new()
 
-
 var attacker: Node2D = null
 
 func _on_area_entered(area):
@@ -21,7 +20,6 @@ func _on_area_entered(area):
 		return
 	_apply_damage()
 	damage_timer.start()
-
 
 func _on_area_exited(area):
 	if area == attacker:

@@ -113,7 +113,7 @@ func __die() -> void:
 func give_coins_to_player() -> void:
 	var player_stats = get_tree().get_first_node_in_group("PlayerStats")
 	if player_stats:
-		player_stats.gain_coins(round(coins_reward)) #* GameManager.__gold_scale)
+		player_stats.gain_coins(round(coins_reward))
 
 func drop_experience() -> void:
 	var xp_item = XP_ITEM_SCENE.instantiate()

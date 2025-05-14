@@ -1,6 +1,5 @@
 extends Node
 class_name WeaponDatabase
-#WeaponData
 var weapons: Array = []
 var wave_config = [
 	{
@@ -40,24 +39,6 @@ func _ready():
 	weapons = load_all_weapon_data("res://src/Weapons/Data")
 	print("WeaponDatabase загружено оружий:", weapons.size())
 
-#func load_all_weapon_data(path: String) -> Array:
-#	var result: Array[WeaponData] = []
-#	var dir = DirAccess.open(path)
-#	if dir:
-#		dir.list_dir_begin()
-#		var file = dir.get_next()
-#		while file != "":
-#			if file.ends_with(".tres"):
-#				var res = load(path + "/" + file)
-#				if res is WeaponData:
-#					result.append(res)
-#				else:
-#					push_error("Файл не WeaponData: " + file)
-#			file = dir.get_next()
-#	else:
-#		push_error("Не удалось открыть папку: " + path)
-#	return result
-
 func load_all_weapon_data(path: String) -> Array:
 	var result = []
 	var dir = DirAccess.open(path)
@@ -90,10 +71,6 @@ func load_all_weapon_data(path: String) -> Array:
 	dir.list_dir_end()
 	return result
 
-
-
-
-
 func get_distribution_for_wave(wave: int) -> Array:
 	for segment in wave_config:
 		if wave >= segment["min_wave"] and wave <= segment["max_wave"]:
@@ -123,9 +100,7 @@ func get_weapon_for_wave(wave: int) -> WeaponData:
 	var chosen_rarity = pick_rarity_for_wave(wave)
 	var arr = get_by_rarity(chosen_rarity)
 	if arr.size() == 0:
-		# fallback если вдруг нет такого оружия
 		return null
-	# выберем случайный
 	return arr[randi() % arr.size()]	
 
 static func get_weapon_by_name_and_tier(name: String, tier: int) -> Resource:

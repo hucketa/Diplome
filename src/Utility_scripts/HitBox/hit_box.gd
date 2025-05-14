@@ -5,6 +5,5 @@ extends Area2D
 func _ready() -> void:
 	pass
 
-
 func get_damage() -> float:
 	return damage

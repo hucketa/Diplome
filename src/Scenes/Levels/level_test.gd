@@ -113,19 +113,6 @@ func _on_load_game_pressed() -> void:
 func _on_save_game_menu() -> void:
 	_show_save_menu(true)
 
-#func _on_slot_selected(slot: int, is_saving: bool):
-#	if is_saving:
-#		GameManager.save_game(slot, player.stats, player.inventory_ui, spawner)
-#		print("Сохранено в слот", slot)
-#	else:
-#		var data = GameManager.load_game(slot)
-#		if data:
-#			player.stats.from_dict(data["player_stats"])
-#			player.inventory_ui.load_inventory_data(data["inventory"])
-#			spawner.set_current_wave(data.get("wave", 1))
-#			respawn_player()
-#		get_tree().paused = false
-#	%GameOver.visible = false
 func _on_slot_selected(slot: int, is_saving: bool):
 	if is_saving:
 		GameManager.save_game(slot, player.stats, player.inventory_ui, spawner)
@@ -145,17 +132,6 @@ func _on_slot_selected(slot: int, is_saving: bool):
 		get_tree().paused = false
 	%GameOver.visible = false
 
-#func _show_save_menu(is_saving: bool, block_cancel := false):
-#	var menu_scene = preload("res://src/Saves slots/SaveSlotsScene.tscn")
-#	var menu = menu_scene.instantiate()
-#	menu.is_saving = is_saving
-#	menu.block_cancel_button = block_cancel
-#	var new_canvas_layer = CanvasLayer.new()
-#	new_canvas_layer.name = "SaveMenuCanvas"
-#	new_canvas_layer.add_child(menu)
-#	add_child(new_canvas_layer)
-#	menu.connect("slot_selected", Callable(self, "_on_slot_selected").bind(is_saving))
-#	menu.connect("new_game_requested", Callable(self, "_start_new_game"))
 func _show_save_menu(is_saving: bool, block_cancel := false, load_next_wave := false):
 	var menu_scene = preload("res://src/Saves slots/SaveSlotsScene.tscn")
 	var menu = menu_scene.instantiate()
@@ -200,7 +176,6 @@ func _pick_up_experience():
 		if child is Experience:
 			player.stats.gain_experience(child.__experience)
 			child.queue_free()
-	#get_tree().paused = true
 
 
 func _on_save_last_wave_pressed() -> void:
