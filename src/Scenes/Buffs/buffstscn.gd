@@ -1,4 +1,5 @@
 extends Control
+signal buff_closed
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var buttons = [
@@ -85,6 +86,7 @@ func _on_buff_button_pressed(button: Button) -> void:
 		var buff_name = STAT_NAMES.get(stat, "Невідомий бафф")
 	else:
 		print("Помилка: гравець не знайдений!")
-	get_tree().paused = false
+	#get_tree().paused = false
+	emit_signal("buff_closed")
 	player.stats.print_stats()
 	queue_free()

@@ -21,7 +21,7 @@ texture = ExtResource("4_cjgvm")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0m2tb"]
 
-[node name="Buffs" type="Control"]
+[node name="Buffs" type="Control" groups=["buff_windows"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

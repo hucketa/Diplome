@@ -129,7 +129,7 @@ func _on_music_sound_slider_drag_ended(value_changed: bool) -> void:
 		%Caption_music2.text = str(0) + "%"
 	else:
 		var percentage = music_sound_slider.value
-		music_volume = -10 + (percentage * 10)
+		music_volume = -15 + (percentage * 10)
 		%Caption_music2.text = str(percentage * 100) + "%"
 	save_settings()
 	music_player.set_music_volume(music_volume)

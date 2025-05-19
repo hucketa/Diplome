@@ -36,6 +36,7 @@ Player=""
 enemies=""
 attack=""
 PlayerStats=""
+buff_windows=""
 
 [gui]
 

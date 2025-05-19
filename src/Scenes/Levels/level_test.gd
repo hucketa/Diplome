@@ -59,11 +59,19 @@ func _on_pause_ui_pressed() -> void:
 
 func _on_show_buff_cards() -> void:
 	var buff_scene_instance = BUFF_SCENE.instantiate()
+	#buff_scene_instance.connect("buff_closed", Callable(self, "_on_buff_closed"))
+	buff_scene_instance.add_to_group("buff_windows")
+	buff_scene_instance.connect("tree_exited", Callable(self, "_on_buff_window_removed"))
 	get_tree().current_scene.add_child(buff_scene_instance)
 	await get_tree().process_frame
 	var player_position = player.global_position
 	var buff_size = buff_scene_instance.get_rect().size
 	buff_scene_instance.global_position = player_position - Vector2(buff_size.x / 2, buff_size.y * 0.6)
+	get_tree().paused = true
+
+func _on_buff_window_removed() -> void:
+	if get_tree().get_nodes_in_group("buff_windows").is_empty():
+		get_tree().paused = false
 
 func _on_spawner_wave_finished() -> void:
 	var window_size = get_viewport().get_visible_rect().size
