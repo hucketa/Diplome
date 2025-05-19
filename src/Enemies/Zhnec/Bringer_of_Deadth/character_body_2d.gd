@@ -39,9 +39,6 @@ func face_player(direction: Vector2) -> void:
 		update_hitbox_position(is_facing_left)
 		last_flip = flip_value
 
-
-		
-
 func __die() -> void:
 	if not is_dead:
 		is_dead = true
