@@ -20,8 +20,8 @@ config/windows_native_icon="res://assets/icon.ico"
 
 [autoload]
 
-WeaponDB="*res://src/WeaponDatabase.gd"
 GameManager="*res://src/GameManager.gd"
+WeaponDB="*res://src/WeaponDatabase.gd"
 
 [display]
 

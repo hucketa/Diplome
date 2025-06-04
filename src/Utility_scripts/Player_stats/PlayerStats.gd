@@ -29,8 +29,7 @@ var base_gold: float = 0
 func _ready():
 	base_max_health = __max_health
 	base_gold = __coins
-
-	__max_health = base_max_health * GameManager.__hp_scale
+	__max_health = base_max_health * GameManager.get_hp_scale()
 	__current_health = __max_health
 	__coins = base_gold * GameManager.__gold_scale
 
